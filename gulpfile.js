@@ -6,18 +6,20 @@ var minify = require('gulp-minify-css');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename'),
+    imagemin = require('gulp-imagemin'),
     gulpCopy = require('gulp-file-copy'),
+    del = require('del'),
     browserSync = require('browser-sync').create();
 
 //Define the app path
 var path = {
-    all:['./template/*.html','./assets/css/*.css','./assets/js/*.js','./assets/js/lib/*.js'],
+    all:['./*.html','./assets/css/*.css','./assets/js/*.js'    ,'./assets/js/lib/*.js'],
     template:['./template/*.html'],
     css:['./assets/css/*.css'],
-    js:['./assets/js/lib/zepto.min.js','./assets/js/rem.js','./assets/js/lib/cookie.js','./assets/js/common.js','./assets/js/wxshare.js','./assets/js/qa.js'],
-    selectvjs:['./assets/js/lib/zepto.min.js','./assets/js/rem.js','./assets/js/lib/cookie.js','./assets/js/common.js','./assets/js/wxshare.js','./assets/js/vjs.js'],
-    formjs:['./assets/js/lib/zepto.min.js','./assets/js/rem.js','./assets/js/lib/cookie.js','./assets/js/common.js','./assets/js/wxshare.js','./assets/js/form.js'],
-    staticFolder:['./assets/images','./assets/font','./assets/video']
+    js:['./assets/js/lib/zepto.min.js','./assets/js/lib/pre-loader.js','./assets/js/rem.js','./assets/js/common.js','./assets/js/wxshare.js','./assets/js/api.js','./assets/js/home.js'],
+    qrjs:['./assets/js/lib/zepto.min.js','./assets/js/rem.js','./assets/js/wxshare.js','./assets/js/qr.js'],
+    images:['./assets/images/*'],
+    staticFolder:['./assets/images/*','./assets/font/*','./assets/video/*']
 };
 // Browser-sync
 gulp.task('browser-sync', function() {
@@ -29,17 +31,23 @@ gulp.task('browser-sync', function() {
     });
 });
 
-//gulp.task('copy', function() {
-//    var start = './assets/video/';
-//    gulp.src(start)
-//        .pipe(gulpCopy('./dist', {
-//            start: start
-//        }))
-//
-//});
+// Not all tasks need to use streams
+// A gulpfile is just another node program and you can use any package available on npm
+gulp.task('clean', function() {
+    // You can use multiple globbing patterns as you would with `gulp.src`
+    return del(['build']);
+});
+
+// Copy all static images
+gulp.task('images', ['clean'], function() {
+    return gulp.src(path.images)
+        // Pass in options to the task
+        //.pipe(imagemin({optimizationLevel: 5}))
+        .pipe(gulp.dest('dist/images'));
+});
 
 //css
-gulp.task('css',function () {
+gulp.task('css',['clean'],function () {
     // 1. 找到文件
     gulp.src(path.css)
         //.pipe(concat('style.css'))
@@ -50,7 +58,7 @@ gulp.task('css',function () {
 });
 
 // Concatenate & Minify
-gulp.task('scripts', function() {
+gulp.task('scripts',['clean'], function() {
     return gulp.src(path.js)
         .pipe(concat('all.js'))
         .pipe(gulp.dest('dist'))
@@ -58,28 +66,24 @@ gulp.task('scripts', function() {
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
 });
-gulp.task('scripts_vjs', function() {
-    return gulp.src(path.selectvjs)
-        .pipe(concat('vjs2.js'))
+
+gulp.task('scripts_qr',['clean'], function() {
+    return gulp.src(path.qrjs)
+        .pipe(concat('qr_all.js'))
         .pipe(gulp.dest('dist'))
-        .pipe(rename('vjs.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest('dist/js'));
-});
-gulp.task('scripts_formjs', function() {
-    return gulp.src(path.formjs)
-        .pipe(concat('form.js'))
-        .pipe(gulp.dest('dist'))
-        .pipe(rename('form.min.js'))
+        .pipe(rename('qr_all.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
 });
 
 // Watch Files For Changes
-gulp.task('watch', function() {
-    gulp.watch('assets/js/*.js', ['scripts','scripts_vjs','scripts_formjs']);
-    gulp.watch('assets/css/*.css',['css']);
+gulp.task('watch', ['clean'],function() {
+    gulp.watch(path.js, ['scripts']);
+    gulp.watch(path.qrjs, ['scripts_qr']);
+    gulp.watch(path.css,['css']);
+    gulp.watch(path.images,['images']);
+    gulp.watch(path.template,['css']);
 });
 
 // Default Task
-gulp.task('default', ['scripts', 'css','watch','browser-sync']);
+gulp.task('default', ['watch', 'scripts','scripts_qr','images','css','browser-sync']);

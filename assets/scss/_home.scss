@@ -9,25 +9,29 @@ html,body{
   top: 0;
   z-index: 1;
   @include size(100%,100%);
-  .page-selectvideo &,
-  .page-form &,
-  .page-videolist &{
-    background: url("../images/selectvideo-bg.jpg") center center no-repeat;
-    background-size: cover;
-  }
-  .page-qa &{
-    background: url("../images/bg.jpg") center center no-repeat;
-    background-size: cover;
+  background: url("../images/bg.jpg") no-repeat;
+  background-size: cover;
+}
+.bg{
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  @include size(100%,100%);
+  .bg-layer-1{
+    position: absolute;
+    left: 0;
+    top: 0;
+    @include size(2.67rem,2.56rem);
   }
 }
 
 .container{
-  //position: absolute;
-  //z-index: 2;
-  //left: 50%;
-  //top: 48%;
-  //@include transform(translate(-50%,-50%));
-  //width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  @include size(100%,100%);
 }
 .logo{
   @include size(2.75rem,1.02rem);
