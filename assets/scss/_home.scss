@@ -21,13 +21,13 @@ html,body{
   }
 }
 
-.content{
-  position: absolute;
-  z-index: 2;
-  left: 50%;
-  top: 48%;
-  @include transform(translate(-50%,-50%));
-  width: 100%;
+.container{
+  //position: absolute;
+  //z-index: 2;
+  //left: 50%;
+  //top: 48%;
+  //@include transform(translate(-50%,-50%));
+  //width: 100%;
 }
 .logo{
   @include size(2.75rem,1.02rem);
@@ -49,33 +49,34 @@ html,body{
   }
 }
 
-.container{
-  box-sizing: border-box;
-  @include size(6.39rem,8.91rem);
-  padding: 1.2rem 0.6rem;
-  background: url("../images/layer-bg.png") no-repeat;
-  background-size: 100%;
-  margin: 0 auto;
-}
-
 
 //drag-block
 .item-content{
   position: relative;
 }
-.drag-block{
+.drag-ele{
   position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  z-index: 5;
-}
-.swiper-container{
-  overflow-y:visible;
-}
-.drag-pain{
-  position: absolute;
+  z-index: 100;
   width: 100px;
   height: 100px;
-  background: red;
+  left: -100px;
+  top: -100px;
+  //background: red;
+}
+.swiper-container{
+  margin-bottom: 100px;
+}
+.dest-block{
+  @include size(80vw,auto);
+  margin: 0 auto;
+  //margin-top: 100px;
+  border: red 1px solid;
+  padding: 1vw;
+  .item{
+    margin-bottom: 20px;
+    @include size(120px,120px);
+    border: green 1px solid;
+
+  }
+
 }

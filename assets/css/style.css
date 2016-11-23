@@ -531,18 +531,6 @@ html, body {
   background-size: cover;
 }
 
-.content {
-  position: absolute;
-  z-index: 2;
-  left: 50%;
-  top: 48%;
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 100%;
-}
-
 .logo {
   width: 2.75rem;
   height: 1.02rem;
@@ -565,35 +553,33 @@ html, body {
   text-decoration: none;
 }
 
-.container {
-  box-sizing: border-box;
-  width: 6.39rem;
-  height: 8.91rem;
-  padding: 1.2rem 0.6rem;
-  background: url("../images/layer-bg.png") no-repeat;
-  background-size: 100%;
-  margin: 0 auto;
-}
-
 .item-content {
   position: relative;
 }
 
-.drag-block {
+.drag-ele {
   position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  z-index: 5;
+  z-index: 100;
+  width: 100px;
+  height: 100px;
+  left: -100px;
+  top: -100px;
 }
 
 .swiper-container {
-  overflow-y: visible;
+  margin-bottom: 100px;
 }
 
-.drag-pain {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background: red;
+.dest-block {
+  width: 80vw;
+  height: auto;
+  margin: 0 auto;
+  border: red 1px solid;
+  padding: 1vw;
+}
+.dest-block .item {
+  margin-bottom: 20px;
+  width: 120px;
+  height: 120px;
+  border: green 1px solid;
 }
