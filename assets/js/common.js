@@ -1,6 +1,10 @@
 ;(function(){
 	var ua = navigator.userAgent.toLowerCase();
 	var Common = {
+		gotoPin:function(num){
+			$('.container .pin').removeClass('current');
+			$('.container .pin').eq(num).addClass('current');
+		},
 		msgBox:function(msg,long){
 			if(long){
 				$('body').append('<div class="ajaxpop msgbox minwidthbox"><div class="loading">'+msg+'</div></div>');

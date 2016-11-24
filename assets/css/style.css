@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
@@ -58,11 +59,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-@font-face {
-  font-family: 'Clarendon';
-  src: url("../font/Clarendon-Light.otf") format("truetype");
-  /* Safari, Android, iOS */
-}
 @media all and (orientation: landscape) {
   html {
     font-size: calc(100vh / 375 * 50);
@@ -78,14 +74,10 @@ html {
 }
 
 body {
-  font-family: 'Songti',serif;
+  font-family: 'Microsoft Yahei',sans-serif;
   line-height: 1.5;
   font-size: .24rem;
   color: #000;
-}
-
-.font-en {
-  font-family: 'Clarendon',serif;
 }
 
 * {
@@ -539,6 +531,15 @@ html, body {
   top: 0;
   width: 2.67rem;
   height: 2.56rem;
+  background: url("../images/bg-layer-1.png") no-repeat;
+  background-size: cover;
+}
+
+.pin {
+  display: none;
+}
+.pin.current {
+  display: block;
 }
 
 .container {
@@ -551,8 +552,9 @@ html, body {
 }
 
 .logo {
-  width: 2.75rem;
-  height: 1.02rem;
+  width: 2.85rem;
+  height: 1.16rem;
+  padding-top: 0.6rem;
   margin: 0 auto 0.4rem;
 }
 
@@ -572,8 +574,11 @@ html, body {
   text-decoration: none;
 }
 
-.item-content {
-  position: relative;
+/* pin2 block*/
+.p2-t1 {
+  width: 5.79rem;
+  height: 0.29rem;
+  margin: 0 auto 0.4rem;
 }
 
 .drag-ele {
@@ -585,20 +590,89 @@ html, body {
   top: -100px;
 }
 
-.swiper-container {
-  margin-bottom: 100px;
+#swiper-products {
+  position: relative;
+  width: 90vw;
+  margin: 0 auto 0.4rem;
+}
+#swiper-products .swiper-container {
+  padding-bottom: 1rem;
+}
+#swiper-products .swiper-button-next,
+#swiper-products .swiper-button-prev {
+  background-image: url("../images/arrow.png");
+  width: 0.2rem;
+  height: 0.38rem;
+  background-size: cover;
+  margin-top: -0.8rem;
+}
+#swiper-products .swiper-button-prev {
+  left: -3vw;
+}
+#swiper-products .swiper-button-next {
+  right: -3vw;
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+#swiper-products .product-name {
+  display: none;
+  position: absolute;
+  top: 1.4rem;
+  left: 50%;
+  width: 50vw;
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 0.24rem;
+  color: #18131c;
+  opacity: 0.9;
+}
+#swiper-products .swiper-slide {
+  opacity: 0.2;
+}
+#swiper-products .swiper-slide-next {
+  opacity: 1;
+}
+#swiper-products .swiper-slide-next .product-name {
+  display: block;
+}
+#swiper-products .item-content {
+  position: relative;
 }
 
 .dest-block {
-  width: 80vw;
-  height: auto;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  display: -ms-flexbox;
+  box-orient: horizontal;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  /*混合版本语法*/
+  -ms-flex-align: center;
+  /*新版本语法*/
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  /*混合版本语法*/
+  -ms-flex-pack: center;
+  /*新版本语法*/
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 6.75rem;
+  height: 4.04rem;
   margin: 0 auto;
-  border: red 1px solid;
-  padding: 1vw;
+  background: url("../images/box-bottom.jpg") no-repeat;
+  background-size: 100%;
 }
 .dest-block .item {
-  margin-bottom: 20px;
-  width: 120px;
-  height: 120px;
-  border: green 1px solid;
+  width: 26%;
+  height: auto;
+  margin: 0 0.1rem;
+  text-align: center;
 }

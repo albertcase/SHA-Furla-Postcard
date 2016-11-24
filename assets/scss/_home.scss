@@ -23,6 +23,15 @@ html,body{
     left: 0;
     top: 0;
     @include size(2.67rem,2.56rem);
+    background: url("../images/bg-layer-1.png") no-repeat;
+    background-size: cover;
+  }
+}
+
+.pin{
+  display: none;
+  &.current{
+    display: block;
   }
 }
 
@@ -34,7 +43,8 @@ html,body{
   @include size(100%,100%);
 }
 .logo{
-  @include size(2.75rem,1.02rem);
+  @include size(2.85rem,1.16rem);
+  padding-top: 0.6rem;
   margin: 0 auto 0.4rem;
 }
 .btn{
@@ -54,10 +64,14 @@ html,body{
 }
 
 
-//drag-block
-.item-content{
-  position: relative;
+/* pin2 block*/
+.p2-t1{
+  @include size(5.79rem,0.29rem);
+  margin: 0 auto 0.4rem;
 }
+
+
+//drag-block
 .drag-ele{
   position: absolute;
   z-index: 100;
@@ -67,20 +81,81 @@ html,body{
   top: -100px;
   //background: red;
 }
-.swiper-container{
-  margin-bottom: 100px;
+#swiper-products{
+  position: relative;
+  width: 90vw;
+  margin: 0 auto 0.4rem;
+  .swiper-container{
+    padding-bottom: 1rem;
+  }
+  .swiper-button-next,
+  .swiper-button-prev{
+    background-image: url("../images/arrow.png");
+    @include size(0.2rem,0.38rem);
+    background-size: cover;
+    margin-top: -0.8rem;
+  }
+  .swiper-button-prev{
+    left: -3vw;
+  }
+  .swiper-button-next{
+    right: -3vw;
+    @include transform(rotate(180deg));
+  }
+  .product-name {
+    display: none;
+    position: absolute;
+    top: 1.4rem;
+    left: 50%;
+    width: 50vw;
+    @include transform(translateX(-50%));
+    text-align: center;
+    font-size: 0.24rem;
+    color: #18131c;
+    opacity: 0.9;
+  }
+  .swiper-slide{
+    opacity: 0.2;
+  }
+  .swiper-slide-next{
+    opacity: 1;
+    .product-name{
+      display: block;
+    }
+  }
+  .item-content{
+    position: relative;
+  }
 }
 .dest-block{
-  @include size(80vw,auto);
+  display:-webkit-flex;
+  display:-moz-flex;
+  display:flex;
+  display:-ms-flexbox;
+  box-orient: horizontal;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  /*混合版本语法*/
+  -ms-flex-align: center;
+  /*新版本语法*/
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  /*混合版本语法*/
+  -ms-flex-pack: center;
+  /*新版本语法*/
+  -webkit-justify-content: center;
+  justify-content: center;
+  @include size(6.75rem,4.04rem);
   margin: 0 auto;
   //margin-top: 100px;
-  border: red 1px solid;
-  padding: 1vw;
+  background: url("../images/box-bottom.jpg") no-repeat;
+  background-size: 100%;
   .item{
-    margin-bottom: 20px;
-    @include size(120px,120px);
-    border: green 1px solid;
-
+    @include size(26%,auto);
+    margin: 0 0.1rem;
+    text-align: center;
   }
 
 }
