@@ -30,10 +30,10 @@
         for(var i=0;i<products.length;i++){
             swiperHtml = swiperHtml + '<div class="swiper-slide">'+
                 '<div class="item-content">'+
-                '<div class="slide-block" pid="100">'+
-                '<img src="/dist/images/products/p1.png" alt=""/>'+
+                '<div class="slide-block" pid="'+products[i].pid+'">'+
+                '<img src="'+products[i].imgsrc+'" alt=""/>'+
                 '</div>'+
-                '</div><div class="product-name">FURLA_METROPOLIS MINI CROSSBODY</div>'+
+                '</div><div class="product-name">'+products[i].name+'</div>'+
                 '</div>';
         }
 
@@ -81,17 +81,19 @@
         var maxX,maxY,minX,minY;
 
         /*If move the product success,true*/
-        var isMoved = false;
+        //var isMoved = false;
 
         var dragEle = $('.drag-ele');
         var destEle = $('.dest-block');
 
         var enableMove = true;
 
-        var productNo = 0;
         var curPid;
+        var curIndex;
+        var isFull = false;
 
-        var selectedProducts = [];
+        var addHtml;
+        var selectedProducts = ['','',''];
 
         var isAddProduct = false,
             isRemoveProduct = false;
@@ -115,14 +117,34 @@
         }
 
         function addProducts(){
+            console.log(selectedProducts);
+            for(var i=0;i<selectedProducts.length;i++){
+                if(!selectedProducts[i]){
+                    selectedProducts[i] = curPid;
+                    $('.dest-block .item').eq(i).html(addHtml);
+                    resetDragElePos(dragEle);
+                    if(i==2){
+                        isFull = true;
+                    }
+                    return;
+                }
+            }
 
 
         };
+
 
         function removeProducts(index){
+            console.log(index);
             //selectedProducts
-            selectedProducts.splice(index,1,'undefied');
+            $('.item-dest').eq(index).find('.slide-block').remove();
+            selectedProducts.splice(index,1,'');
+            //selectedProducts[index] = '';
+            //console.log(selectedProducts);
+            curIndex='';
+            isFull = false;
         };
+
 
 
         /*touch start function*/
@@ -137,19 +159,21 @@
             y = e.changedTouches[0].clientY;
 
             //add products
-            if($(e.target).parent().hasClass('slide-block') && $(e.target).parent().parent().parent().hasClass('swiper-slide-next')){
+            if($(e.target).parent().hasClass('slide-block') && $(e.target).parent().parent().parent().hasClass('swiper-slide-next') && !isFull){
                 curPid = $(e.target).parent().attr('pid');
+                addHtml = $(e.target).parent().parent().html();
                 dragEle.css({
                     'opacity':'0',
                     'left':x + 'px',
                     'top':y + 'px'
                 });
-                dragEle.html($(e.target).parent().parent().html());
+                dragEle.html(addHtml);
                 isAddProduct = true;
             };
 
             if($(e.target).parent().hasClass('slide-block') && $(e.target).parent().parent().hasClass('item-dest')){
                 curPid = $(e.target).parent().attr('pid');
+                curIndex = $(e.target).parent().parent().index();
                 dragEle.css({
                     'opacity':'0',
                     'left':x + 'px',
@@ -158,15 +182,6 @@
                 dragEle.html($(e.target).parent().parent().html());
                 isRemoveProduct = true;
             };
-
-
-
-
-            ////remove products
-            //if($(e.target).parent().hasClass('slide-block')&&($(e.target).parent().parent().hasClass('item-dest'))){
-            //    console.log('start remove');
-            //    curPid = $(e.target).parent().attr('pid');
-            //}
 
         };
 
@@ -181,16 +196,11 @@
                     left:e.changedTouches[0].clientX + 'px',
                     top:e.changedTouches[0].clientY + 'px'
                 });
-                var dHtml = dragEle.html();
+
                 if(isBelongDest(e.changedTouches[0].clientX,e.changedTouches[0].clientY,minX,minY,maxX,maxY)){
                     if(!enableMove) return;
                     enableMove = false;
-                    if(productNo>2) return;
-                    selectedProducts.push(curPid);
-                    $('.dest-block .item').eq(productNo).html(dHtml);
-                    resetDragElePos(dragEle);
-                    productNo++;
-                    console.log(productNo);
+                    addProducts();
                 }else{
 
 
@@ -207,27 +217,13 @@
                 if(isBelongDest(e.changedTouches[0].clientX,e.changedTouches[0].clientY,minX,minY,maxX,maxY)){
 
                 }else{
-
+                    if(!enableMove) return;
+                    enableMove = false;
                     resetDragElePos(dragEle);
-                    $('.item-dest').eq(0).find('.slide-block').remove();
-                    removeProducts(0);
-                    console.log(selectedProducts);
-
+                    removeProducts(curIndex);
                 }
             }
 
-
-            //remove products
-            //if($(e.target).parent().hasClass('slide-block')&&($(e.target).parent().parent().hasClass('item-dest'))){
-            //    console.log('start remove');
-            //    curPid = $(e.target).parent().attr('pid');
-            //}
-            //if(e.changedTouches[0].clientY>300){
-            //
-            //    $('.dest-block .item-1').html(dHtml);
-            //    dragEle.css('opacity','0');
-            //
-            //}
 
         };
 
@@ -235,10 +231,9 @@
         function handlerDragTE(e){
             isAddProduct = false;
             isRemoveProduct = false;
-            //console.log(e);
-            if(!isMoved){
-                resetDragElePos(dragEle);
-            }
+            curIndex='';
+            addHtml = '';
+            resetDragElePos(dragEle);
         };
 
 
