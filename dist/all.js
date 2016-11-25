@@ -545,6 +545,7 @@ Api = {
         var self = this;
 
         Common.gotoPin(0);
+        self.selectProductPage();
 
         //popup for rule
         $('.show-rule').on('click',function(){
@@ -556,7 +557,6 @@ Api = {
 
         //go select product page
         $('.arrow-next').on('touchstart',function(){
-            Common.gotoPin(1);
             self.selectProductPage();
         });
 
@@ -566,6 +566,7 @@ Api = {
     furla.prototype.selectProductPage = function(){
         var self = this;
         var swiperHtml = '';
+        Common.gotoPin(1);
         for(var i=0;i<products.length;i++){
             swiperHtml = swiperHtml + '<div class="swiper-slide">'+
                 '<div class="item-content">'+
