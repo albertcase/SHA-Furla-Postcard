@@ -16,7 +16,7 @@ class DatabaseAPI extends Base {
 		if ($user) {
 			return $user;
 		}
-		$sql = "INSERT INTO `coach_info` SET `openid` = ?";
+		$sql = "INSERT INTO `furla_info` SET `openid` = ?";
 		$res = $this->db->prepare($sql); 
 		$res->bind_param("s", $openid);
 		if ($res->execute()) {
@@ -30,7 +30,7 @@ class DatabaseAPI extends Base {
 		if ($this->findUserByOauth($openid)) {
 			return TRUE;
 		}
-		$sql = "INSERT INTO `coach_oauth` SET `openid` = ?, nickname = ?, headimgurl = ?";
+		$sql = "INSERT INTO `furla_oauth` SET `openid` = ?, nickname = ?, headimgurl = ?";
 		$res = $this->db->prepare($sql); 
 		$res->bind_param("sss", $openid, $nickname, $headimgurl);
 		if ($res->execute()) {
@@ -41,7 +41,7 @@ class DatabaseAPI extends Base {
 	}
 
 	public function findUserByOauth($openid) {
-		$sql = "SELECT id  FROM `coach_oauth` WHERE `openid` = ?"; 
+		$sql = "SELECT id  FROM `furla_oauth` WHERE `openid` = ?"; 
 		$res = $this->db->prepare($sql);
 		$res->bind_param("s", $openid);
 		$res->execute();
@@ -53,7 +53,7 @@ class DatabaseAPI extends Base {
 	}
 
 	public function findUserByOpenid($openid) {
-		$sql = "SELECT `id` FROM `coach_info` WHERE `openid` = ?"; 
+		$sql = "SELECT `id` FROM `furla_info` WHERE `openid` = ?"; 
 		$res = $this->db->prepare($sql);
 		$res->bind_param("s", $openid);
 		$res->execute();
@@ -69,7 +69,7 @@ class DatabaseAPI extends Base {
 	}
 
 	public function checkuser($openid) {
-		$sql = "SELECT `type` FROM `coach_vip` WHERE `openid` = ?"; 
+		$sql = "SELECT `type` FROM `furla_vip` WHERE `openid` = ?"; 
 		$res = $this->db->prepare($sql);
 		$res->bind_param("s", $openid);
 		$res->execute();
