@@ -1,5 +1,5 @@
 <?php
-namespace CoachBundle;
+namespace FurlaBundle;
 
 use Core\Controller;
 
