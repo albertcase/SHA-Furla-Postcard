@@ -543,12 +543,6 @@ Api = {
     //welcome page
     furla.prototype.welcomePage = function(){
         var self = this;
-        //load select product page
-        //$('.pin-1').on('touchstart',function(){
-        //    console.log(1);
-        //    Common.gotoPin(1);
-        //    self.selectProductPage();
-        //});
 
         Common.gotoPin(1);
         self.selectProductPage();
@@ -648,6 +642,18 @@ Api = {
             return true;
         }
 
+        function changeStatus(ischange){
+            if(ischange){
+                $('.btn-writecard').removeClass('hide');
+                $('.p2-t1 img').attr('src','/dist/images/p2-t2.png');
+            }else{
+                $('.btn-writecard').addClass('hide');
+                $('.p2-t1 img').attr('src','/dist/images/p2-t1.png');
+            }
+
+        };
+
+
         function addProducts(){
             console.log('添加中。。。');
             for(var i=0;i<selectedProducts.length;i++){
@@ -657,6 +663,7 @@ Api = {
                     resetDragElePos(dragEle);
                     if(i==2){
                         isFull = true;
+                        changeStatus(true);
                     }
                     return;
                 }
@@ -672,17 +679,14 @@ Api = {
             //selectedProducts
             $('.item-dest').eq(index).find('.slide-block').remove();
             selectedProducts.splice(index,1,'');
-            //selectedProducts[index] = '';
-            //console.log(selectedProducts);
-            //curIndex='';
             isFull = false;
+            changeStatus(false);
         };
 
 
 
         /*touch start function*/
         function handlerDragTS(e){
-            //console.log(e);
             enableMove = true;
             minX = destEle.offset().left;
             minY = destEle.offset().top;
@@ -740,7 +744,6 @@ Api = {
                     addProducts();
                 }
             }
-            console.log(isRemoveProduct);
             if(isRemoveProduct){
                 console.log('move移除');
                 dragEle.css({
@@ -775,6 +778,20 @@ Api = {
         $('.drag-panel').on('touchstart',handlerDragTS);
         $('.drag-panel').on('touchmove',handlerDragTM);
         $('.drag-panel').on('touchend',handlerDragTE);
+
+
+        function submitSelectedProduct(){
+            if(isFull){
+                //接口1
+                console.log(selectedProducts);
+                console.log('submit selected products id');
+            }else{
+                console.log('请选择三个产品');
+            }
+
+        };
+
+        $('.btn-writecard').on('touchstart',submitSelectedProduct);
 
     };
 
