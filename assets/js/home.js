@@ -30,10 +30,10 @@
         for(var i=0;i<products.length;i++){
             swiperHtml = swiperHtml + '<div class="swiper-slide">'+
                 '<div class="item-content">'+
-                '<div class="slide-block" pid="100">'+
-                '<img src="/dist/images/products/p1.png" alt=""/>'+
+                '<div class="slide-block" pid="'+products[i].pid+'">'+
+                '<img src="'+products[i].imgsrc+'" alt=""/>'+
                 '</div>'+
-                '</div><div class="product-name">FURLA_METROPOLIS MINI CROSSBODY</div>'+
+                '</div><div class="product-name">'+products[i].name+'</div>'+
                 '</div>';
         }
 
@@ -49,7 +49,200 @@
             // Enable lazy loading
             lazyLoading: true
         });
+
+        /*
+         * The function is to drag slide products to destionation area
+         *
+         * */
+        function getElementLeft(element){
+            var actualLeft = element.offsetLeft;
+            var current = element.offsetParent;
+            while (current !== null){
+                actualLeft += current.offsetLeft;
+                current = current.offsetParent;
+            }
+            return actualLeft;
+        }
+
+        function getElementTop(element){
+            var actualTop = element.offsetTop;
+            var current = element.offsetParent;
+
+            while (current !== null){
+                actualTop += current.offsetTop;
+                current = current.offsetParent;
+            }
+            return actualTop;
+        }
+
+//    drag-block
+        var point, x, y,dx,dy;
+
+        var maxX,maxY,minX,minY;
+
+        /*If move the product success,true*/
+        //var isMoved = false;
+
+        var dragEle = $('.drag-ele');
+        var destEle = $('.dest-block');
+
+        var enableMove = true;
+
+        var curPid;
+        var curIndex;
+        var isFull = false;
+
+        var addHtml;
+        var selectedProducts = ['','',''];
+
+        var isAddProduct = false,
+            isRemoveProduct = false;
+
+        function resetDragElePos(ele){
+            ele.css({
+                'opacity':'0',
+                'left':'-3rem',
+                'top':'-1.8rem',
+                //'z-index':'-1'
+            }).html('');
+        };
+
+        /*If the drag elements is in destination block*/
+        function isBelongDest(posX,posY,minX,minY,maxX,maxY){
+            if( posX < minX || posX > maxX || posY < minY || posY > maxY){
+                //    not belong
+                return false;
+            }
+            return true;
+        }
+
+        function addProducts(){
+            console.log(selectedProducts);
+            for(var i=0;i<selectedProducts.length;i++){
+                if(!selectedProducts[i]){
+                    selectedProducts[i] = curPid;
+                    $('.dest-block .item').eq(i).html(addHtml);
+                    resetDragElePos(dragEle);
+                    if(i==2){
+                        isFull = true;
+                    }
+                    return;
+                }
+            }
+
+
+        };
+
+
+        function removeProducts(index){
+            console.log(index);
+            //selectedProducts
+            $('.item-dest').eq(index).find('.slide-block').remove();
+            selectedProducts.splice(index,1,'');
+            //selectedProducts[index] = '';
+            //console.log(selectedProducts);
+            curIndex='';
+            isFull = false;
+        };
+
+
+
+        /*touch start function*/
+        function handlerDragTS(e){
+            //console.log(e);
+            enableMove = true;
+            minX = destEle.offset().left;
+            minY = destEle.offset().top;
+            maxX = minX + parseInt(destEle.width());
+            maxY = minY + parseInt(destEle.height());
+            x = e.changedTouches[0].clientX;
+            y = e.changedTouches[0].clientY;
+
+            //add products
+            if($(e.target).parent().hasClass('slide-block') && $(e.target).parent().parent().parent().hasClass('swiper-slide-next') && !isFull){
+                curPid = $(e.target).parent().attr('pid');
+                addHtml = $(e.target).parent().parent().html();
+                dragEle.css({
+                    'opacity':'0',
+                    'left':x + 'px',
+                    'top':y + 'px'
+                });
+                dragEle.html(addHtml);
+                isAddProduct = true;
+            };
+
+            if($(e.target).parent().hasClass('slide-block') && $(e.target).parent().parent().hasClass('item-dest')){
+                curPid = $(e.target).parent().attr('pid');
+                curIndex = $(e.target).parent().parent().index();
+                dragEle.css({
+                    'opacity':'0',
+                    'left':x + 'px',
+                    'top':y + 'px'
+                });
+                dragEle.html($(e.target).parent().parent().html());
+                isRemoveProduct = true;
+            };
+
+        };
+
+
+        /*touch move function*/
+        function handlerDragTM(e){
+            dx = e.changedTouches[0].clientX - x;
+            dy = e.changedTouches[0].clientY - y;
+            if(isAddProduct){
+                dragEle.css({
+                    'opacity':'1',
+                    left:e.changedTouches[0].clientX + 'px',
+                    top:e.changedTouches[0].clientY + 'px'
+                });
+
+                if(isBelongDest(e.changedTouches[0].clientX,e.changedTouches[0].clientY,minX,minY,maxX,maxY)){
+                    if(!enableMove) return;
+                    enableMove = false;
+                    addProducts();
+                }else{
+
+
+                }
+            }
+
+            if(isRemoveProduct){
+                dragEle.css({
+                    'opacity':'1',
+                    left:e.changedTouches[0].clientX + 'px',
+                    top:e.changedTouches[0].clientY + 'px'
+                });
+                //var dHtml = dragEle.html();
+                if(isBelongDest(e.changedTouches[0].clientX,e.changedTouches[0].clientY,minX,minY,maxX,maxY)){
+
+                }else{
+                    if(!enableMove) return;
+                    enableMove = false;
+                    resetDragElePos(dragEle);
+                    removeProducts(curIndex);
+                }
+            }
+
+
+        };
+
+        /*touch end function*/
+        function handlerDragTE(e){
+            isAddProduct = false;
+            isRemoveProduct = false;
+            curIndex='';
+            addHtml = '';
+            resetDragElePos(dragEle);
+        };
+
+
+        $('.drag-panel').on('touchstart',handlerDragTS);
+        $('.drag-panel').on('touchmove',handlerDragTM);
+        $('.drag-panel').on('touchend',handlerDragTE);
+
     };
+
 
 
 
