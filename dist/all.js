@@ -544,7 +544,7 @@ Api = {
     furla.prototype.welcomePage = function(){
         var self = this;
 
-        Common.gotoPin(1);
+        Common.gotoPin(0);
         self.selectProductPage();
 
     };

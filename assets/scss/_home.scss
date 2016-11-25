@@ -30,6 +30,10 @@ html,body{
 
 .pin{
   display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  @include size(100%,100%);
   &.current{
     display: block;
   }
@@ -71,6 +75,63 @@ html,body{
     text-decoration: none;
   }
 }
+
+//verticle align
+.v-content{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  @include transform(translate(-50%,-50%));
+}
+
+/*For pin1*/
+.pin-1{
+  .bg-layer-2{
+    position: absolute;
+    bottom: 0;
+    left:0;
+    @include size(7.5rem,1.98rem);
+    background: url("../images/bg-layer-2.png") no-repeat;
+    background-size: 100%;
+    z-index: 1;
+  }
+  .content{
+    position: relative;
+    z-index: 2;
+    @include size(5.11rem,4.64rem);
+    margin: 0 auto;
+  }
+  .arrow-next{
+    position: relative;
+    @include size(0.8rem,0.8rem);
+    background: #fff;
+    border-radius: 100%;
+    margin: 0.3rem auto 0.5rem;
+    &:before{
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -0.15rem;
+      margin-top: -0.25rem;
+      @include size(0.3rem,0.3rem);
+      border-left: #a6873b 0.04rem solid;
+      border-bottom: #a6873b 0.04rem solid;
+      @include transform(rotate(-45deg));
+    }
+  }
+  .show-rule{
+    font-size: 0.28rem;
+    color: #957317;
+    text-decoration: underline;
+    text-align: center;
+  }
+}
+
+
+
+/*End pin1*/
 
 
 /* pin2 block*/
