@@ -545,7 +545,20 @@ Api = {
         var self = this;
 
         Common.gotoPin(0);
-        self.selectProductPage();
+
+        //popup for rule
+        $('.show-rule').on('click',function(){
+            $('#popup-rule').addClass('show');
+        });
+        $('#popup-rule .btn-close').on('click',function(){
+            $('#popup-rule').removeClass('show');
+        });
+
+        //go select product page
+        $('.arrow-next').on('touchstart',function(){
+            Common.gotoPin(1);
+            self.selectProductPage();
+        });
 
     };
 

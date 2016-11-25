@@ -90,7 +90,7 @@ html,body{
     position: absolute;
     bottom: 0;
     left:0;
-    @include size(7.5rem,1.98rem);
+    @include size(100%,1.98rem);
     background: url("../images/bg-layer-2.png") no-repeat;
     background-size: 100%;
     z-index: 1;
@@ -122,6 +122,7 @@ html,body{
     }
   }
   .show-rule{
+    padding: 0.1rem;
     font-size: 0.28rem;
     color: #957317;
     text-decoration: underline;
