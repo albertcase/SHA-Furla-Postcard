@@ -7,6 +7,7 @@
     furla.prototype.init = function(){
         var self = this;
         self.welcomePage();
+        self.writeCard();
     };
     //welcome page
     furla.prototype.welcomePage = function(){
@@ -274,6 +275,47 @@
         };
 
         $('.btn-writecard').on('touchstart',submitSelectedProduct);
+
+    };
+
+    //write card with words
+    furla.prototype.writeCard = function(){
+
+        var letterContent = $('#l-content');
+        var startFocus = false; //if focus first,all init text need disappear
+        var initVal = 'FURLA全新系列带着我最深刻的祝福，\n用绽放的星芒，\n为您装点一个绚烂的惊喜。';
+        var curVal;
+        letterContent.val(initVal);
+        letterContent.on('focus',function(){
+            if(!startFocus){
+                letterContent.val('');
+            }
+            startFocus = true;
+        });
+
+        //function charLimit(limitField, limitCount, limitNum) {
+        //    if (limitField.value.length > limitNum) {
+        //        limitField.value = limitField.value.substring(0, limitNum);
+        //    } else {
+        //        limitCount.value = limitNum - limitField.value.length;
+        //    }
+        //};
+
+        letterContent.on('keydown',function(e){
+            curVal = letterContent.val();
+            if(e.keyCode==13 || e.which==13){
+                var a = curVal.split('\n');
+                if(a.length>2){
+                    return false;
+                }
+            }
+        });
+
+        //send product and words to backend
+        $('.btn-postcard').on('touchstart',function(){
+            curVal = letterContent.val();
+            console.log(curVal);
+        });
 
     };
 

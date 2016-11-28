@@ -584,7 +584,7 @@ html, body {
 .btn span {
   margin-top: -5px;
   display: block;
-  padding: 0.15rem 0.6rem;
+  padding: 0.15rem 0rem;
   color: #fff;
   background: #000;
   text-align: center;
@@ -831,14 +831,22 @@ html, body {
 }
 .letter-wrap input[type="text"] {
   background: url("../images/line.png") bottom repeat-x;
+  background-size: auto 1rem;
+  height: 0.6rem;
+  line-height: 0.6rem;
+  text-indent: 0.2rem;
   border: none;
   -webkit-appearance: none;
-  line-height: 1rem;
 }
 .letter-wrap .letter-header label {
   width: 1.17rem;
   height: 0.33rem;
   background: url("../images/p2-t3.png") no-repeat;
+  background-size: 100%;
+}
+.letter-wrap .letter-content input,
+.letter-wrap .letter-content textarea {
+  display: block;
 }
 .letter-wrap .letter-content textarea {
   width: 100%;
@@ -847,14 +855,17 @@ html, body {
   line-height: 1rem;
   -webkit-appearance: none;
   border: none;
-  font-size: 28px;
   background-image: url("../images/line.png");
+  background-repeat: repeat;
+  background-size: auto 1rem;
   resize: none;
+  text-align: center;
 }
 .letter-wrap .letter-bottom label {
   width: 0.82rem;
   height: 0.34rem;
   background: url("../images/p2-t4.png") no-repeat;
+  background-size: 100%;
 }
 .letter-wrap .letter-date {
   color: #18131c;

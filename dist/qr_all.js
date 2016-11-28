@@ -12,10 +12,10 @@ var Zepto=function(){function L(t){return null==t?String(t):j[S.call(t)]||"objec
         dpr = 2;
     }
     docEl.dataset.dpr = dpr;
-    var metaEl = doc.createElement('meta');
-    metaEl.name = 'viewport';
-    metaEl.content = 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale;
-    docEl.firstElementChild.appendChild(metaEl);
+    //var metaEl = doc.createElement('meta');
+    //metaEl.name = 'viewport';
+    //metaEl.content = 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale;
+    //docEl.firstElementChild.appendChild(metaEl);
     var recalc = function () {
         var width = docEl.clientWidth,
 			height = docEl.clientHeight;

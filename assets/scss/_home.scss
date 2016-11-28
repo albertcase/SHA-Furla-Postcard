@@ -62,7 +62,7 @@ html,body{
   span{
     margin-top: -5px;
     display: block;
-    padding: 0.15rem 0.6rem;
+    padding: 0.15rem 0rem;
     color: #fff;
     background: #000;
     text-align: center;
@@ -291,20 +291,24 @@ html,body{
   }
   input[type="text"]{
     background: url("../images/line.png") bottom repeat-x;
+    background-size: auto 1rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    text-indent: 0.2rem;
     border: none;
     -webkit-appearance:none;
-    line-height: 1rem;
   }
   .letter-header{
     label{
       @include size(1.17rem,0.33rem);
       background: url("../images/p2-t3.png") no-repeat;
+      background-size: 100%;
     }
   }
   .letter-content{
     input,
     textarea {
-
+      display: block;
       //font-size: 24px;
       //padding: 10px;
       //
@@ -325,9 +329,11 @@ html,body{
       line-height: 1rem;
       -webkit-appearance: none;
       border: none;
-      font-size: 28px;
       background-image: url("../images/line.png");
+      background-repeat:repeat;
+      background-size: auto 1rem;
       resize: none;
+      text-align: center;
       //background-color: transparent;
 
       //&::first-line{
@@ -339,6 +345,7 @@ html,body{
     label{
       @include size(0.82rem,0.34rem);
       background: url("../images/p2-t4.png") no-repeat;
+      background-size: 100%;
     }
   }
   .letter-date{
