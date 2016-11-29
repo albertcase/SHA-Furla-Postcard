@@ -12,77 +12,95 @@
     <link rel="stylesheet" type="text/css" href="/dist/css/style.css" />
     <script type="text/javascript" src="/assets/js/lib/zepto.min.js"></script>
     <script type="text/javascript" src="/assets/js/lib/swiper.min.js"></script>
+    <script type="text/javascript" src="/assets/js/rem.js"></script>
+    <script type="text/javascript" src="/assets/js/productsjson.js"></script>
     <script type="text/javascript" src="/assets/js/common.js"></script>
-    <script type="text/javascript" src="/assets/js/home.js"></script>
-    <!--<script type="text/javascript" src="../dist/js/all.min.js"></script>-->
+    <script type="text/javascript" src="/assets/js/api.js"></script>
+    <script type="text/javascript" src="/assets/js/gift.js"></script>
 </head>
 <body class="page-home">
-    <div class="wrapper">
-        <div class="container">
-            <div class="drag-panel">
-                <div class="drag-ele"></div>
-                <!-- Swiper -->
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="item-content">
-                                <div class="slide-block slide-block-1" pid="100">
-                                    <img src="/assets/images/clock/CLOCK_00000.png" alt=""/>
-                                </div>
-                            </div>
+<div class="wrapper">
+    <div class="bg">
+        <div class="bg-layer-1"></div>
+        <div class="bg-layer-2"></div>
+    </div>
+    <div class="container">
+        <!-- shake page-->
+        <section class="pin pin-gift-1 current">
+            <div class="v-content">
+                <div class="logo">
+                    <img src="/dist/images/logo.png" alt=""/>
+                </div>
+                <div class="content">
+                    <div class="t1">您收到一份惊喜好礼
+                        摇一摇就能打开它！</div>
+                </div>
+                <div class="box-top"></div>
+                <div class="box-bottom">
+                    <div class="dest-block">
+                        <div class="item item-dest item-1">
+                            <img src="/dist/images/products/p1.png" alt=""/>
                         </div>
-                        <div class="swiper-slide slide-block-2">
-                            <div class="item-content">
-                                <div class="slide-block" pid="101">
-                                    <img src="/assets/images/clock/CLOCK_00001.png" alt=""/>
-                                </div>
-                            </div>
+                        <div class="item item-dest item-2">
+                            <img src="/dist/images/products/p2.png" alt=""/>
                         </div>
-                        <div class="swiper-slide slide-block-3">
-                            <div class="item-content">
-                                <div class="slide-block" pid="102">
-                                    <img src="/assets/images/clock/CLOCK_00002.png" alt=""/>
-                                </div>
-                            </div>
+                        <div class="item item-dest item-3">
+                            <img src="/dist/images/products/p3.png" alt=""/>
                         </div>
-                        <div class="swiper-slide slide-block-4">
-                            <div class="item-content">
-                                <div class="slide-block"  pid="103">
-                                    <img src="/assets/images/clock/CLOCK_00003.png" alt=""/>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
-                    <!-- Add Pagination -->
-                    <!--<div class="swiper-pagination"></div>-->
+                </div>
+                <div class="pg1-t2">
+                    在礼盒中寻找卡片，点击打开您的专属祝福
                 </div>
 
-                <div class="dest-block">
-                    <div class="item item-1">
-                        位置1
-                    </div>
-                    <div class="item item-2">
-                        位置1
-                    </div>
-                    <div class="item item-3">
-                        位置1
-                    </div>
 
+            </div>
+            <!-- 信件-->
+            <div class="section-letter animate delay1 hide">
+                <div class="logo">
+                    <img src="/dist/images/logo.png" alt=""/>
                 </div>
+                <div class="bg-layer-2"></div>
+                <div class="letter-wrap">
+                    <div class="letter-header">
+                        <label>敬爱的</label>
+                        <input type="text" id="input-name-1"/>
+                    </div>
+                    <div class="letter-content">
+                        <!--FURLA全新系列带着我最深刻的祝福，-->
+                        <!--用绽放的星芒，-->
+                        <!--为您装点一个绚烂的惊喜。-->
+                        <textarea name="l-content" id="l-content"  cols="30" rows="3" wrap="hard" maxlength="60"></textarea>
+                        <!--<div contenteditable="true" class="test" style="font-size: 0.26rem;line-height: 2">敬爱的</div>-->
+                    </div>
+                    <div class="letter-bottom">
+                        <label>敬爱的</label>
+                        <input type="text" id="input-name-2"/>
+                    </div>
+                    <div class="letter-date">2016年11月24日</div>
+                </div>
+                <div class="btn btn-postcard"><span>参与抽奖</span></div>
             </div>
-        </div>
+        </section>
+        <!-- show gift-->
+        <!--<section class="pin pin-gift-2 current">-->
+            <!--<div class="v-content">-->
+                <!--<div class="logo">-->
+                    <!--<img src="/dist/images/logo.png" alt=""/>-->
+                <!--</div>-->
+                <!--<div class="content">-->
+                    <!--您收到一份惊喜好礼-->
+                    <!--摇一摇就能打开它！-->
+                <!--</div>-->
+                <!--<div class="box-top"></div>-->
+            <!--</div>-->
+        <!--</section>-->
+
     </div>
-    <div class="popup">
-        <div class="inner">
-            <h3 class="title">活动细则</h3>
-            <div class="pcontent">
-                <p class="t1">在符合法律相关规定的情况下，您必须同意活动主办方获得您的姓名，头像与个人信息，主办方并不需要为此再支付额外费用或另行通知。活动主办方有权依据相关法律法规或业务需要，中止或取消此次活动或者修改活动方案，经相关途径公告后生效。</p>
-                <p class="t2">活动奖品 由蔻驰提供的精美礼品80份。公布获奖名单后活动主办方将统一邮寄给到获奖者。</p>
-                <p class="t3">本次活动最终解释权归蔻驰贸易（上海）有限公司所有。</p>
-            </div>
-            <div class="btn-close"></div>
-        </div>
-    </div>
+
+
+</div>
 
 
 </body>
