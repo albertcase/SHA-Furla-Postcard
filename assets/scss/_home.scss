@@ -369,3 +369,64 @@ html,body{
     padding-top: 1.6rem;
   }
 }
+
+
+/*Start gift page*/
+.pin-gift-1{
+  .logo{
+    padding-top: 1.6rem;
+  }
+  .pg1-t1{
+    @include size(2.98rem,0.76rem);
+    margin: 0.45rem auto;
+  }
+  .box-bottom{
+    position: relative;
+    .dest-block-wrap{
+      width: 6.75rem;
+      height: 4.04rem;
+      margin: 0 auto;
+      background: url('../images/box-bottom.jpg') no-repeat;
+      background-size: 100%;
+    }
+    .dest-block{
+      position: relative;
+      z-index: 2;
+      background: none;
+    }
+    .card{
+      position: absolute;
+      z-index: 1;
+      @include size(1.97rem,2.19rem);
+      left: 50%;
+      top: 46%;
+      @include transform(translate(-50%,-50%));
+      &.goright{
+        left: 200vw;
+      }
+    }
+  }
+  .box-top{
+    top: 4.38rem;
+    left: 50%;
+    @include transform(translateX(-50%) rotate(0deg));
+    &.open{
+      left: calc(100vw - 2.6rem);
+      top: calc(100vh - 3.15rem);
+      @include transform(translateX(0%) rotate(-30deg));
+    }
+  }
+  .pg1-t2{
+    @include size(5.53rem,0.29rem);
+    margin:  0.5rem auto 0;
+  }
+}
+
+
+
+/*
+*======
+End gift page
+====
+*/
+

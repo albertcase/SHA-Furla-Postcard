@@ -1371,3 +1371,73 @@ html, body {
 .pin-3-content .logo {
   padding-top: 1.6rem;
 }
+
+/*Start gift page*/
+.pin-gift-1 .logo {
+  padding-top: 1.6rem;
+}
+.pin-gift-1 .pg1-t1 {
+  width: 2.98rem;
+  height: 0.76rem;
+  margin: 0.45rem auto;
+}
+.pin-gift-1 .box-bottom {
+  position: relative;
+}
+.pin-gift-1 .box-bottom .dest-block-wrap {
+  width: 6.75rem;
+  height: 4.04rem;
+  margin: 0 auto;
+  background: url("../images/box-bottom.jpg") no-repeat;
+  background-size: 100%;
+}
+.pin-gift-1 .box-bottom .dest-block {
+  position: relative;
+  z-index: 2;
+  background: none;
+}
+.pin-gift-1 .box-bottom .card {
+  position: absolute;
+  z-index: 1;
+  width: 1.97rem;
+  height: 2.19rem;
+  left: 50%;
+  top: 46%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.pin-gift-1 .box-bottom .card.goright {
+  left: 200vw;
+}
+.pin-gift-1 .box-top {
+  top: 4.38rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%) rotate(0deg);
+  -moz-transform: translateX(-50%) rotate(0deg);
+  -ms-transform: translateX(-50%) rotate(0deg);
+  -o-transform: translateX(-50%) rotate(0deg);
+  transform: translateX(-50%) rotate(0deg);
+}
+.pin-gift-1 .box-top.open {
+  left: calc(100vw - 2.6rem);
+  top: calc(100vh - 3.15rem);
+  -webkit-transform: translateX(0%) rotate(-30deg);
+  -moz-transform: translateX(0%) rotate(-30deg);
+  -ms-transform: translateX(0%) rotate(-30deg);
+  -o-transform: translateX(0%) rotate(-30deg);
+  transform: translateX(0%) rotate(-30deg);
+}
+.pin-gift-1 .pg1-t2 {
+  width: 5.53rem;
+  height: 0.29rem;
+  margin: 0.5rem auto 0;
+}
+
+/*
+*======
+End gift page
+====
+*/
