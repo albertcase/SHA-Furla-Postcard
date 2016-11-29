@@ -85,17 +85,19 @@ html,body{
   @include transform(translate(-50%,-50%));
 }
 
+.bg-layer-2{
+  position: absolute;
+  bottom: 0;
+  left:0;
+  @include size(100%,1.98rem);
+  background: url("../images/bg-layer-2.png") no-repeat;
+  background-size: 100%;
+  z-index: 1;
+}
+
 /*For pin1*/
 .pin-1{
-  .bg-layer-2{
-    position: absolute;
-    bottom: 0;
-    left:0;
-    @include size(100%,1.98rem);
-    background: url("../images/bg-layer-2.png") no-repeat;
-    background-size: 100%;
-    z-index: 1;
-  }
+
   .content{
     position: relative;
     z-index: 2;
@@ -250,8 +252,8 @@ html,body{
 //for section-letter
 .section-letter{
   position: absolute;
-  left: 0;
-  top: 0;
+  right: 0;
+  bottom: 0;
   @include size(100%,100%);
   z-index: 10;
   background: #fff;

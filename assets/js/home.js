@@ -280,6 +280,15 @@
 
     //write card with words
     furla.prototype.writeCard = function(){
+        Common.gotoPin(2);
+
+        //    update date
+        var curDate = new Date();
+        var y = curDate.getFullYear(),
+            m=curDate.getMonth()+1,
+            d=curDate.getDate();
+        var curDay = y+'年'+m+'月'+d+'日';
+        $('.letter-date').html(curDay);
 
         var letterContent = $('#l-content');
         var startFocus = false; //if focus first,all init text need disappear
@@ -315,15 +324,19 @@
         $('.btn-postcard').on('touchstart',function(){
             curVal = letterContent.val();
             console.log(curVal);
+            /*here*/
+            //go share page
+            Common.gotoPin(2);
+        //    submit success,do animation
+            doAniForLetter();
+
         });
 
-    //    update date
-        var curDate = new Date();
-        var y = curDate.getFullYear(),
-            m=curDate.getMonth()+1,
-            d=curDate.getDate();
-        var curDay = y+'年'+m+'月'+d+'日';
-        $('.letter-date').html(curDay);
+        function doAniForLetter(){
+            $('.section-letter').addClass('shrinktocorner');
+            $('.box-top').addClass('movetocenter');
+        };
+
     };
 
 

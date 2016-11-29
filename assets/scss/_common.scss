@@ -364,3 +364,210 @@ img{
     @include transform(rotate(360deg));
   }
 }
+
+//animate
+/*
+  css3 animate
+*/
+.animate{
+  animation-duration: 600ms;
+  -webkit-animation-duration: 600ms;
+  animation-timing-function: cubic-bezier(.42, 0, .58, 1);
+  -webkit-animation-timing-function: cubic-bezier(.42, 0, .58, 1);
+  animation-play-state: running;
+  -webkit-animation-play-state: running;
+  animation-fill-mode :both;
+  -webkit-animation-fill-mode :both;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  perspective: 1000;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  @include transition(all 1s);
+}
+.fade{
+  animation-name: fade;
+  -webkit-animation-name: fade;
+}
+.fadeinup{
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
+  @at-root {
+    @include keyframes(fadeInUp) {
+      0% {
+        opacity: 0;
+        @include transform(translateY(20px));
+      }
+      100% {
+        opacity: 1;
+        @include transform(translateY(0));
+      }
+    }
+  }
+}
+.fadeindown{
+  animation-name: fadeInDown;
+  -webkit-animation-name: fadeInDown;
+  @at-root {
+    @include keyframes(fadeInDown) {
+      0% {
+        opacity: 0;
+        @include transform(translateY(0px));
+      }
+      100% {
+        opacity: 1;
+        @include transform(translateY(20px));
+      }
+    }
+  }
+}
+.fadeout{
+  animation-name: fadeOut;
+  -webkit-animation-name: fadeOut;
+}
+.delay1{
+  animation-delay: $delay-1;
+  -webkit-animation-delay: $delay-1;
+}
+.delay2{
+  animation-delay: $delay-2;
+  -webkit-animation-delay: $delay-2;
+}
+.delay3{
+  animation-delay: $delay-3;
+  -webkit-animation-delay: $delay-3;
+}
+.delay4{
+  animation-delay: $delay-4;
+  -webkit-animation-delay: $delay-4;
+}
+.delay5{
+  animation-delay: $delay-5;
+  -webkit-animation-delay: $delay-5;
+}
+.fadeoutbottom{
+  opacity: 0;
+  @include transform(translateY(10px));
+}
+.fadeintop{
+  opacity: 1;
+  z-index: 2;
+  @include transform(translateY(-10px));
+}
+.slidetotop{
+  animation-name: slidetotop;
+  -webkit-animation-name: slidetotop;
+}
+
+@include keyframes(fade){
+  0%   {opacity:0;}
+  100% {opacity:1;}
+}
+@include keyframes(fadeOut){
+  0%   {opacity:1;}
+  100% {opacity:0;}
+}
+
+@include keyframes(slidetotop){
+  0%   {
+    opacity:0;
+    transform: translate(0,10px);
+  }
+  80%{
+    opacity:1;
+  }
+  100% {
+    opacity:1;
+    transform: translate(0,0px);
+  }
+}
+//for waves effect
+.waves{
+  position: relative;
+  &:after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: red 1px solid;
+    border-radius: 100%;
+    //@include transform(translate(-50%,-50%));
+    @include animation(waves 1.2s infinite);
+
+  }
+}
+
+@include keyframes(waves){
+  0%   {
+    @include transform(scale(1));
+    opacity: 0.8;
+  }
+  25%{
+    @include transform(scale(1.2));
+    opacity: 0.2;
+  }
+  50% {
+    @include transform(scale(1.6));
+    opacity: 0;
+  }
+  75%{
+    @include transform(scale(1.2));
+    opacity: 0;
+  }
+  100%{
+    @include transform(scale(1));
+    opacity: 0;
+  }
+}
+
+.shrinktocorner{
+  animation-name: shrinktocorner;
+  -webkit-animation-name: shrinktocorner;
+}
+@include keyframes(shrinktocorner){
+  0%   {
+    //@include transform(scale(1));
+    //opacity: 0.8;
+  }
+  50%{
+    bottom: -90vh;
+    right: -90vw;
+    @include transform(scale(1));
+  }
+  100% {
+    @include transform(scale(0.1));
+    bottom: -90vh;
+    right: -90vw;
+  }
+}
+
+.movetocenter{
+  animation-name: movetocenter;
+  -webkit-animation-name: movetocenter;
+}
+@include keyframes(movetocenter){
+  0%   {
+    //@include transform(scale(1));
+    //opacity: 0.8;
+  }
+  50%{
+    bottom: 3rem;
+    right: 0.15rem;
+    @include transform(rotate(0deg));
+  }
+  100% {
+    @include transform(rotate(0deg));
+    bottom: 3rem;
+    right: 0.15rem;
+  }
+}
