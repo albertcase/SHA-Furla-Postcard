@@ -317,6 +317,13 @@
             console.log(curVal);
         });
 
+    //    update date
+        var curDate = new Date();
+        var y = curDate.getFullYear(),
+            m=curDate.getMonth()+1,
+            d=curDate.getDate();
+        var curDay = y+'年'+m+'月'+d+'日';
+        $('.letter-date').html(curDay);
     };
 
 
