@@ -951,9 +951,9 @@ img {
     -webkit-transform: rotate(-30deg);
   }
   100% {
-    -webkit-transform: rotate(0deg);
-    bottom: 3rem;
-    right: 0.15rem;
+    top: 4.84rem;
+    left: 50%;
+    -webkit-transform: rotate(0deg) translateX(-50%);
   }
 }
 @-moz-keyframes movetocenter {
@@ -961,9 +961,9 @@ img {
     -moz-transform: rotate(-30deg);
   }
   100% {
-    -moz-transform: rotate(0deg);
-    bottom: 3rem;
-    right: 0.15rem;
+    top: 4.84rem;
+    left: 50%;
+    -moz-transform: rotate(0deg) translateX(-50%);
   }
 }
 @-o-keyframes movetocenter {
@@ -971,9 +971,9 @@ img {
     -o-transform: rotate(-30deg);
   }
   100% {
-    -o-transform: rotate(0deg);
-    bottom: 3rem;
-    right: 0.15rem;
+    top: 4.84rem;
+    left: 50%;
+    -o-transform: rotate(0deg) translateX(-50%);
   }
 }
 @keyframes movetocenter {
@@ -982,10 +982,10 @@ img {
     transform: rotate(-30deg);
   }
   100% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-    bottom: 3rem;
-    right: 0.15rem;
+    top: 4.84rem;
+    left: 50%;
+    -webkit-transform: rotate(0deg) translateX(-50%);
+    transform: rotate(0deg) translateX(-50%);
   }
 }
 html, body {
@@ -1261,8 +1261,8 @@ html, body {
 
 .box-top {
   position: absolute;
-  bottom: -1rem;
-  right: -4.6rem;
+  left: calc(100vw - 2.6rem);
+  top: calc(100vh - 3.15rem);
   z-index: 100;
   width: 7.2rem;
   height: 4.15rem;
@@ -1370,6 +1370,11 @@ html, body {
 
 .pin-3-content .logo {
   padding-top: 1.6rem;
+}
+.pin-3-content .p3-t1 {
+  width: 7.5rem;
+  height: 1.68rem;
+  margin: 0 auto;
 }
 
 /*Start gift page*/

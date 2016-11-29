@@ -556,8 +556,8 @@ img{
     @include transform(rotate(-30deg));
   }
   100% {
-    @include transform(rotate(0deg));
-    bottom: 3rem;
-    right: 0.15rem;
+    top: 4.84rem;
+    left: 50%;
+    @include transform(rotate(0deg) translateX(-50%));
   }
 }

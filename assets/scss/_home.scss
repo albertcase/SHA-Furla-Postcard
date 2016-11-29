@@ -245,8 +245,8 @@ html,body{
 //for box-top
 .box-top{
   position: absolute;
-  bottom: -1rem;
-  right: -4.6rem;
+  left: calc(100vw - 2.6rem);
+  top: calc(100vh - 3.15rem);
   z-index: 100;
   @include size(7.2rem,4.15rem);
   background: url("../images/box-top.png") no-repeat;
@@ -367,6 +367,10 @@ html,body{
 .pin-3-content{
   .logo{
     padding-top: 1.6rem;
+  }
+  .p3-t1{
+    @include size(7.5rem,1.68rem);
+    margin: 0 auto;
   }
 }
 

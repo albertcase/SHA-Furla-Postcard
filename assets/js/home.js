@@ -6,16 +6,15 @@
     //init
     furla.prototype.init = function(){
         var self = this;
-        self.welcomePage();
+        //self.welcomePage();
         self.writeCard();
-        self.shareCallback();
+        //self.shareCallback();
     };
     //welcome page
     furla.prototype.welcomePage = function(){
         var self = this;
-
         Common.gotoPin(0);
-        self.selectProductPage();
+        //self.selectProductPage();
 
         //popup for rule
         $('.show-rule').on('click',function(){
@@ -269,6 +268,7 @@
                 //接口1
                 console.log(selectedProducts);
                 console.log('submit selected products id');
+                self.writeCard();
             }else{
                 console.log('请选择三个产品');
             }
@@ -336,7 +336,7 @@
             console.log('激活分享');
 
         });
-
+        doAniForLetter();
         function doAniForLetter(){
             $('.section-letter').addClass('shrinktocorner');
             $('.box-top').addClass('movetocenter');
