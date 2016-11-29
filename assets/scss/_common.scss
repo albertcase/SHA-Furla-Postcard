@@ -536,12 +536,8 @@ img{
 }
 @include keyframes(shrinktocorner){
   0%   {
-    //@include transform(scale(1));
-    //opacity: 0.8;
-  }
-  50%{
-    bottom: -90vh;
-    right: -90vw;
+    bottom: 0vh;
+    right: 0vw;
     @include transform(scale(1));
   }
   100% {
@@ -557,13 +553,7 @@ img{
 }
 @include keyframes(movetocenter){
   0%   {
-    //@include transform(scale(1));
-    //opacity: 0.8;
-  }
-  50%{
-    bottom: 3rem;
-    right: 0.15rem;
-    @include transform(rotate(0deg));
+    @include transform(rotate(-30deg));
   }
   100% {
     @include transform(rotate(0deg));

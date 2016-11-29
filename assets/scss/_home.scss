@@ -25,6 +25,11 @@ html,body{
     @include size(2.67rem,2.56rem);
     background: url("../images/bg-layer-1.png") no-repeat;
     background-size: cover;
+    &.bg-right{
+      left: auto;
+      right: -0.2rem;
+      @include transform(rotate(90deg));
+    }
   }
 }
 
@@ -355,5 +360,12 @@ html,body{
     font-size: 0.22rem;
     text-align: right;
     margin-top: 0.2rem;
+  }
+}
+
+//for pin3
+.pin-3-content{
+  .logo{
+    padding-top: 1.6rem;
   }
 }

@@ -8,6 +8,7 @@
         var self = this;
         self.welcomePage();
         self.writeCard();
+        self.shareCallback();
     };
     //welcome page
     furla.prototype.welcomePage = function(){
@@ -281,6 +282,7 @@
     //write card with words
     furla.prototype.writeCard = function(){
         Common.gotoPin(2);
+        $('.bg .bg-layer-1').addClass('bg-right');
 
         //    update date
         var curDate = new Date();
@@ -330,6 +332,9 @@
         //    submit success,do animation
             doAniForLetter();
 
+        //    start to activate
+            console.log('激活分享');
+
         });
 
         function doAniForLetter(){
@@ -337,14 +342,26 @@
             $('.box-top').addClass('movetocenter');
         };
 
+
     };
+
+    //share callback
+    furla.prototype.shareCallback = function(){
+    //  go pin-4
+        Common.gotoPin(3);
+    //    lucky draw success
+    //    api
+        console.log('');
+
+
+    };
+
 
 
 
 
     //dom ready
     $(document).ready(function(){
-
 
         var myfurla = new furla();
         myfurla.init();
