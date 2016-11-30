@@ -16,7 +16,7 @@ Api = {
     },
     //查询贺卡
     //参数  id
-    getCard:function(obj,callback){
+    getLetter:function(obj,callback){
         $.ajax({
             url:'/api/loadcard',
             type:'POST',
@@ -28,19 +28,35 @@ Api = {
             }
         });
     },
-    //卡券抽奖
-    cardLottery:function(callback){
-        Common.msgBox('loading...');
+    //获取卡券
+    getCoupon:function(callback){
         $.ajax({
-            url:'/api/cardlottery',
+            url:'/api/card',
             type:'POST',
             dataType:'json',
             success:function(data){
-                $('.msgbox').remove();
                 return callback(data);
-                //返回  code=1    msg = 中奖
-                //code=2    msg = 未中奖
+                //{"status":1,"msg":[{"cardId":"pKCDxji7MvlTj_JtzqeUtXFJEd6s","cardExt":{"code":"S16110798","openid":"oKCDxjg_qXvWmYiUmofo-tnYxi8g","timestamp":1480416762,"signature":"0c2866f75a186ae3ee89d6410f2d48aa002db578"}}]}
             }
+        });
+    },
+    //卡券抽奖
+    cardLottery:function(callback){
+        //Common.msgBox('loading...');
+        //$.ajax({
+        //    url:'/api/cardlottery',
+        //    type:'POST',
+        //    dataType:'json',
+        //    success:function(data){
+        //        $('.msgbox').remove();
+        //        return callback(data);
+        //        //返回  code=1    msg = 中奖
+        //        //code=2    msg = 未中奖
+        //    }
+        //});
+        return callback({
+            code:2,
+            msg:'中奖'
         });
     },
     //礼物抽奖

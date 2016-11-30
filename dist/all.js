@@ -482,7 +482,7 @@ Api = {
     },
     //查询贺卡
     //参数  id
-    getCard:function(obj,callback){
+    getLetter:function(obj,callback){
         $.ajax({
             url:'/api/loadcard',
             type:'POST',
@@ -494,19 +494,35 @@ Api = {
             }
         });
     },
-    //卡券抽奖
-    cardLottery:function(callback){
-        Common.msgBox('loading...');
+    //获取卡券
+    getCoupon:function(callback){
         $.ajax({
-            url:'/api/cardlottery',
+            url:'/api/card',
             type:'POST',
             dataType:'json',
             success:function(data){
-                $('.msgbox').remove();
                 return callback(data);
-                //返回  code=1    msg = 中奖
-                //code=2    msg = 未中奖
+                //{"status":1,"msg":[{"cardId":"pKCDxji7MvlTj_JtzqeUtXFJEd6s","cardExt":{"code":"S16110798","openid":"oKCDxjg_qXvWmYiUmofo-tnYxi8g","timestamp":1480416762,"signature":"0c2866f75a186ae3ee89d6410f2d48aa002db578"}}]}
             }
+        });
+    },
+    //卡券抽奖
+    cardLottery:function(callback){
+        //Common.msgBox('loading...');
+        //$.ajax({
+        //    url:'/api/cardlottery',
+        //    type:'POST',
+        //    dataType:'json',
+        //    success:function(data){
+        //        $('.msgbox').remove();
+        //        return callback(data);
+        //        //返回  code=1    msg = 中奖
+        //        //code=2    msg = 未中奖
+        //    }
+        //});
+        return callback({
+            code:2,
+            msg:'中奖'
         });
     },
     //礼物抽奖
@@ -549,9 +565,9 @@ Api = {
     //init
     furla.prototype.init = function(){
         var self = this;
-        //self.welcomePage();
+        self.welcomePage();
         self.writeCard();
-        //self.shareCallback();
+        self.shareCallback();
     };
     //welcome page
     furla.prototype.welcomePage = function(){
@@ -824,6 +840,7 @@ Api = {
 
     //write card with words
     furla.prototype.writeCard = function(){
+        var self = this;
         Common.gotoPin(2);
         $('.bg .bg-layer-1').addClass('bg-right');
 
@@ -885,16 +902,86 @@ Api = {
             $('.box-top').addClass('movetocenter');
         };
 
+        $('.p3-t1').on('touchstart',function(){
+            self.shareCallback();
+
+        });
+
 
     };
 
     //share callback
     furla.prototype.shareCallback = function(){
+        var self = this;
     //  go pin-4
         Common.gotoPin(3);
     //    lucky draw success
     //    api
-        console.log('');
+        self.cardLottery();
+
+
+    };
+
+    furla.prototype.cardLottery = function(){
+        /*
+        * 这个按钮有三个功能，分别是’开始抽奖‘，‘领取卡券’，‘再次送祝福（刷新重载功能）’
+        * */
+
+        //立即抽奖
+        var isGetCoupon = false; /*是否获取卡券*/
+        var isAgain = false;/*是否送祝福*/
+        $('.btn-cardlottery').on('touchstart',function(){
+            if(!isGetCoupon && !isAgain){
+                //卡券抽奖
+                Api.cardLottery(function(data){
+                    console.log(data);
+                    if(data.code==1){
+                        //    中奖
+                        $('.replace-text img').attr('src','/dist/images/text-prize-1.png');
+                        $('.replace-text').removeClass('rt-1').addClass('rt-2');
+                        $('.btn-cardlottery span').html('点击领取卡券');
+                        $('.btn-cardlottery').parent().append('<div class="btn btn-again"><span>再送一次好礼祝福</span></div>');
+                        isGetCoupon = true;
+                        return;
+                    }
+
+                    if(data.code == 2){
+                        //    未中奖
+                        $('.replace-text img').attr('src','/dist/images/text-prize-2.png');
+                        $('.replace-text').removeClass('rt-1').addClass('rt-3');
+                        $('.btn-cardlottery span').html('再送一次好礼祝福');
+                        isAgain = true;
+                        return;
+                    }
+
+                    //other status
+                    alert(data.msg);
+
+                });
+
+                return; //如果已经抽奖，不继续
+            }
+
+            if(isGetCoupon){
+                //领取卡券
+                Api.getCoupon(function(data){
+                    console.log(data);
+
+                });
+                return;
+            }
+
+            if(isAgain){
+                window.location.reload();
+            }
+
+
+        });
+
+    //
+        $('.pin-4').on('touchstart','.btn-again',function(){
+            window.location.reload();
+        });
 
 
     };

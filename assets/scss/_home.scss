@@ -18,6 +18,7 @@ html,body{
   top: 0;
   z-index: 1;
   @include size(100%,100%);
+  overflow: hidden;
   .bg-layer-1{
     position: absolute;
     left: 0;
@@ -371,6 +372,25 @@ html,body{
   .p3-t1{
     @include size(7.5rem,1.68rem);
     margin: 0 auto;
+  }
+}
+//for pin-4
+.pin-4{
+  .logo{
+    padding-top: 1.6rem;
+  }
+  .replace-text{
+    @include size(3.2rem,0.8rem);
+    margin: 1rem auto;
+    &.rt-2{
+      @include size(4.8rem,1.24rem);
+    }
+    &.rt-3{
+      @include size(4.26rem,0.8rem);
+    }
+  }
+  .btn-again{
+    margin-top: 0.35rem;
   }
 }
 
