@@ -69,5 +69,98 @@ class ApiController extends Controller {
 		return $this->statusPrint(1, $list);
 	}
 
+	public function savecardAction() {
+		$UserAPI = new \Lib\UserAPI();
+		$user = $UserAPI->userLoad(true);
+		if (!$user) {
+			return $this->statusPrint(0, '未登录');
+		}
+		$request = $this->Request();
+		$fields = array(
+			'choose1' => array('notnull', '3'),
+			'choose2' => array('notnull', '3'),
+			'choose3' => array('notnull', '3'),
+			'touser' => array('notnull', '3'),
+			'wish' => array('notnull', '3'),
+			'fromuser' => array('notnull', '3')
+		);
+		$request->validation($fields);
+		$choose1 = $request->query->get('choose1');
+		$choose2 = $request->query->get('choose2');
+		$choose3 = $request->query->get('choose3');
+		$touser = $request->query->get('touser');
+		$wish = $request->query->get('wish');
+		$fromuser = $request->query->get('fromuser');
+		$databaseapi = new \Lib\DatabaseAPI();
+		$rs = $databaseapi->savecard($user->id, $choose1, $choose2, $choose3, $touser, $wish, $fromuser);
+		return $this->statusPrint(1, $rs);
+	}
+
+	public function loadcardAction() {
+		$UserAPI = new \Lib\UserAPI();
+		$user = $UserAPI->userLoad(true);
+		if (!$user) {
+			return $this->statusPrint(0, '未登录');
+		}
+		$request = $this->Request();
+		$fields = array(
+			'id' => array('notnull', '3')
+		);
+		$request->validation($fields);
+		$id = $request->query->get('id');
+		$databaseapi = new \Lib\DatabaseAPI();
+		$rs = $databaseapi->loadcard($id);
+		return $this->statusPrint(1, $rs);
+	}
+
+	public function cardlotteryAction() {
+		$UserAPI = new \Lib\UserAPI();
+		$user = $UserAPI->userLoad(true);
+		if (!$user) {
+			return $this->statusPrint(0, '未登录');
+		}
+		$databaseapi = new \Lib\DatabaseAPI();
+		$rs = $databaseapi->cardlottery($user->id);
+		if ($rs) {
+			return $this->statusPrint(1, '中奖');
+		}
+		return $this->statusPrint(2, '未中奖');
+	}
+
+	public function giftlotteryAction() {
+		$UserAPI = new \Lib\UserAPI();
+		$user = $UserAPI->userLoad(true);
+		if (!$user) {
+			return $this->statusPrint(0, '未登录');
+		}
+		$databaseapi = new \Lib\DatabaseAPI();
+		$rs = $databaseapi->giftlottery($user->id);
+		if ($rs) {
+			return $this->statusPrint(1, '中奖');
+		}
+		return $this->statusPrint(2, '未中奖');
+	}
+
+	public function infoAction() {
+		$UserAPI = new \Lib\UserAPI();
+		$user = $UserAPI->userLoad(true);
+		if (!$user) {
+			return $this->statusPrint(0, '未登录');
+		}
+		$request = $this->Request();
+		$fields = array(
+			'name' => array('notnull', '3'),
+			'mobile' => array('mobile', '3'),
+			'address' => array('notnull', '3')
+		);
+		$request->validation($fields);
+		$name = $request->request->get('name');
+		$mobile = $request->request->get('mobile');
+		$address = $request->request->get('address');
+		$databaseapi = new \Lib\DatabaseAPI();
+		$databaseapi->info($user->id, $name, $mobile, $address);
+		return $this->statusPrint(1, '提交成功');
+	}
+
 
 }

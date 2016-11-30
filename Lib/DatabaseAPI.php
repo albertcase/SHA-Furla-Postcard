@@ -80,4 +80,99 @@ class DatabaseAPI extends Base {
 		return 0;
 	}
 
+	public function savecard($uid, $choose1, $choose2, $choose3, $touser, $wish, $fromuser) {
+		$sql = "INSERT INTO `furla_card` SET `uid` = ?, choose1 = ?, choose2 = ?, choose3 = ?, touser = ?, wish = ?, fromuser = ?";
+		$res = $this->db->prepare($sql); 
+		$res->bind_param("sssss", $choose1, $choose2, $choose3, $touser, $wish, $fromuser);
+		if ($res->execute()) {
+			return $res->insert_id;
+		} else {
+			return FALSE;
+		}
+	}
+
+	public function loadcard($id) {
+		$sql = "SELECT `uid`, `choose1`, `choose2`, `choose3`, `touser`, `wish`, `fromuser`, DATE_FORMAT(`createtime`,'%Y年%m月%d日') FROM `furla_card` WHERE `id` = ?";
+		$res = $this->db->prepare($sql); 
+		$res->bind_param("s", $id);
+		$res->execute();
+		$res->bind_result($uid, $choose1, $choose2, $choose3, $touser, $wish, $fromuser, $date);
+		if($res->fetch()) {
+			$obj = new \stdClass();
+			$obj->uid = $uid;
+			$obj->choose1 = $choose1;
+			$obj->choose2 = $choose2;
+			$obj->choose3 = $choose3;
+			$obj->touser = $touser;
+			$obj->wish = $wish;
+			$obj->fromuser = $fromuser;
+			$obj->date = $date;
+			return $obj;
+		}
+		return NULL;
+	}
+
+	public function cardlottery($uid) {
+		$sql = "SELECT `id` FROM `furla_lottery` WHERE `uid` = ? and status=1 and type = 1"; 
+		$res = $this->db->prepare($sql);
+		$res->bind_param("s", $uid);
+		$res->execute();
+		$res->bind_result($rs);
+		if ($res->fetch()) {
+			$status = 0;
+		} else {
+			//设置概率
+			$status = 0;
+			$rand = mt_rand(1, 100);
+			if ($rand >= 50) {
+				$status = 1;
+			}
+		}
+		$sql = "INSERT INTO `furla_lottery` SET `uid` = ?, status = ?, type = 1";
+		$res = $this->db->prepare($sql); 
+		$res->bind_param("ss", $uid, $status);
+		if ($res->execute()) {
+			return $status;
+		} else {
+			return FALSE;
+		}
+	}
+
+	public function giftlottery($uid) {
+		$sql = "SELECT `id` FROM `furla_lottery` WHERE `uid` = ? and status=1 and type = 2"; 
+		$res = $this->db->prepare($sql);
+		$res->bind_param("s", $uid);
+		$res->execute();
+		$res->bind_result($rs);
+		if ($res->fetch()) {
+			$status = 0;
+		} else {
+			//设置概率
+			$status = 0;
+			$rand = mt_rand(1, 100);
+			if ($rand >= 50) {
+				$status = 1;
+			}
+		}
+		$sql = "INSERT INTO `furla_lottery` SET `uid` = ?, status = ?, type = 2";
+		$res = $this->db->prepare($sql); 
+		$res->bind_param("ss", $uid, $status);
+		if ($res->execute()) {
+			return $status;
+		} else {
+			return FALSE;
+		}
+	}
+
+	public function info($uid, $name, $mobile, $address) {
+		$sql = "UPDATE `furla_info` SET name = ?, mobile = ?, address = ? where id = ?";
+		$res = $this->db->prepare($sql); 
+		$res->bind_param("ssss", $name, $mobile, $address, $uid);
+		if ($res->execute()) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+
 }
