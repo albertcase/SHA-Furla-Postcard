@@ -571,7 +571,6 @@ Api = {
     furla.prototype.init = function(){
         var self = this;
         //    loading first
-        $('.loading-wrap').addClass('show');
         var baseurl = '/dist/images/';
         var imagesArray = [
             baseurl + 'bg.jpg',
