@@ -165,7 +165,7 @@ html,body{
   width: 90vw;
   margin: 0 auto 0.4rem;
   .swiper-container{
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
   }
   .swiper-button-next,
   .swiper-button-prev{
@@ -184,7 +184,7 @@ html,body{
   .product-name {
     display: none;
     position: absolute;
-    top: 1.4rem;
+    top: 2.2rem;
     left: 50%;
     width: 50vw;
     @include transform(translateX(-50%));

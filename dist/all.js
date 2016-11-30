@@ -566,8 +566,8 @@ Api = {
     furla.prototype.init = function(){
         var self = this;
         self.welcomePage();
-        self.writeCard();
-        self.shareCallback();
+        //self.writeCard();
+        //self.shareCallback();
     };
     //welcome page
     furla.prototype.welcomePage = function(){

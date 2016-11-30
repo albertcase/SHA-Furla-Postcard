@@ -1,128 +1,158 @@
 var products = [
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA TRIBE BANGLE',
             pid:101,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0000_FURLA_TRIBE-BANGLE-18MM-ZIG-ZAG_02_856027.png'
         },
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA TRIBE BANGLE',
             pid:102,
-            imgsrc:'/dist/images/products/p2.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0001_FURLA_TRIBE-BANGLE-46MM_856001.png'
         },
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA LADY BLOGGER KEYRING',
             pid:103,
-            imgsrc:'/dist/images/products/p3.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0002_FURLA_LADY-BLOGGER-KEYRING-BIG-TAG_852289.png'
         },
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA ELISA KEYRING STELLA C FRANGE',
             pid:104,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0003_FURLA_ELISA-KEYRING-STELLA-C-FRANGE_852064.png'
         },
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA ELISA KEYRING CUORE',
             pid:105,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0004_FURLA_ELISA-KEYRING-CUORE-C-FRANGE_852056.png'
         },
     {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA ASTREA OCCH',
             pid:101,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0005_FURLA_ASTREA-OCCH-DONNA-COL-0579_849237.png'
+        },
+        {
+            name:'FURLA ARMONIA',
+            pid:102,
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0006_FURLA_ARMONIA-OCCH-DONNA-COL-0700_849230.png'
+        },
+        {
+            name:'FURLA ARMONIA OCCH',
+            pid:103,
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0007_FURLA_ARMONIA-OCCH-DONNA-COL-0GB4_849711.png'
+        },
+        {
+            name:'FURLA ALTEA OCCH',
+            pid:104,
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0008_FURLA_ALTEA-OCCH-DONNA-COL-0300_01_849236.png'
+        },
+        {
+            name:'FURLA AMAZZONE MINI',
+            pid:105,
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0009_FURLA_AMAZZONE-MINI-CROSSBODY_851858.png'
+        },
+        {
+            name:'FURLA AMAZZONE',
+            pid:101,
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0010_FURLA_AMAZZONE-MINI-CROSSBODY_02_851838.png'
         },
         {
             name:'FURLA_METROPOLIS MINI CROSSBODY',
             pid:102,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0011_FURLA_AMAZZONE-MINI-CROSSBODY_01_851837.png'
         },
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA METROPOLIS',
             pid:103,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0012_FURLA_METROPOLIS-ROCKER-MINI-CROSSBODY_01_852578.png'
         },
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA METROPOLIS',
             pid:104,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0013_FURLA_METROPOLIS-ROCKER-MINI-CROSSBODY_02_852577.jpg.png'
         },
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA METROPOLIS',
             pid:105,
-            imgsrc:'/dist/images/products/p1.png'
-        },
-        {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
-            pid:101,
-            imgsrc:'/dist/images/products/p1.png'
-        },
-        {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
-            pid:102,
-            imgsrc:'/dist/images/products/p1.png'
-        },
-        {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
-            pid:103,
-            imgsrc:'/dist/images/products/p1.png'
-        },
-        {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
-            pid:104,
-            imgsrc:'/dist/images/products/p1.png'
-        },
-        {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
-            pid:105,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0014_FURLA_METROPOLIS-MINI-CROSSBODY_03_851547.png'
         },
 
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA METROPOLIS',
             pid:101,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0015_FURLA_METROPOLIS-MINI-CROSSBODY_01_851507.png'
         },
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA BABYLON',
             pid:102,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0016_FURLA-BABYLON_850659-(Nov-14).png'
         },
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA METROPOLIS',
             pid:103,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0017_FURLA_METROPOLIS-MINI-CROSSBODY_02_851157.png'
         },
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA METROPOLIS',
             pid:104,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0018_FURLA-METROPOLIS-GLITTER-GOLD_851136-(Dec-12).png'
         },
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA METROPOLIS',
             pid:105,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0019_FURLA-METROPOLIS-851171-M1.png'
         },
 {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA METROPOLIS',
             pid:101,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0020_FURLA-METROPOLIS-851164-M1.png'
         },
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA METROPOLIS',
             pid:102,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0021_FURLA-METROPOLIS-851163-M1.png'
         },
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA METROPOLIS',
             pid:103,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0022_FURLA-METROPOLIS-GLITTER-SILVER_851137-(Dec-12).png'
         },
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA ALLEGRA',
             pid:104,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0023_FURLA-ALLEGRA-SILVER_850770-(Nov-14).png'
         },
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA ALLEGRA',
             pid:105,
-            imgsrc:'/dist/images/products/p1.png'
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0024_FURLA-ALLEGRA--GOLD_850897-(Nov-14).png'
+        },
+        {
+            name:'FURLA BABYLON',
+            pid:105,
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0025_FURLA_BABYLON-FURLA-XL-ZIP-AROUND_850623.png'
+        },
+        {
+            name:'FURLA BABYLON',
+            pid:105,
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0026_FURLA-BABYLON-EVELOPE_851272-(Nov-14).png'
+        },
+        {
+            name:'FURLA BABYLON',
+            pid:105,
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0027_FURLA-BABYLON-850780-M1.png'
+        },
+        {
+            name:'FURLA AMAZZONE',
+            pid:105,
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0028_FURLA_AMAZZONE-CROSSBODY-851831-M1.png'
+        },
+        {
+            name:'FURLA AMAZZONE',
+            pid:105,
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0029_FURLA_AMAZZONE-CROSSBODY--851831-S1.png'
+        },
+        {
+            name:'FURLA AMAZZONE',
+            pid:105,
+            imgsrc:'/dist/images/products/FURLA-product_0000s_0030_FURLA_AMAZZONE-CROSSBODY--851827-S1.png'
         },
 ];

@@ -1173,7 +1173,7 @@ html, body {
   margin: 0 auto 0.4rem;
 }
 #swiper-products .swiper-container {
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
 }
 #swiper-products .swiper-button-next,
 #swiper-products .swiper-button-prev {
@@ -1197,7 +1197,7 @@ html, body {
 #swiper-products .product-name {
   display: none;
   position: absolute;
-  top: 1.4rem;
+  top: 2.2rem;
   left: 50%;
   width: 50vw;
   -webkit-transform: translateX(-50%);
