@@ -172,7 +172,6 @@ html,body{
     background-image: url("../images/arrow.png");
     @include size(0.2rem,0.38rem);
     background-size: cover;
-    margin-top: -0.8rem;
   }
   .swiper-button-prev{
     left: -3vw;

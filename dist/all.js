@@ -573,7 +573,6 @@ Api = {
     furla.prototype.welcomePage = function(){
         var self = this;
         Common.gotoPin(0);
-        //self.selectProductPage();
 
         //popup for rule
         $('.show-rule').on('click',function(){
@@ -615,7 +614,8 @@ Api = {
             preloadImages: false,
             slidesPerView: 3,
             // Enable lazy loading
-            lazyLoading: true
+            lazyLoading: true,
+            loop:true
         });
 
         /*
