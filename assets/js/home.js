@@ -7,14 +7,13 @@
     furla.prototype.init = function(){
         var self = this;
         self.welcomePage();
-        self.writeCard();
+        //self.writeCard();
+        //self.shareCallback();
     };
     //welcome page
     furla.prototype.welcomePage = function(){
         var self = this;
-
         Common.gotoPin(0);
-        self.selectProductPage();
 
         //popup for rule
         $('.show-rule').on('click',function(){
@@ -56,7 +55,8 @@
             preloadImages: false,
             slidesPerView: 3,
             // Enable lazy loading
-            lazyLoading: true
+            lazyLoading: true,
+            loop:true
         });
 
         /*
@@ -268,6 +268,7 @@
                 //接口1
                 console.log(selectedProducts);
                 console.log('submit selected products id');
+                self.writeCard();
             }else{
                 console.log('请选择三个产品');
             }
@@ -280,6 +281,17 @@
 
     //write card with words
     furla.prototype.writeCard = function(){
+        var self = this;
+        Common.gotoPin(2);
+        $('.bg .bg-layer-1').addClass('bg-right');
+
+        //    update date
+        var curDate = new Date();
+        var y = curDate.getFullYear(),
+            m=curDate.getMonth()+1,
+            d=curDate.getDate();
+        var curDay = y+'年'+m+'月'+d+'日';
+        $('.letter-date').html(curDay);
 
         var letterContent = $('#l-content');
         var startFocus = false; //if focus first,all init text need disappear
@@ -315,23 +327,112 @@
         $('.btn-postcard').on('touchstart',function(){
             curVal = letterContent.val();
             console.log(curVal);
+            /*here*/
+            //go share page
+            Common.gotoPin(2);
+        //    submit success,do animation
+            doAniForLetter();
+
+        //    start to activate
+            console.log('激活分享');
+
+        });
+        doAniForLetter();
+        function doAniForLetter(){
+            $('.section-letter').addClass('shrinktocorner');
+            $('.box-top').addClass('movetocenter');
+        };
+
+        $('.p3-t1').on('touchstart',function(){
+            self.shareCallback();
+
         });
 
-    //    update date
-        var curDate = new Date();
-        var y = curDate.getFullYear(),
-            m=curDate.getMonth()+1,
-            d=curDate.getDate();
-        var curDay = y+'年'+m+'月'+d+'日';
-        $('.letter-date').html(curDay);
+
     };
+
+    //share callback
+    furla.prototype.shareCallback = function(){
+        var self = this;
+    //  go pin-4
+        Common.gotoPin(3);
+    //    lucky draw success
+    //    api
+        self.cardLottery();
+
+
+    };
+
+    furla.prototype.cardLottery = function(){
+        /*
+        * 这个按钮有三个功能，分别是’开始抽奖‘，‘领取卡券’，‘再次送祝福（刷新重载功能）’
+        * */
+
+        //立即抽奖
+        var isGetCoupon = false; /*是否获取卡券*/
+        var isAgain = false;/*是否送祝福*/
+        $('.btn-cardlottery').on('touchstart',function(){
+            if(!isGetCoupon && !isAgain){
+                //卡券抽奖
+                Api.cardLottery(function(data){
+                    console.log(data);
+                    if(data.code==1){
+                        //    中奖
+                        $('.replace-text img').attr('src','/dist/images/text-prize-1.png');
+                        $('.replace-text').removeClass('rt-1').addClass('rt-2');
+                        $('.btn-cardlottery span').html('点击领取卡券');
+                        $('.btn-cardlottery').parent().append('<div class="btn btn-again"><span>再送一次好礼祝福</span></div>');
+                        isGetCoupon = true;
+                        return;
+                    }
+
+                    if(data.code == 2){
+                        //    未中奖
+                        $('.replace-text img').attr('src','/dist/images/text-prize-2.png');
+                        $('.replace-text').removeClass('rt-1').addClass('rt-3');
+                        $('.btn-cardlottery span').html('再送一次好礼祝福');
+                        isAgain = true;
+                        return;
+                    }
+
+                    //other status
+                    alert(data.msg);
+
+                });
+
+                return; //如果已经抽奖，不继续
+            }
+
+            if(isGetCoupon){
+                //领取卡券
+                Api.getCoupon(function(data){
+                    console.log(data);
+
+                });
+                return;
+            }
+
+            if(isAgain){
+                window.location.reload();
+            }
+
+
+        });
+
+    //
+        $('.pin-4').on('touchstart','.btn-again',function(){
+            window.location.reload();
+        });
+
+
+    };
+
 
 
 
 
     //dom ready
     $(document).ready(function(){
-
 
         var myfurla = new furla();
         myfurla.init();
