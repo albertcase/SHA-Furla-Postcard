@@ -1,17 +1,22 @@
 /*All the api collection*/
 Api = {
     //保存贺卡
-    //choose1  choose2  choose3  wish
+    //choose1  choose2  choose3  wish touser fromuser
     saveCard:function(obj,callback){
-        $.ajax({
-            url:'/api/savecard',
-            type:'POST',
-            dataType:'json',
-            data:obj,
-            success:function(data){
-                return callback(data);
-                //code=1    msg = 贺卡id
-            }
+        //$.ajax({
+        //    url:'/api/savecard',
+        //    type:'POST',
+        //    dataType:'json',
+        //    data:obj,
+        //    success:function(data){
+        //        return callback(data);
+        //
+        //        //code=1    msg = 贺卡id
+        //    }
+        //});
+        return callback({
+            code:1,
+            msg:'fkdakfasfa'
         });
     },
     //查询贺卡
