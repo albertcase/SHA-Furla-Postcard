@@ -38,8 +38,8 @@
                 $('.container').addClass('fade');
                 $('.box-animate').addClass('fade');
                 $('.preload').remove();
-                //self.openGift();
-                self.showLetter();
+                self.openGift();
+                //self.showLetter();
                 //self.prize();
 
             }
@@ -55,13 +55,22 @@
         $('.pg1-t1').on('touchstart',function(){
             openBox();
         });
-        //openBox();
-        //showLetter();
+
+        //shake
+        var giftShake = new Shake({
+            threshold: 15, //default velocity threshold for shake to register
+            timeout: 1000
+        });
+        giftShake.start();
+        window.addEventListener('shake', shakeEventDidOccur, false);
+        //function to call when shake occurs
+        function shakeEventDidOccur () {
+            openBox();
+            //stop shake
+            giftShake.stop();
+        }
 
         function openBox(){
-            //$('.box-top').addClass('open');
-            //$('.pg1-t2').removeClass('hide');
-            //loadAni();
         //    api
             loadAni();
             var inputName = $('#input-name-1');
@@ -69,8 +78,8 @@
             var inputName2 = $('#input-name-2');
             var dbEle = $('.dest-block');
             var dateEle = $('.letter-date');
-            Api.getLetter({data:'dkdkdk'},function(data){
-                console.log(data);
+            var curCardId = Common.getParameterByName('cardid');
+            Api.getLetter({data:curCardId},function(data){
                 if(data.code==1){
                     var newdata = data.msg;
                     var dbHtml='';
@@ -87,9 +96,6 @@
                     dateEle.html(newdata.date);
                 }
             });
-        //    load products
-            console.log('加载并显示产品');
-
 
         }
 
@@ -111,7 +117,7 @@
                     }
                 },
                 doneAnimation: function(){
-                    console.log('456');
+
                 }
             });
             reqAnimateNow.start();
@@ -127,7 +133,10 @@
         var self = this;
         $('.card').addClass('goright');
         $('.section-letter').removeClass('hide');
-        Common.gotoPin(1);
+        var aaa = setTimeout(function(){
+            Common.gotoPin(1);
+        },1000);
+
 
         var isprize = false;
         $('.btn-postcard').on('touchstart',function(){

@@ -206,6 +206,12 @@ var Zepto=function(){function L(t){return null==t?String(t):j[S.call(t)]||"objec
 		goFormPage:function(){
 			window.location.href = '/template/form.html';
 		},
+		getParameterByName:function(name){
+			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+			var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+			var results = regex.exec(location.search);
+			return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+		},
 		msgBox:function(msg,long){
 			if(long){
 				$('body').append('<div class="ajaxpop msgbox minwidthbox"><div class="loading">'+msg+'</div></div>');
