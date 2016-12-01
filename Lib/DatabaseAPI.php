@@ -122,19 +122,21 @@ class DatabaseAPI extends Base {
 			$status = 0;
 		} else {
 			//设置概率
-			$status = 0;
+			
 			$rand = mt_rand(1, 100);
 			if ($rand >= 50) {
 				$status = 1;
+			} else {
+				$status = 0;
 			}
 		}
-		echo $status;
 		return $this->savelottery($uid, $status, 1);
 	}
 
 	private function savelottery($uid, $status, $type) {
-		echo $sql = "INSERT INTO `furla_lottery`(uid,status,type) values('".intval($uid)."', '".intval($status)."', '".intval($type)."')";
+		$sql = "INSERT INTO `furla_lottery` SET `uid` = ?, status = ?, type = ?";
 		$res = $this->db->prepare($sql); 
+		$res->bind_param("sss", $uid, $status, $type);
 		if ($res->execute()) {
 			return $status;
 		} else {
