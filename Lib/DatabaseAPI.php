@@ -164,10 +164,10 @@ class DatabaseAPI extends Base {
 		}
 	}
 
-	public function info($uid, $name, $mobile, $address) {
-		$sql = "UPDATE `furla_info` SET name = ?, mobile = ?, address = ? where id = ?";
+	public function info($uid, $firstname, $secondname, $mobile, $address, $email, $issend) {
+		$sql = "UPDATE `furla_info` SET firstname = ?, secondname = ?, mobile = ?, address = ?, email = ?, issend = ? where id = ?";
 		$res = $this->db->prepare($sql); 
-		$res->bind_param("ssss", $name, $mobile, $address, $uid);
+		$res->bind_param("ssss", $firstname, $secondname, $mobile, $address, $email, $issend, $uid);
 		if ($res->execute()) {
 			return TRUE;
 		} else {
