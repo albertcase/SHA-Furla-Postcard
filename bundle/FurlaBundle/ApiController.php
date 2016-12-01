@@ -49,23 +49,9 @@ class ApiController extends Controller {
 	}
 
 	public function cardAction() {
-		//600 pKCDxjrwNnpwUXTcyqzi2R3NZRCQ
-		//800 pKCDxjm3GDEKbK19j_SH7VqFAaag
-		$card = array('600'=>'pKCDxjtaUHbKIVnION9gD1rW6cGI', '800'=>'pKCDxji7MvlTj_JtzqeUtXFJEd6s');
-		//$card = array('600'=>'pGXbRsjjVihQHceLiRMgpFWDkNtU', '800'=>'pGXbRssyzDNSGX7qa6D689Vi_700');
-		//$card = array('600'=>'pKCDxji6wCVuB38LBgBTx3U2yBoQ', '800'=>'pKCDxji6wCVuB38LBgBTx3U2yBoQ');
-		$UserAPI = new \Lib\UserAPI();
-		$user = $UserAPI->userLoad(true);
-		if (!$user) {
-			return $this->statusPrint(0, '未登录');
-		}
-		$databaseapi = new \Lib\DatabaseAPI();
-		$type = $databaseapi->checkuser($user->openid);
-		if (!$type) {
-			return $this->statusPrint(2, '非VIP');
-		}
+		$card = 'pwk3ljkAL7H5kZJfshvMnLjijbJc';
 		$wechatapi = new \Lib\WechatAPI();
-		$list = $wechatapi->cardList($card[$type]);
+		$list = $wechatapi->cardList($card);
 		return $this->statusPrint(1, $list);
 	}
 
