@@ -21,6 +21,11 @@
             baseurl + 't-open.png',
             baseurl + 'text-3.png',
         ];
+        var animateImgArr = [];
+        for(var k=0;k<50;k++){
+            animateImgArr.push(baseurl+'animate/L_000'+(44+k)+'.jpg');
+        }
+        imagesArray = imagesArray.concat(animateImgArr);
         var i = 0;
         new preLoader(imagesArray, {
             onProgress: function(){
@@ -31,6 +36,7 @@
             onComplete: function(){
                 //
                 $('.container').addClass('fade');
+                $('.box-animate').addClass('fade');
                 self.openGift();
                 $('.preload').remove();
             }
@@ -41,22 +47,46 @@
     //open page
     gift.prototype.openGift = function(){
         //imulate shake function
-        $('.box-top').on('touchstart',function(){
+        $('.pg1-t1').on('touchstart',function(){
             openBox();
         });
         //openBox();
         //showLetter();
 
         function openBox(){
-            $('.box-top').addClass('open');
-            $('.pg1-t2').removeClass('hide');
+            //$('.box-top').addClass('open');
+            //$('.pg1-t2').removeClass('hide');
+            //loadAni();
         //    api
-            Api.getLetter({data:'dkdkdk'},function(){
-                
-            });
+        //    Api.getLetter({data:'dkdkdk'},function(){
+        //
+        //    });
         //    load products
             console.log('加载并显示产品');
+            loadAni();
+
         }
+
+        function loadAni(){
+            var j = 44;
+            var reqAnimateNow = new reqAnimate($('.box-animate img')[0],{
+                fps: 30,
+                //totalFrames: 50,
+                time: Infinity,
+                processAnimation: function(){
+                    var imgName ="/dist/images/animate/L_000"+j+".jpg";
+                    j++;
+                    $('.box-animate img').attr('src',imgName);
+                    if(j>93){
+                        reqAnimateNow.cancel();
+                    }
+                },
+                doneAnimation: function(){
+                    console.log('456');
+                }
+            });
+            reqAnimateNow.start();
+        };
 
         //find the letter card ,and then show
         $('.dest-block').on('touchstart',function(){

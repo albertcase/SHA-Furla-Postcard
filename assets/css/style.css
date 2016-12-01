@@ -1050,7 +1050,7 @@ html, body {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   height: 100%;
 }
@@ -1399,6 +1399,20 @@ html, body {
 }
 
 /*Start gift page*/
+.box-animate {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/animate/L_00044.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
 .pin-gift-1 .logo {
   padding-top: 1.6rem;
 }
