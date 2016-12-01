@@ -2,6 +2,8 @@
 
 $routers = array();
 $routers['/'] = array('FurlaBundle\Site', 'index');
+$routers['/gift'] = array('FurlaBundle\Site', 'gift');
+$routers['/form'] = array('FurlaBundle\Site', 'form');
 $routers['/callback'] = array('FurlaBundle\Api', 'callback');
 $routers['/api/card'] = array('FurlaBundle\Api', 'card');
 $routers['/api/savecard'] = array('FurlaBundle\Api', 'savecard');
