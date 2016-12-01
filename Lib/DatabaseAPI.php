@@ -133,7 +133,7 @@ class DatabaseAPI extends Base {
 	}
 
 	private function savelottery($uid, $status, $type) {
-		$sql = "INSERT INTO `furla_lottery`(uid,status,type) values('".intval($uid)."', '".intval($status)."', '".intval($type)."')";
+		echo $sql = "INSERT INTO `furla_lottery`(uid,status,type) values('".intval($uid)."', '".intval($status)."', '".intval($type)."')";
 		$res = $this->db->prepare($sql); 
 		if ($res->execute()) {
 			return $status;
@@ -162,7 +162,7 @@ class DatabaseAPI extends Base {
 	}
 
 	public function info($uid, $firstname, $secondname, $mobile, $address, $email, $issend) {
-		echo $sql = "UPDATE `furla_info` SET firstname = ?, secondname = ?, mobile = ?, address = ?, email = ?, issend = ? where id = ?";
+		$sql = "UPDATE `furla_info` SET firstname = ?, secondname = ?, mobile = ?, address = ?, email = ?, issend = ? where id = ?";
 		$res = $this->db->prepare($sql); 
 		$res->bind_param("sssssss", $firstname, $secondname, $mobile, $address, $email, $issend, $uid);
 		if ($res->execute()) {
