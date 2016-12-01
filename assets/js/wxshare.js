@@ -1,6 +1,10 @@
 ;(function(){
 
-    var weixinshare = function(obj){
+    var weixinshare = function(obj,callback){
+        //open debug
+        wx.config({
+            debug:true
+        })
         wx.ready(function(){
             wx.onMenuShareAppMessage({
                 title: obj.title1,
@@ -10,11 +14,11 @@
                 type: '',
                 dataUrl: '',
                 success: function () {
-                    console.log('share success to friend');
+                    callback();
 
                 },
                 cancel: function () {
-
+                    callback();
                 }
             });
             wx.onMenuShareTimeline({
@@ -51,5 +55,7 @@ $(document).ready(function(){
         des: '即刻参加圣诞活动，赢取惊喜好礼',
         link: window.location.origin,
         img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
+    },function(){
+        console.log('nothing')
     });
 });

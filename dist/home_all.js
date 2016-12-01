@@ -746,7 +746,11 @@ $(document).ready(function(){
 
 ;(function(){
 
-    var weixinshare = function(obj){
+    var weixinshare = function(obj,callback){
+        //open debug
+        wx.config({
+            debug:true
+        })
         wx.ready(function(){
             wx.onMenuShareAppMessage({
                 title: obj.title1,
@@ -756,11 +760,11 @@ $(document).ready(function(){
                 type: '',
                 dataUrl: '',
                 success: function () {
-                    console.log('share success to friend');
+                    callback();
 
                 },
                 cancel: function () {
-
+                    callback();
                 }
             });
             wx.onMenuShareTimeline({
@@ -797,6 +801,8 @@ $(document).ready(function(){
         des: '即刻参加圣诞活动，赢取惊喜好礼',
         link: window.location.origin,
         img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
+    },function(){
+        console.log('nothing')
     });
 });
 
@@ -1286,10 +1292,14 @@ Api = {
                         //    start to activate
                         var cardId = data.msg;
                         weixinshare({
-                            title1: '激活分享',
-                            des: '激活分享',
-                            link: window.location.origin+'/gift.html?carid='+cardId,
-                            img: '/dist/images/share.jpg'
+                            title1: '闪耀而温馨的圣诞节即将来临，查收节日惊喜，送出你最真挚的祝福。 ',
+                            des: '即刻参加圣诞活动，赢取惊喜好礼',
+                            link: window.location.origin+'/gift?cardid='+cardId,
+                            img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
+                        },function(){
+                        //    success
+                            self.shareCallback();
+
                         });
                     }
 
@@ -1310,6 +1320,7 @@ Api = {
             $('.box-top').addClass('movetocenter');
         };
 
+        //test
         $('.p3-t1').on('touchstart',function(){
             self.shareCallback();
 

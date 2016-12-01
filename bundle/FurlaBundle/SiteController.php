@@ -23,6 +23,40 @@ class SiteController extends Controller {
 		exit;
 	}
 
+	public function giftAction() {
+		$UserAPI = new \Lib\UserAPI();
+		$user = $UserAPI->userLoad(true);
+		if (!$user) {
+			$parameterAry = $_GET;
+			if(count($parameterAry)>0)
+				$url = "/gift?".http_build_query($parameterAry);
+			else
+				$url = "/gift";
+			$_SESSION['redirect_url'] = $url;
+			$WechatAPI = new \Lib\WechatAPI();
+			$WechatAPI->wechatAuthorize();
+		}
+		$this->render('site/gift');
+		exit;
+	}
+
+    public function formAction() {
+		$UserAPI = new \Lib\UserAPI();
+		$user = $UserAPI->userLoad(true);
+		if (!$user) {
+			$parameterAry = $_GET;
+			if(count($parameterAry)>0)
+				$url = "/form?".http_build_query($parameterAry);
+			else
+				$url = "/form";
+			$_SESSION['redirect_url'] = $url;
+			$WechatAPI = new \Lib\WechatAPI();
+			$WechatAPI->wechatAuthorize();
+		}
+		$this->render('site/form');
+		exit;
+	}
+
 	public function cardAction() {
 		//600 pKCDxjrwNnpwUXTcyqzi2R3NZRCQ
 		//800 pKCDxjm3GDEKbK19j_SH7VqFAaag
