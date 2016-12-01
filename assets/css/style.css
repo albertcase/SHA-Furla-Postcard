@@ -1491,3 +1491,48 @@ html, body {
 End gift page
 ====
 */
+.page-form .logo {
+  padding-top: 0;
+}
+.page-form .v-content {
+  z-index: 10;
+}
+
+#form-contact {
+  width: 80vw;
+}
+#form-contact input[type='text'],
+#form-contact input[type='tel'] {
+  margin: 0;
+  background: url("../images/input-bg.png") no-repeat;
+  background-size: 100% 100%;
+  border: none;
+  padding: 0.5rem 0.5rem;
+  box-sizing: border-box;
+  font-size: 0.24rem;
+}
+#form-contact .input-box {
+  margin-bottom: 0.1rem;
+}
+#form-contact .input-box-name input[type='text'] {
+  width: 49%;
+}
+#form-contact .input-box-mobile input[type='text'] {
+  width: 25%;
+}
+#form-contact .input-box-mobile input[type='tel'] {
+  width: 73%;
+}
+#form-contact .input-box-mail input[type='text'],
+#form-contact .input-box-address input[type='text'] {
+  width: 98%;
+}
+#form-contact .input-checkbox {
+  color: #8b6602;
+  font-size: 0.22rem;
+  margin-bottom: 0.3rem;
+}
+#form-contact .error {
+  color: #d79939;
+  font-size: 0.2rem;
+}

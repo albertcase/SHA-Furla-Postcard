@@ -9,26 +9,6 @@
         init:function(){
 
             var self = this;
-
-            ///api/islogin
-            $.ajax({
-                url:'/api/islogin',
-                type:'POST',
-                dataType:'json',
-                success:function(data){
-                    console.log(data);
-
-                    if(data.status){
-                        //    success
-                    }else{
-                        window.location.href = '/oauth?callback=/form.html'
-                    }
-                }
-            });
-
-            var sid = 0 || Cookies.get('selectedid');
-            $('.title .name').html(self.vjson[sid]);
-
             //bind all dom element
             self.submitForm();
 
@@ -39,7 +19,7 @@
             var self = this;
             var validate = true,
                 inputMobile = document.getElementById('input-mobile'),
-                inputName = document.getElementById('input-name'),
+                inputName = document.getElementById('input-firstname'),
                 inputAddress = document.getElementById('input-address');
             if(!inputName.value){
                 Common.errorMsg.add(inputName.parentElement,'姓名不能为空');
@@ -87,7 +67,6 @@
 
 
             btnSubmit.addEventListener('touchstart',function(){
-                _hmt.push(['_trackEvent', 'buttons', 'click', 'SubmitInfoForm']);
                 if(self.formValidate()){
                     if(!enableSubmit) return;
                     enableSubmit = false;
@@ -138,9 +117,6 @@
 }).call(this);
 
 $(document).ready(function(){
-    if(!Cookies.get('uuid')){
-        window.location.href = '/index.html';
-    };
     var redpacket= new controller();
     redpacket.init();
 });

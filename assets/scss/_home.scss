@@ -481,3 +481,61 @@ End gift page
 ====
 */
 
+//Start page-form
+.page-form{
+  .logo{
+    padding-top: 0;
+  }
+  .v-content{
+    z-index: 10;
+  }
+}
+#form-contact{
+  width: 80vw;
+  input[type='text'],
+  input[type='tel']{
+    margin: 0;
+    background: url("../images/input-bg.png") no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    padding: 0.5rem 0.5rem;
+    box-sizing: border-box;
+    font-size: 0.24rem;
+  }
+  .input-box{
+    margin-bottom: 0.1rem;
+  }
+  .input-box-name{
+    input[type='text']{
+      width: 49%;
+    }
+  }
+  .input-box-mobile{
+    input[type='text']{
+      width: 25%;
+    }
+    input[type='tel']{
+      width: 73%;
+    }
+
+  }
+  .input-box-mail,
+  .input-box-address{
+    input[type='text']{
+      width: 98%;
+    }
+  }
+  .input-checkbox{
+    color: #8b6602;
+    font-size: 0.22rem;
+    margin-bottom: 0.3rem;
+  }
+  .error{
+    color: #d79939;
+    font-size: 0.2rem;
+  }
+}
+
+
+//end page-form
+

@@ -590,6 +590,12 @@ Api = {
         })
     },
     //留资料
+    //firstname
+    //    secondname
+    //mobile
+    //    address
+    //email
+    //    issend
     submitInfo:function(obj,callback){
         $.ajax({
             url:'/api/info',
