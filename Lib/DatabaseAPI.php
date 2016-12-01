@@ -128,6 +128,7 @@ class DatabaseAPI extends Base {
 				$status = 1;
 			}
 		}
+		echo $status;
 		return $this->savelottery($uid, $status, 1);
 	}
 
