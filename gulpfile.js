@@ -88,7 +88,7 @@ gulp.task('scripts_form',['clean'], function() {
 
 // Watch Files For Changes
 gulp.task('watch', ['clean'],function() {
-    gulp.watch(path.formjs, ['scripts_home']);
+    gulp.watch(path.homejs, ['scripts_home']);
     gulp.watch(path.giftjs, ['scripts_gift']);
     gulp.watch(path.formjs, ['scripts_form']);
     gulp.watch(path.css,['css']);
