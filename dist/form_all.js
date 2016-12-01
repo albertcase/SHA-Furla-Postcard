@@ -553,7 +553,7 @@ Api = {
                         email:inputMailVal,
                         issend:issend
                     },function(data){
-                        if(data.code==1){
+                        if(data.status==1){
                             console.log('提交成功');
                             $('#form-contact').remove();
                             $('.success-block').removeClass('hide');

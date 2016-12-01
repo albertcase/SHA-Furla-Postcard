@@ -1147,7 +1147,7 @@ Api = {
             var dateEle = $('.letter-date');
             var curCardId = Common.getParameterByName('cardid');
             Api.getLetter({data:curCardId},function(data){
-                if(data.code==1){
+                if(data.status==1){
                     var newdata = data.msg;
                     var dbHtml='';
                     var j=0;
@@ -1202,16 +1202,17 @@ Api = {
         $('.section-letter').removeClass('hide');
         var aaa = setTimeout(function(){
             Common.gotoPin(1);
+            clearTimeout(aaa);
         },1000);
 
 
         var isprize = false;
         $('.btn-postcard').on('touchstart',function(){
             Api.giftLottery(function(data){
-                if(data.code==1){
+                if(data.status==1){
                     isprize = true;
                     self.prize(isprize);
-                }else if(data.code==2){
+                }else if(data.status==2){
                     isprize = false;
                     self.prize(isprize);
                 }else{
