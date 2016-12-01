@@ -6,7 +6,43 @@
     //init
     furla.prototype.init = function(){
         var self = this;
-        self.welcomePage();
+        //    loading first
+        var baseurl = '/dist/images/';
+        var imagesArray = [
+            baseurl + 'bg.jpg',
+            baseurl + 'bg-layer-1.png',
+            baseurl + 'bg-layer-2.png',
+            baseurl + 'logo.png',
+            baseurl + 'p1-t1.png',
+            baseurl + 'box-top.png',
+            baseurl + 'box-bottom.jpg',
+            baseurl + 'line.png',
+            baseurl + 'p2-t1.png',
+            baseurl + 'p2-t2.png',
+            baseurl + 'p2-t3.png',
+            baseurl + 'p2-t4.png',
+            baseurl + 'text-click-right.png',
+            baseurl + 'text-prize-1.png',
+            baseurl + 'text-prize-2.png',
+            baseurl + 'text-prize-3.png',
+            baseurl + 'text-prize-3.png',
+            baseurl + 'lottery-t1.png',
+        ];
+        var i = 0;
+        new preLoader(imagesArray, {
+            onProgress: function(){
+                i++;
+                var progress = parseInt(i/imagesArray.length*100);
+                $('.preload .v-content').html('已加载'+progress+'%');
+            },
+            onComplete: function(){
+                //
+                $('.container').addClass('fade');
+                self.welcomePage();
+                $('.preload').remove();
+            }
+        });
+
         //self.writeCard();
         //self.shareCallback();
     };
@@ -266,9 +302,7 @@
         function submitSelectedProduct(){
             if(isFull){
                 //接口1
-                console.log(selectedProducts);
-                console.log('submit selected products id');
-                self.writeCard();
+                self.writeCard(selectedProducts);
             }else{
                 console.log('请选择三个产品');
             }
@@ -280,8 +314,10 @@
     };
 
     //write card with words
-    furla.prototype.writeCard = function(){
+    furla.prototype.writeCard = function(products){
         var self = this;
+
+        var selectedPro = products?products:[0,0,0];
         Common.gotoPin(2);
         $('.bg .bg-layer-1').addClass('bg-right');
 
@@ -326,18 +362,43 @@
         //send product and words to backend
         $('.btn-postcard').on('touchstart',function(){
             curVal = letterContent.val();
-            console.log(curVal);
             /*here*/
-            //go share page
-            Common.gotoPin(2);
-        //    submit success,do animation
-            doAniForLetter();
+            var toUserVal = $('#input-name-1').val();
+            var fromuser = $('#input-name-2').val();
+            Api.saveCard({
+                //choose1  choose2  choose3  wish touser fromuser
+                choose1:selectedPro[0],
+                choose2:selectedPro[1],
+                choose3:selectedPro[2],
+                wish:curVal,
+                touser:toUserVal,
+                fromuser:fromuser
 
-        //    start to activate
-            console.log('激活分享');
+            },function(data){
+
+                if(data.code==1){
+                    //    submit success,do animation
+                    doAniForLetter();
+                    //    start to activate
+                    var cardId = data.msg;
+                    console.log('激活分享');
+                    weixinshare({
+                        title1: '激活分享',
+                        des: '激活分享',
+                        link: window.location.origin+'/gift.html?carid='+cardId,
+                        img: '/dist/images/share.jpg'
+                    });
+                    return;
+                }
+
+                if(data.code !==1){
+                    alert(data.msg);
+                }
+
+            });
+
 
         });
-        doAniForLetter();
         function doAniForLetter(){
             $('.section-letter').addClass('shrinktocorner');
             $('.box-top').addClass('movetocenter');
