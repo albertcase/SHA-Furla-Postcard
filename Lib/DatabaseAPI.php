@@ -83,7 +83,7 @@ class DatabaseAPI extends Base {
 	public function savecard($uid, $choose1, $choose2, $choose3, $touser, $wish, $fromuser) {
 		$sql = "INSERT INTO `furla_card` SET `uid` = ?, choose1 = ?, choose2 = ?, choose3 = ?, touser = ?, wish = ?, fromuser = ?";
 		$res = $this->db->prepare($sql); 
-		$res->bind_param("sssss", $choose1, $choose2, $choose3, $touser, $wish, $fromuser);
+		$res->bind_param("sssssss", $uid, $choose1, $choose2, $choose3, $touser, $wish, $fromuser);
 		if ($res->execute()) {
 			return $res->insert_id;
 		} else {
