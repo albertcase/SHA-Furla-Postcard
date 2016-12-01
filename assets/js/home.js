@@ -24,8 +24,7 @@
             baseurl + 'text-click-right.png',
             baseurl + 'text-prize-1.png',
             baseurl + 'text-prize-2.png',
-            baseurl + 'text-prize-3.png',
-            baseurl + 'text-prize-3.png',
+            baseurl + 'text-prize-4.png',
             baseurl + 'lottery-t1.png',
         ];
         var i = 0;
@@ -174,7 +173,6 @@
 
 
         function addProducts(){
-            console.log('添加中。。。');
             for(var i=0;i<selectedProducts.length;i++){
                 if(!selectedProducts[i]){
                     selectedProducts[i] = curPid;
@@ -194,7 +192,6 @@
 
         function removeProducts(index){
 
-            console.log('移除中。。。');
             //selectedProducts
             $('.item-dest').eq(index).find('.slide-block').remove();
             selectedProducts.splice(index,1,'');
@@ -216,7 +213,7 @@
 
             //add products
             if($(e.target).parent().hasClass('slide-block') && $(e.target).parent().parent().parent().hasClass('swiper-slide-next') && !isFull){
-                console.log('开始添加');
+                //console.log('开始添加');
                 curPid = $(e.target).parent().attr('pid');
                 addHtml = $(e.target).parent().parent().html();
                 dragEle.css({
@@ -230,7 +227,7 @@
             };
 
             if($(e.target).parent().hasClass('slide-block') && $(e.target).parent().parent().hasClass('item-dest')){
-                console.log('开始移除');
+                //console.log('开始移除');
                 curPid = $(e.target).parent().attr('pid');
                 curIndex = $(e.target).parent().parent().index();
                 dragEle.css({
@@ -264,7 +261,7 @@
                 }
             }
             if(isRemoveProduct){
-                console.log('move移除');
+                //console.log('move移除');
                 dragEle.css({
                     'opacity':'1',
                     left:e.changedTouches[0].clientX + 'px',
@@ -304,7 +301,7 @@
                 //接口1
                 self.writeCard(selectedProducts);
             }else{
-                console.log('请选择三个产品');
+                //console.log('请选择三个产品');
             }
 
         };
@@ -381,7 +378,7 @@
                     doAniForLetter();
                     //    start to activate
                     var cardId = data.msg;
-                    console.log('激活分享');
+                    //console.log('激活分享');
                     weixinshare({
                         title1: '激活分享',
                         des: '激活分享',
@@ -436,7 +433,7 @@
             if(!isGetCoupon && !isAgain){
                 //卡券抽奖
                 Api.cardLottery(function(data){
-                    console.log(data);
+                    //console.log(data);
                     if(data.code==1){
                         //    中奖
                         $('.replace-text img').attr('src','/dist/images/text-prize-1.png');
@@ -467,7 +464,7 @@
             if(isGetCoupon){
                 //领取卡券
                 Api.getCoupon(function(data){
-                    console.log(data);
+                    //console.log(data);
 
                 });
                 return;
