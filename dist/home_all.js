@@ -793,10 +793,10 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     weixinshare({
-        title1: '为梦想，你包容了什么？',
-        des: '参与心理测试赢取由COACH追梦女性倾情赞助的礼物',
-        link: window.location.origin+'/index.html',
-        img: 'http://careerwomen.samesamechina.com/dist/images/share.jpg'
+        title1: 'FURLA 为您准备了一份圣诞惊喜！请点击查收。',
+        des: '即刻参加圣诞活动，赢取惊喜好礼',
+        link: window.location.origin,
+        img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
     });
 });
 
@@ -1299,7 +1299,7 @@ Api = {
 
                 });
             }else{
-                alert('请填写信件的名字内容');
+                alert('好友的名字、祝福、落款缺一不可，请您补充完整');
             }
 
 
