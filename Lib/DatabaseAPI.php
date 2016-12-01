@@ -6,6 +6,10 @@ class DatabaseAPI extends Base {
 	private $db;
 
 	public function __construct() {
+		$this->inidb();
+	}
+
+	public function inidb() {
 		$connect = new \mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
 		$this->db = $connect;
 		$this->db->query("set names utf8");
@@ -27,6 +31,7 @@ class DatabaseAPI extends Base {
 	}
 
 	public function regUser($openid, $nickname, $headimgurl) {
+
 		if ($this->findUserByOauth($openid)) {
 			return TRUE;
 		}
@@ -134,6 +139,7 @@ class DatabaseAPI extends Base {
 	}
 
 	private function savelottery($uid, $status, $type) {
+		$this->inidb();
 		$sql = "INSERT INTO `furla_lottery` SET `uid` = ?, status = ?, type = ?";
 		$res = $this->db->prepare($sql); 
 		$res->bind_param("sss", $uid, $status, $type);
