@@ -1541,3 +1541,16 @@ End gift page
   color: #d79939;
   font-size: 0.2rem;
 }
+
+.success-block {
+  position: relative;
+  z-index: 2;
+}
+.success-block .s-t1 {
+  width: 1.3rem;
+  height: 1.5rem;
+  margin: 0.5rem auto 0.5rem;
+}
+.success-block .btn-gohome {
+  width: 3.6rem;
+}

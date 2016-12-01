@@ -597,16 +597,19 @@ Api = {
     //email
     //    issend
     submitInfo:function(obj,callback){
-        $.ajax({
-            url:'/api/info',
-            type:'POST',
-            dataType:'json',
-            data:obj,
-            success:function(data){
-                return callback(data);
-                //返回  code=1    msg = 提交成功
-            }
-        });
+        //$.ajax({
+        //    url:'/api/info',
+        //    type:'POST',
+        //    dataType:'json',
+        //    data:obj,
+        //    success:function(data){
+        //        return callback(data);
+        //        //返回  code=1    msg = 提交成功
+        //    }
+        //});
+        return callback({
+            code:'1'
+        })
     },
 
 

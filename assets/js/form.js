@@ -12,20 +12,28 @@
             //bind all dom element
             self.submitForm();
 
-
         },
 
         formValidate:function(){
             var self = this;
             var validate = true,
                 inputMobile = document.getElementById('input-mobile'),
-                inputName = document.getElementById('input-firstname'),
+                inputFirstName = document.getElementById('input-firstname'),
+                inputLastName = document.getElementById('input-lastname'),
+                inputMail = document.getElementById('input-mail'),
                 inputAddress = document.getElementById('input-address');
-            if(!inputName.value){
-                Common.errorMsg.add(inputName.parentElement,'姓名不能为空');
+            if(!inputFirstName.value){
+                Common.errorMsg.add(inputFirstName.parentElement,'名不能为空');
                 validate = false;
             }else{
-                Common.errorMsg.remove(inputName.parentElement);
+                Common.errorMsg.remove(inputFirstName.parentElement);
+            };
+
+            if(!inputLastName.value){
+                Common.errorMsg.add(inputLastName.parentElement,'姓不能为空');
+                validate = false;
+            }else{
+                Common.errorMsg.remove(inputLastName.parentElement);
             };
 
             if(!inputAddress.value){
@@ -48,6 +56,19 @@
                 }
             }
 
+            if(!inputMail.value){
+                Common.errorMsg.add(inputMail.parentElement,'邮箱不能为空');
+                validate = false;
+            }else{
+                var reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                if(!(reg.test(inputMail.value))){
+                    validate = false;
+                    Common.errorMsg.add(inputMail.parentElement,'邮箱格式错误，请重新输入');
+                }else{
+                    Common.errorMsg.remove(inputMail.parentElement);
+                }
+            }
+
             if(validate){
                 return true;
             }
@@ -59,44 +80,45 @@
             /*
              * Submit the Form
              */
-            var btnSubmit = document.getElementsByClassName('btn-submit')[0];
+            var btnSubmit = $('.btn-submit');
             var enableSubmit = true;
             $('.input-box input').on('keyup',function(){
                 self.formValidate();
             });
 
-
-            btnSubmit.addEventListener('touchstart',function(){
+            btnSubmit.on('touchstart',function(){
                 if(self.formValidate()){
                     if(!enableSubmit) return;
                     enableSubmit = false;
-                    //    start to get keycode
-                    var phonenumber = document.getElementById('input-mobile').value,
-                        name = document.getElementById('input-name').value,
-                        address = document.getElementById('input-address').value;
-                    Common.msgBox('loading...');
-                    $.ajax({
-                        url:'/api/info',
-                        type:'POST',
-                        dataType:'json',
-                        data:{
-                            uuid:Cookies.get('uuid'),
-                            mobile:phonenumber,
-                            name:name,
-                            address:address
-                        },
-                        success:function(data){
-                            $('.ajaxpop').remove();
-                            enableSubmit = true;
-                            if(data.status==1){
-                                Common.alertBox.add('你已经参与抽奖');
-                            }else{
-                                Common.alertBox.add(data.msg);
-                            }
+                    var inputMobileVal = document.getElementById('input-mobile').value,
+                        inputFirstNameVal = document.getElementById('input-firstname').value,
+                        inputLastNameVal = document.getElementById('input-lastname').value,
+                        inputMailVal = document.getElementById('input-mail').value,
+                        inputAddressVal = document.getElementById('input-address').value,
+                        issend = $('#input-receive').is(':checked');
+                    Api.submitInfo({
+                        firstname:inputLastNameVal,
+                        secondname:inputFirstNameVal,
+                        mobile:inputMobileVal,
+                        address:inputAddressVal,
+                        email:inputMailVal,
+                        issend:issend
+                    },function(data){
+                        if(data.code==1){
+                            console.log('提交成功');
+                            $('#form-contact').remove();
+                            $('.success-block').removeClass('hide');
+                        }else{
+                            alert(data.msg);
                         }
                     });
 
+
                 };
+            });
+
+            $('.btn-gohome').on('touchstart',function(){
+                Common.goHomePage();
             });
         },
 
