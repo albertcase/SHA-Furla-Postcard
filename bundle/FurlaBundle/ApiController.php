@@ -71,12 +71,12 @@ class ApiController extends Controller {
 			'fromuser' => array('notnull', '3')
 		);
 		$request->validation($fields);
-		$choose1 = $request->query->get('choose1');
-		$choose2 = $request->query->get('choose2');
-		$choose3 = $request->query->get('choose3');
-		$touser = $request->query->get('touser');
-		$wish = $request->query->get('wish');
-		$fromuser = $request->query->get('fromuser');
+		$choose1 = $request->request->get('choose1');
+		$choose2 = $request->request->get('choose2');
+		$choose3 = $request->request->get('choose3');
+		$touser = $request->request->get('touser');
+		$wish = $request->request->get('wish');
+		$fromuser = $request->request->get('fromuser');
 		$databaseapi = new \Lib\DatabaseAPI();
 		$rs = $databaseapi->savecard($user->id, $choose1, $choose2, $choose3, $touser, $wish, $fromuser);
 		return $this->statusPrint(1, $rs);
@@ -93,7 +93,7 @@ class ApiController extends Controller {
 			'id' => array('notnull', '3')
 		);
 		$request->validation($fields);
-		$id = $request->query->get('id');
+		$id = $request->request->get('id');
 		$databaseapi = new \Lib\DatabaseAPI();
 		$rs = $databaseapi->loadcard($id);
 		return $this->statusPrint(1, $rs);
