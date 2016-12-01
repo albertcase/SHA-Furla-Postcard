@@ -793,10 +793,10 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     weixinshare({
-        title1: '为梦想，你包容了什么？',
-        des: '参与心理测试赢取由COACH追梦女性倾情赞助的礼物',
-        link: window.location.origin+'/index.html',
-        img: 'http://careerwomen.samesamechina.com/dist/images/share.jpg'
+        title1: 'FURLA 为您准备了一份圣诞惊喜！请点击查收。',
+        des: '即刻参加圣诞活动，赢取惊喜好礼',
+        link: window.location.origin,
+        img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
     });
 });
 
@@ -805,47 +805,37 @@ Api = {
     //保存贺卡
     //choose1  choose2  choose3  wish touser fromuser
     saveCard:function(obj,callback){
-        //$.ajax({
-        //    url:'/api/savecard',
-        //    type:'POST',
-        //    dataType:'json',
-        //    data:obj,
-        //    success:function(data){
-        //        return callback(data);
-        //
-        //        //code=1    msg = 贺卡id
-        //    }
-        //});
-        return callback({
-            code:1,
-            msg:'fkdakfasfa'
+        $.ajax({
+            url:'/api/savecard',
+            type:'POST',
+            dataType:'json',
+            data:obj,
+            success:function(data){
+                return callback(data);
+
+                //code=1    msg = 贺卡id
+            }
         });
+
+        //return callback({
+        //    code:1
+        //})
+
+
     },
     //查询贺卡
     //参数  id
     getLetter:function(obj,callback){
-        //$.ajax({
-        //    url:'/api/loadcard',
-        //    type:'POST',
-        //    dataType:'json',
-        //    data:obj,
-        //    success:function(data){
-        //        return callback(data);
-        //        //返回  code=1    msg =  {choose1 choose2 choose3 wish date}
-        //    }
-        //});
-        return callback({
-            code:1,
-            msg:{
-                choose1:101,
-                choose2:102,
-                choose3:103,
-                touser:'name',
-                fromuser:'yours',
-                wish:'lsdlfkkasdkfksadlf\nzidfksdakflksdklflkdsa',
-                date:'2016年12月1日'
+        $.ajax({
+            url:'/api/loadcard',
+            type:'POST',
+            dataType:'json',
+            data:obj,
+            success:function(data){
+                return callback(data);
+                //返回  code=1    msg =  {choose1 choose2 choose3 wish date}
             }
-        })
+        });
     },
     //获取卡券
     getCoupon:function(callback){
@@ -861,40 +851,33 @@ Api = {
     },
     //卡券抽奖
     cardLottery:function(callback){
-        //Common.msgBox('loading...');
-        //$.ajax({
-        //    url:'/api/cardlottery',
-        //    type:'POST',
-        //    dataType:'json',
-        //    success:function(data){
-        //        $('.msgbox').remove();
-        //        return callback(data);
-        //        //返回  code=1    msg = 中奖
-        //        //code=2    msg = 未中奖
-        //    }
-        //});
-        return callback({
-            code:2,
-            msg:'中奖'
+        Common.msgBox('loading...');
+        $.ajax({
+            url:'/api/cardlottery',
+            type:'POST',
+            dataType:'json',
+            success:function(data){
+                $('.msgbox').remove();
+                return callback(data);
+                //返回  code=1    msg = 中奖
+                //code=2    msg = 未中奖
+            }
         });
     },
     //礼物抽奖
     giftLottery:function(callback){
-        //Common.msgBox('loading...');
-        //$.ajax({
-        //    url:'/api/giftlottery',
-        //    type:'POST',
-        //    dataType:'json',
-        //    success:function(data){
-        //        $('.msgbox').remove();
-        //        return callback(data);
-        //        //code=1    msg = 中奖
-        //        //code=2    msg = 未中奖
-        //    }
-        //});
-        return callback({
-            code:2
-        })
+        Common.msgBox('loading...');
+        $.ajax({
+            url:'/api/giftlottery',
+            type:'POST',
+            dataType:'json',
+            success:function(data){
+                $('.msgbox').remove();
+                return callback(data);
+                //code=1    msg = 中奖
+                //code=2    msg = 未中奖
+            }
+        });
     },
     //留资料
     //firstname
@@ -904,19 +887,19 @@ Api = {
     //email
     //    issend
     submitInfo:function(obj,callback){
-        //$.ajax({
-        //    url:'/api/info',
-        //    type:'POST',
-        //    dataType:'json',
-        //    data:obj,
-        //    success:function(data){
-        //        return callback(data);
-        //        //返回  code=1    msg = 提交成功
-        //    }
-        //});
-        return callback({
-            code:'1'
-        })
+        $.ajax({
+            url:'/api/info',
+            type:'POST',
+            dataType:'json',
+            data:obj,
+            success:function(data){
+                return callback(data);
+                //返回  code=1    msg = 提交成功
+            }
+        });
+        //return callback({
+        //    code:'1'
+        //})
     },
 
 
@@ -1286,37 +1269,39 @@ Api = {
             /*here*/
             var toUserVal = $('#input-name-1').val();
             var fromuser = $('#input-name-2').val();
-            Api.saveCard({
-                //choose1  choose2  choose3  wish touser fromuser
-                choose1:selectedPro[0],
-                choose2:selectedPro[1],
-                choose3:selectedPro[2],
-                wish:curVal,
-                touser:toUserVal,
-                fromuser:fromuser
+            if(toUserVal && fromuser && curVal){
+                Api.saveCard({
+                    //choose1  choose2  choose3  wish touser fromuser
+                    choose1:selectedPro[0],
+                    choose2:selectedPro[1],
+                    choose3:selectedPro[2],
+                    wish:curVal,
+                    touser:toUserVal,
+                    fromuser:fromuser
 
-            },function(data){
+                },function(data){
+                    if(data.status==1){
+                        //    submit success,do animation
+                        doAniForLetter();
+                        //    start to activate
+                        var cardId = data.msg;
+                        weixinshare({
+                            title1: '激活分享',
+                            des: '激活分享',
+                            link: window.location.origin+'/gift.html?carid='+cardId,
+                            img: '/dist/images/share.jpg'
+                        });
+                    }
 
-                if(data.code==1){
-                    //    submit success,do animation
-                    doAniForLetter();
-                    //    start to activate
-                    var cardId = data.msg;
-                    //console.log('激活分享');
-                    weixinshare({
-                        title1: '激活分享',
-                        des: '激活分享',
-                        link: window.location.origin+'/gift.html?carid='+cardId,
-                        img: '/dist/images/share.jpg'
-                    });
-                    return;
-                }
+                    if(data.status !==1){
+                        alert(data.msg);
+                    }
 
-                if(data.code !==1){
-                    alert(data.msg);
-                }
+                });
+            }else{
+                alert('好友的名字、祝福、落款缺一不可，请您补充完整');
+            }
 
-            });
 
 
         });
@@ -1358,7 +1343,7 @@ Api = {
                 //卡券抽奖
                 Api.cardLottery(function(data){
                     //console.log(data);
-                    if(data.code==1){
+                    if(data.status==1){
                         //    中奖
                         $('.replace-text img').attr('src','/dist/images/text-prize-1.png');
                         $('.replace-text').removeClass('rt-1').addClass('rt-2');
@@ -1368,7 +1353,7 @@ Api = {
                         return;
                     }
 
-                    if(data.code == 2){
+                    if(data.status == 2){
                         //    未中奖
                         $('.replace-text img').attr('src','/dist/images/text-prize-2.png');
                         $('.replace-text').removeClass('rt-1').addClass('rt-3');

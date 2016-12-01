@@ -362,37 +362,39 @@
             /*here*/
             var toUserVal = $('#input-name-1').val();
             var fromuser = $('#input-name-2').val();
-            Api.saveCard({
-                //choose1  choose2  choose3  wish touser fromuser
-                choose1:selectedPro[0],
-                choose2:selectedPro[1],
-                choose3:selectedPro[2],
-                wish:curVal,
-                touser:toUserVal,
-                fromuser:fromuser
+            if(toUserVal && fromuser && curVal){
+                Api.saveCard({
+                    //choose1  choose2  choose3  wish touser fromuser
+                    choose1:selectedPro[0],
+                    choose2:selectedPro[1],
+                    choose3:selectedPro[2],
+                    wish:curVal,
+                    touser:toUserVal,
+                    fromuser:fromuser
 
-            },function(data){
+                },function(data){
+                    if(data.status==1){
+                        //    submit success,do animation
+                        doAniForLetter();
+                        //    start to activate
+                        var cardId = data.msg;
+                        weixinshare({
+                            title1: '激活分享',
+                            des: '激活分享',
+                            link: window.location.origin+'/gift.html?carid='+cardId,
+                            img: '/dist/images/share.jpg'
+                        });
+                    }
 
-                if(data.code==1){
-                    //    submit success,do animation
-                    doAniForLetter();
-                    //    start to activate
-                    var cardId = data.msg;
-                    //console.log('激活分享');
-                    weixinshare({
-                        title1: '激活分享',
-                        des: '激活分享',
-                        link: window.location.origin+'/gift.html?carid='+cardId,
-                        img: '/dist/images/share.jpg'
-                    });
-                    return;
-                }
+                    if(data.status !==1){
+                        alert(data.msg);
+                    }
 
-                if(data.code !==1){
-                    alert(data.msg);
-                }
+                });
+            }else{
+                alert('好友的名字、祝福、落款缺一不可，请您补充完整');
+            }
 
-            });
 
 
         });
@@ -434,7 +436,7 @@
                 //卡券抽奖
                 Api.cardLottery(function(data){
                     //console.log(data);
-                    if(data.code==1){
+                    if(data.status==1){
                         //    中奖
                         $('.replace-text img').attr('src','/dist/images/text-prize-1.png');
                         $('.replace-text').removeClass('rt-1').addClass('rt-2');
@@ -444,7 +446,7 @@
                         return;
                     }
 
-                    if(data.code == 2){
+                    if(data.status == 2){
                         //    未中奖
                         $('.replace-text img').attr('src','/dist/images/text-prize-2.png');
                         $('.replace-text').removeClass('rt-1').addClass('rt-3');
