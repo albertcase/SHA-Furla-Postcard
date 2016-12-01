@@ -132,9 +132,8 @@ class DatabaseAPI extends Base {
 	}
 
 	private function savelottery($uid, $status, $type) {
-		$sql = "INSERT INTO `furla_lottery` SET `uid` = ?, status = ?, type = ?";
+		$sql = "INSERT INTO `furla_lottery` SET `uid` = '".intval($uid)."', status = '".intval($status)."', type = '".intval($type)."'";
 		$res = $this->db->prepare($sql); 
-		$res->bind_param("sss", $uid, $status, $type);
 		if ($res->execute()) {
 			return $status;
 		} else {
