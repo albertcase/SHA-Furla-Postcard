@@ -17,9 +17,10 @@ var path = {
     template:['./template/*.html'],
     css:['./assets/css/*.css'],
     js:['./assets/js/lib/zepto.min.js','./assets/js/lib/pre-loader.js','./assets/js/rem.js','./assets/js/common.js','./assets/js/wxshare.js','./assets/js/api.js','./assets/js/home.js'],
-    qrjs:['./assets/js/lib/zepto.min.js','./assets/js/rem.js','./assets/js/wxshare.js','./assets/js/qr.js'],
+    homejs:['./assets/js/lib/zepto.min.js','./assets/js/lib/pre-loader.js','./assets/js/lib/swiper.min.js','./assets/js/lib/shake.js','./assets/js/rem.js','./assets/js/productsjson.js','./assets/js/common.js','./assets/js/wxshare.js','./assets/js/api.js','./assets/js/home.js'],
+    giftjs:['./assets/js/lib/zepto.min.js','./assets/js/lib/pre-loader.js','./assets/js/lib/reqAnimate.js','./assets/js/lib/shake.js','./assets/js/rem.js','./assets/js/productsjson.js','./assets/js/common.js','./assets/js/wxshare.js','./assets/js/api.js','./assets/js/gift.js'],
+    formjs:['./assets/js/lib/zepto.min.js','./assets/js/rem.js','./assets/js/common.js','./assets/js/wxshare.js','./assets/js/api.js','./assets/js/form.js'],
     images:['./assets/images/*'],
-    staticFolder:['./assets/images/*','./assets/font/*','./assets/video/*']
 };
 // Browser-sync
 gulp.task('browser-sync', function() {
@@ -58,32 +59,42 @@ gulp.task('css',['clean'],function () {
 });
 
 // Concatenate & Minify
-gulp.task('scripts',['clean'], function() {
-    return gulp.src(path.js)
-        .pipe(concat('all.js'))
+gulp.task('scripts_home',['clean'], function() {
+    return gulp.src(path.homejs)
+        .pipe(concat('home_all.js'))
         .pipe(gulp.dest('dist'))
-        .pipe(rename('all.min.js'))
+        .pipe(rename('home_all.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('scripts_qr',['clean'], function() {
-    return gulp.src(path.qrjs)
-        .pipe(concat('qr_all.js'))
+gulp.task('scripts_gift',['clean'], function() {
+    return gulp.src(path.giftjs)
+        .pipe(concat('gift_all.js'))
         .pipe(gulp.dest('dist'))
-        .pipe(rename('qr_all.min.js'))
+        .pipe(rename('gift_all.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('scripts_form',['clean'], function() {
+    return gulp.src(path.formjs)
+        .pipe(concat('form_all.js'))
+        .pipe(gulp.dest('dist'))
+        .pipe(rename('form_all.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
 });
 
 // Watch Files For Changes
 gulp.task('watch', ['clean'],function() {
-    gulp.watch(path.js, ['scripts']);
-    gulp.watch(path.qrjs, ['scripts_qr']);
+    gulp.watch(path.formjs, ['scripts_home']);
+    gulp.watch(path.giftjs, ['scripts_gift']);
+    gulp.watch(path.formjs, ['scripts_form']);
     gulp.watch(path.css,['css']);
     gulp.watch(path.images,['images']);
     gulp.watch(path.template,['css']);
 });
 
 // Default Task
-gulp.task('default', ['watch', 'scripts','scripts_qr','images','css','browser-sync']);
+gulp.task('default', ['watch', 'scripts_home','scripts_gift','scripts_form','images','css','browser-sync']);

@@ -1,35 +1,49 @@
-function weixinshare(obj){
-    wx.ready(function(){
-        wx.onMenuShareAppMessage({
-            title: obj.title1,
-            desc: obj.des,
-            link: obj.link,
-            imgUrl: obj.img,
-            type: '',
-            dataUrl: '',
-            success: function () {
-                console.log('share success to friend');
+;(function(){
 
-            },
-            cancel: function () {
+    var weixinshare = function(obj){
+        wx.ready(function(){
+            wx.onMenuShareAppMessage({
+                title: obj.title1,
+                desc: obj.des,
+                link: obj.link,
+                imgUrl: obj.img,
+                type: '',
+                dataUrl: '',
+                success: function () {
+                    console.log('share success to friend');
 
-            }
+                },
+                cancel: function () {
+
+                }
+            });
+            wx.onMenuShareTimeline({
+                title: obj.title1,
+                link: obj.link,
+                imgUrl: obj.img,
+                success: function () {
+                    console.log('share success to timeline');
+                },
+                cancel: function () {
+
+                }
+            });
+
+
+        })
+    };
+
+    if (typeof define === 'function' && define.amd){
+        // we have an AMD loader.
+        define(function(){
+            return weixinshare;
         });
-        wx.onMenuShareTimeline({
-            title: obj.title1,
-            link: obj.link,
-            imgUrl: obj.img,
-            success: function () {
-                console.log('share success to timeline');
-            },
-            cancel: function () {
+    }
+    else {
+        this.weixinshare = weixinshare;
+    }
 
-            }
-        });
-
-
-    })
-}
+}).call(this);
 
 $(document).ready(function(){
     weixinshare({

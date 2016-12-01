@@ -51,7 +51,7 @@ html,body{
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 2;
+  z-index: 3;
   @include size(100%,100%);
 }
 .logo{
@@ -396,6 +396,20 @@ html,body{
 
 
 /*Start gift page*/
+.box-animate{
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  @include size(100%,100%);
+  //background-image: url("../images/animate/L_00044.jpg");
+  //background-repeat:  no-repeat;
+  //background-size: cover;
+  //background-position: center center;
+}
+
+
 .pin-gift-1{
   .logo{
     padding-top: 1.6rem;
@@ -406,6 +420,7 @@ html,body{
   }
   .box-bottom{
     position: relative;
+    opacity: 0;
     .dest-block-wrap{
       width: 6.75rem;
       height: 4.04rem;
@@ -446,6 +461,18 @@ html,body{
   }
 }
 
+.pin-gift-3{
+  .logo{
+    padding-top: 1.6rem;
+  }
+  .replace-text{
+    @include size(3.86rem,0.8rem);
+    margin:  0.5rem auto 0.6rem;
+    &.rt-2{
+      @include size(3.48rem,1.3rem);
+    }
+  }
+}
 
 
 /*
@@ -453,4 +480,77 @@ html,body{
 End gift page
 ====
 */
+
+//Start page-form
+.page-form{
+  .logo{
+    padding-top: 0;
+  }
+  .v-content{
+    z-index: 10;
+  }
+}
+#form-contact{
+  width: 80vw;
+  .title{
+    @include size(2.65rem,0.31rem);
+    margin: 0 auto 0.2rem;
+  }
+  input[type='text'],
+  input[type='tel']{
+    margin: 0;
+    background: url("../images/input-bg.png") no-repeat;
+    background-size: 100% 100%;
+    border: none;
+    padding: 0.5rem 0.5rem;
+    box-sizing: border-box;
+    font-size: 0.24rem;
+  }
+  .input-box{
+    margin-bottom: 0.1rem;
+  }
+  .input-box-name{
+    input[type='text']{
+      width: 49%;
+    }
+  }
+  .input-box-mobile{
+    input[type='text']{
+      width: 25%;
+    }
+    input[type='tel']{
+      width: 73%;
+    }
+
+  }
+  .input-box-mail,
+  .input-box-address{
+    input[type='text']{
+      width: 98%;
+    }
+  }
+  .input-checkbox{
+    color: #8b6602;
+    font-size: 0.22rem;
+    margin-bottom: 0.3rem;
+  }
+  .error{
+    color: #d79939;
+    font-size: 0.2rem;
+  }
+}
+
+.success-block{
+  position: relative;
+  z-index: 2;
+  .s-t1{
+    @include size(1.3rem,1.5rem);
+    margin: 0.5rem auto 0.5rem;
+  }
+  .btn-gohome{
+    width: 3.6rem;
+  }
+}
+
+//end page-form
 
