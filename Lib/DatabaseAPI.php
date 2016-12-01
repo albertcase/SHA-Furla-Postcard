@@ -162,7 +162,7 @@ class DatabaseAPI extends Base {
 	}
 
 	public function info($uid, $firstname, $secondname, $mobile, $address, $email, $issend) {
-		$sql = "UPDATE `furla_info` SET firstname = ?, secondname = ?, mobile = ?, address = ?, email = ?, issend = ? where id = ?";
+		echo $sql = "UPDATE `furla_info` SET firstname = ?, secondname = ?, mobile = ?, address = ?, email = ?, issend = ? where id = ?";
 		$res = $this->db->prepare($sql); 
 		$res->bind_param("sssssss", $firstname, $secondname, $mobile, $address, $email, $issend, $uid);
 		if ($res->execute()) {
