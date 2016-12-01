@@ -128,9 +128,13 @@ class DatabaseAPI extends Base {
 				$status = 1;
 			}
 		}
-		$sql = "INSERT INTO `furla_lottery` SET `uid` = ?, status = ?, type = 1";
+		return $this->savelottery($uid, $status, 1);
+	}
+
+	private function savelottery($uid, $status, $type) {
+		$sql = "INSERT INTO `furla_lottery` SET `uid` = ?, status = ?, type = ?";
 		$res = $this->db->prepare($sql); 
-		$res->bind_param("ss", $uid, $status);
+		$res->bind_param("sss", $uid, $status, $type);
 		if ($res->execute()) {
 			return $status;
 		} else {
@@ -154,14 +158,7 @@ class DatabaseAPI extends Base {
 				$status = 1;
 			}
 		}
-		$sql = "INSERT INTO `furla_lottery` SET `uid` = ?, status = ?, type = 2";
-		$res = $this->db->prepare($sql); 
-		$res->bind_param("ss", $uid, $status);
-		if ($res->execute()) {
-			return $status;
-		} else {
-			return FALSE;
-		}
+		return $this->savelottery($uid, $status, 2);
 	}
 
 	public function info($uid, $firstname, $secondname, $mobile, $address, $email, $issend) {
