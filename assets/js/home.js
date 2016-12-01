@@ -379,10 +379,14 @@
                         //    start to activate
                         var cardId = data.msg;
                         weixinshare({
-                            title1: '激活分享',
-                            des: '激活分享',
-                            link: window.location.origin+'/gift.html?carid='+cardId,
-                            img: '/dist/images/share.jpg'
+                            title1: '闪耀而温馨的圣诞节即将来临，查收节日惊喜，送出你最真挚的祝福。 ',
+                            des: '即刻参加圣诞活动，赢取惊喜好礼',
+                            link: window.location.origin+'/gift?cardid='+cardId,
+                            img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
+                        },function(){
+                        //    success
+                            self.shareCallback();
+
                         });
                     }
 
@@ -403,6 +407,7 @@
             $('.box-top').addClass('movetocenter');
         };
 
+        //test
         $('.p3-t1').on('touchstart',function(){
             self.shareCallback();
 
