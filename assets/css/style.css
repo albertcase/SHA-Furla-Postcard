@@ -1407,10 +1407,6 @@ html, body {
   z-index: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../images/animate/L_00044.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
 }
 
 .pin-gift-1 .logo {
@@ -1423,6 +1419,7 @@ html, body {
 }
 .pin-gift-1 .box-bottom {
   position: relative;
+  opacity: 0;
 }
 .pin-gift-1 .box-bottom .dest-block-wrap {
   width: 6.75rem;
@@ -1474,6 +1471,19 @@ html, body {
   width: 5.53rem;
   height: 0.29rem;
   margin: 0.5rem auto 0;
+}
+
+.pin-gift-3 .logo {
+  padding-top: 1.6rem;
+}
+.pin-gift-3 .replace-text {
+  width: 3.86rem;
+  height: 0.8rem;
+  margin: 0.5rem auto 0.6rem;
+}
+.pin-gift-3 .replace-text.rt-2 {
+  width: 3.48rem;
+  height: 1.3rem;
 }
 
 /*

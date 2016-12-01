@@ -420,6 +420,7 @@ html,body{
   }
   .box-bottom{
     position: relative;
+    opacity: 0;
     .dest-block-wrap{
       width: 6.75rem;
       height: 4.04rem;
@@ -460,6 +461,18 @@ html,body{
   }
 }
 
+.pin-gift-3{
+  .logo{
+    padding-top: 1.6rem;
+  }
+  .replace-text{
+    @include size(3.86rem,0.8rem);
+    margin:  0.5rem auto 0.6rem;
+    &.rt-2{
+      @include size(3.48rem,1.3rem);
+    }
+  }
+}
 
 
 /*

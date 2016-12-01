@@ -197,6 +197,15 @@ var Zepto=function(){function L(t){return null==t?String(t):j[S.call(t)]||"objec
 			$('.container .pin').removeClass('current');
 			$('.container .pin').eq(num).addClass('current');
 		},
+		goHomePage:function(){
+			window.location.href = '/template/index.html';
+		},
+		goGiftPage:function(){
+			window.location.href = '/template/gift.html';
+		},
+		goFormPage:function(){
+			window.location.href = '/template/form.html';
+		},
 		msgBox:function(msg,long){
 			if(long){
 				$('body').append('<div class="ajaxpop msgbox minwidthbox"><div class="loading">'+msg+'</div></div>');
@@ -422,38 +431,52 @@ $(document).ready(function(){
 
 
 
-function weixinshare(obj){
-    wx.ready(function(){
-        wx.onMenuShareAppMessage({
-            title: obj.title1,
-            desc: obj.des,
-            link: obj.link,
-            imgUrl: obj.img,
-            type: '',
-            dataUrl: '',
-            success: function () {
-                console.log('share success to friend');
+;(function(){
 
-            },
-            cancel: function () {
+    var weixinshare = function(obj){
+        wx.ready(function(){
+            wx.onMenuShareAppMessage({
+                title: obj.title1,
+                desc: obj.des,
+                link: obj.link,
+                imgUrl: obj.img,
+                type: '',
+                dataUrl: '',
+                success: function () {
+                    console.log('share success to friend');
 
-            }
+                },
+                cancel: function () {
+
+                }
+            });
+            wx.onMenuShareTimeline({
+                title: obj.title1,
+                link: obj.link,
+                imgUrl: obj.img,
+                success: function () {
+                    console.log('share success to timeline');
+                },
+                cancel: function () {
+
+                }
+            });
+
+
+        })
+    };
+
+    if (typeof define === 'function' && define.amd){
+        // we have an AMD loader.
+        define(function(){
+            return weixinshare;
         });
-        wx.onMenuShareTimeline({
-            title: obj.title1,
-            link: obj.link,
-            imgUrl: obj.img,
-            success: function () {
-                console.log('share success to timeline');
-            },
-            cancel: function () {
+    }
+    else {
+        this.weixinshare = weixinshare;
+    }
 
-            }
-        });
-
-
-    })
-}
+}).call(this);
 
 $(document).ready(function(){
     weixinshare({
@@ -488,16 +511,28 @@ Api = {
     //查询贺卡
     //参数  id
     getLetter:function(obj,callback){
-        $.ajax({
-            url:'/api/loadcard',
-            type:'POST',
-            dataType:'json',
-            data:obj,
-            success:function(data){
-                return callback(data);
-                //返回  code=1    msg =  {choose1 choose2 choose3 wish}
+        //$.ajax({
+        //    url:'/api/loadcard',
+        //    type:'POST',
+        //    dataType:'json',
+        //    data:obj,
+        //    success:function(data){
+        //        return callback(data);
+        //        //返回  code=1    msg =  {choose1 choose2 choose3 wish date}
+        //    }
+        //});
+        return callback({
+            code:1,
+            msg:{
+                choose1:101,
+                choose2:102,
+                choose3:103,
+                touser:'name',
+                fromuser:'yours',
+                wish:'lsdlfkkasdkfksadlf\nzidfksdakflksdklflkdsa',
+                date:'2016年12月1日'
             }
-        });
+        })
     },
     //获取卡券
     getCoupon:function(callback){
@@ -532,18 +567,21 @@ Api = {
     },
     //礼物抽奖
     giftLottery:function(callback){
-        Common.msgBox('loading...');
-        $.ajax({
-            url:'/api/giftlottery',
-            type:'POST',
-            dataType:'json',
-            success:function(data){
-                $('.msgbox').remove();
-                return callback(data);
-                //code=1    msg = 中奖
-                //code=2    msg = 未中奖
-            }
-        });
+        //Common.msgBox('loading...');
+        //$.ajax({
+        //    url:'/api/giftlottery',
+        //    type:'POST',
+        //    dataType:'json',
+        //    success:function(data){
+        //        $('.msgbox').remove();
+        //        return callback(data);
+        //        //code=1    msg = 中奖
+        //        //code=2    msg = 未中奖
+        //    }
+        //});
+        return callback({
+            code:2
+        })
     },
     //留资料
     submitInfo:function(obj,callback){

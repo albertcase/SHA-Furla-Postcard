@@ -5,6 +5,15 @@
 			$('.container .pin').removeClass('current');
 			$('.container .pin').eq(num).addClass('current');
 		},
+		goHomePage:function(){
+			window.location.href = '/template/index.html';
+		},
+		goGiftPage:function(){
+			window.location.href = '/template/gift.html';
+		},
+		goFormPage:function(){
+			window.location.href = '/template/form.html';
+		},
 		msgBox:function(msg,long){
 			if(long){
 				$('body').append('<div class="ajaxpop msgbox minwidthbox"><div class="loading">'+msg+'</div></div>');
