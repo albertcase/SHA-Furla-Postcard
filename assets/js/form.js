@@ -3,7 +3,7 @@
     'use strict';
 
     var controller = function(){
-       this.vjson = ['唐嫣','李微漪','谭元元','陈漫','欧铠淳','黄韵玲'];
+
     };
     controller.prototype = {
         init:function(){
