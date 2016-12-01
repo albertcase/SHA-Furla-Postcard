@@ -135,16 +135,22 @@ class ApiController extends Controller {
 		}
 		$request = $this->Request();
 		$fields = array(
-			'name' => array('notnull', '3'),
+			'firstname' => array('notnull', '3'),
+			'secondname' => array('notnull', '3'),
 			'mobile' => array('mobile', '3'),
-			'address' => array('notnull', '3')
+			'address' => array('notnull', '3'),
+			'email' => array('notnull', '3'),
+			'issend' => array('notnull', '3')
 		);
 		$request->validation($fields);
-		$name = $request->request->get('name');
+		$firstname = $request->request->get('firstname');
+		$secondname = $request->request->get('secondname');
 		$mobile = $request->request->get('mobile');
 		$address = $request->request->get('address');
+		$email = $request->request->get('email');
+		$issend = $request->request->get('issend');
 		$databaseapi = new \Lib\DatabaseAPI();
-		$databaseapi->info($user->id, $name, $mobile, $address);
+		$databaseapi->info($user->id, $firstname, $secondname, $mobile, $address, $email, $issend);
 		return $this->statusPrint(1, '提交成功');
 	}
 
