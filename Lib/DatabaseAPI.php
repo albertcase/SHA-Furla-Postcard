@@ -122,10 +122,12 @@ class DatabaseAPI extends Base {
 			$status = 0;
 		} else {
 			//设置概率
-			$status = 0;
+			
 			$rand = mt_rand(1, 100);
 			if ($rand >= 50) {
 				$status = 1;
+			} else {
+				$status = 0;
 			}
 		}
 		return $this->savelottery($uid, $status, 1);
