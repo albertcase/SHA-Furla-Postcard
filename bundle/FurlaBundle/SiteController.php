@@ -19,10 +19,7 @@ class SiteController extends Controller {
 			$WechatAPI = new \Lib\WechatAPI();
 			$WechatAPI->wechatAuthorize();
 		}
-		var_dump($user);exit;
-		$databaseapi = new \Lib\DatabaseAPI();
-		$type = $databaseapi->checkuser($user->openid);
-		$this->render('site/index', array('type'=>$type));
+		$this->render('site/index');
 		exit;
 	}
 
