@@ -1501,6 +1501,11 @@ End gift page
 #form-contact {
   width: 80vw;
 }
+#form-contact .title {
+  width: 2.65rem;
+  height: 0.31rem;
+  margin: 0 auto 0.2rem;
+}
 #form-contact input[type='text'],
 #form-contact input[type='tel'] {
   margin: 0;

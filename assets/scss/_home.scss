@@ -492,6 +492,10 @@ End gift page
 }
 #form-contact{
   width: 80vw;
+  .title{
+    @include size(2.65rem,0.31rem);
+    margin: 0 auto 0.2rem;
+  }
   input[type='text'],
   input[type='tel']{
     margin: 0;
