@@ -1275,8 +1275,8 @@ Api = {
                         //    start to activate
                         var cardId = data.msg;
                         weixinshare({
-                            title1: '闪耀而温馨的圣诞节即将来临，查收节日惊喜，送出你最真挚的祝福。 ',
-                            des: '即刻参加圣诞活动，赢取惊喜好礼',
+                            title1: '即刻参加圣诞活动，赢取惊喜好礼',
+                            des: '闪耀而温馨的圣诞节即将来临，查收节日惊喜，送出你最真挚的祝福。 ',
                             link: window.location.origin+'/gift?cardid='+cardId,
                             img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
                         },function(){
