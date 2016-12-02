@@ -1008,26 +1008,6 @@ Api = {
          * The function is to drag slide products to destionation area
          *
          * */
-        function getElementLeft(element){
-            var actualLeft = element.offsetLeft;
-            var current = element.offsetParent;
-            while (current !== null){
-                actualLeft += current.offsetLeft;
-                current = current.offsetParent;
-            }
-            return actualLeft;
-        }
-
-        function getElementTop(element){
-            var actualTop = element.offsetTop;
-            var current = element.offsetParent;
-
-            while (current !== null){
-                actualTop += current.offsetTop;
-                current = current.offsetParent;
-            }
-            return actualTop;
-        }
 
 //    drag-block
         var point, x, y,dx,dy;
@@ -1210,6 +1190,8 @@ Api = {
             if(isFull){
                 //接口1
                 self.writeCard(selectedProducts);
+                var pHtml = $('.drag-panel .dest-block').html();
+                $('.box-bottom .dest-block').html(pHtml);
             }else{
                 //console.log('请选择三个产品');
             }
@@ -1313,6 +1295,7 @@ Api = {
 
         });
         function doAniForLetter(){
+            $('.box-bottom').addClass('fade');
             $('.section-letter').addClass('shrinktocorner');
             $('.box-top').addClass('movetocenter');
         };
