@@ -951,12 +951,15 @@ Api = {
                 //
                 $('.container').addClass('fade');
                 self.welcomePage();
+
+
+                //self.writeCard();
+                //self.shareCallback();
                 $('.preload').remove();
             }
         });
 
-        //self.writeCard();
-        //self.shareCallback();
+
     };
     //welcome page
     furla.prototype.welcomePage = function(){
@@ -1304,12 +1307,12 @@ Api = {
                     }
 
                     if(data.status !==1){
-                        alert(data.msg);
+                        Common.alertBox.add(data.msg);
                     }
 
                 });
             }else{
-                alert('好友的名字、祝福、落款缺一不可，请您补充完整');
+                Common.alertBox.add('好友的名字、祝福、落款缺一不可，请您补充完整');
             }
 
 
@@ -1374,7 +1377,7 @@ Api = {
                     }
 
                     //other status
-                    alert(data.msg);
+                    Common.alertBox.add(data.msg);
 
                 });
 

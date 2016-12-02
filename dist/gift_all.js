@@ -1216,7 +1216,7 @@ Api = {
                     isprize = false;
                     self.prize(isprize);
                 }else{
-                    alert(data.msg);
+                    Common.alertBox.add(data.msg);
                 }
             });
         });
