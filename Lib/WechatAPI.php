@@ -36,13 +36,24 @@ class WechatAPI {
   }
 
   public function cardList($cardid){
+    $UserAPI = new \Lib\UserAPI();
+    $user = $UserAPI->userLoad(true);
     $api_url = 'http://api.curio.im/v2/wx/card/js/add/json?access_token='. CURIO_TOKEN;
-    $data[] = array(
-        'card_id' => $cardid,
-        'code' => '',
-        'openid' => ''
-    );
-   
+    // 参数数组
+    if (!$user) {
+        $data[] = array(
+            'card_id' => $cardid,
+            'code' => '',
+            'openid' => ''
+        );
+    } else {
+       $data[] = array(
+            'card_id' => $cardid,
+            'code' => 'S'. date("ym") . sprintf("%04d", $user->id),
+            'openid' => $user->openid
+        );
+
+    }
    
      
     $ch = curl_init ();
