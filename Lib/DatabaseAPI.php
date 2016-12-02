@@ -112,6 +112,7 @@ class DatabaseAPI extends Base {
 			$obj->wish = $wish;
 			$obj->fromuser = $fromuser;
 			$obj->date = $date;
+			$obj->gift = $this->loadgift($id)
 			return $obj;
 		}
 		return NULL;
@@ -150,14 +151,33 @@ class DatabaseAPI extends Base {
 		}
 	}
 
-	public function giftlottery($pid, $uid) {
-		$sql = "SELECT `id` FROM `furla_lottery` WHERE `uid` = ? and pid=?"; 
+	public function loadgift($pid) {
+		$UserAPI = new \Lib\UserAPI();
+		$user = $UserAPI->userLoad(true);
+		if (!$user) {
+			return 0;
+		}
+		$this->inidb();
+		$sql = "SELECT `id` FROM `furla_gift` WHERE `uid` = ? and pid=?"; 
 		$res = $this->db->prepare($sql);
-		$res->bind_param("s", $uid, $pid);
+		$res->bind_param("ss", $user->id, $pid);
 		$res->execute();
 		$res->bind_result($rs);
 		if ($res->fetch()) {
-			return false;
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
+	public function giftlottery($pid, $uid) {
+		$sql = "SELECT `id` FROM `furla_gift` WHERE `uid` = ? and pid=?"; 
+		$res = $this->db->prepare($sql);
+		$res->bind_param("ss", $uid, $pid);
+		$res->execute();
+		$res->bind_result($rs);
+		if ($res->fetch()) {
+			return 0;
 		} else {
 			//设置概率
 			$status = 0;
