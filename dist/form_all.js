@@ -389,17 +389,20 @@ Api = {
     },
     //卡券抽奖
     cardLottery:function(callback){
-        Common.msgBox('loading...');
-        $.ajax({
-            url:'/api/cardlottery',
-            type:'POST',
-            dataType:'json',
-            success:function(data){
-                $('.msgbox').remove();
-                return callback(data);
-                //返回  code=1    msg = 中奖
-                //code=2    msg = 未中奖
-            }
+        //Common.msgBox('loading...');
+        //$.ajax({
+        //    url:'/api/cardlottery',
+        //    type:'POST',
+        //    dataType:'json',
+        //    success:function(data){
+        //        $('.msgbox').remove();
+        //        return callback(data);
+        //        //返回  code=1    msg = 中奖
+        //        //code=2    msg = 未中奖
+        //    }
+        //});
+        return callback({
+            status:1
         });
     },
     //礼物抽奖

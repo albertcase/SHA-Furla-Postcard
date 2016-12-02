@@ -456,37 +456,34 @@
                 //领取卡券
                 Api.getCoupon(function(data){
 
-                    Api.card(function(data){
-                        if(data.status==1){
-                            var cardListJSON = data.msg;
-                            var i=1;
-                            wx.addCard({
-                                cardList: [{
-                                    cardId: cardListJSON[i-1].cardId,
-                                    cardExt: '{"timestamp":"'+cardListJSON[i-1].cardExt.timestamp+'","signature":"'+cardListJSON[i-1].cardExt.signature+'","openid":"'+cardListJSON[i-1].cardExt.openid+'","code":"'+cardListJSON[i-1].cardExt.code+'"}'
-                                }],
-                                success: function(res) {
-                                    var cardList = res.cardList;
-                                    //alert(JSON.stringfiy(res));
-                                },
-                                fail: function(res) {
-                                    //alert(JSON.stringfiy(res));
-                                },
-                                complete: function(res) {
-                                    //alert(JSON.stringfiy(res));
-                                },
-                                cancel: function(res) {
-                                    //alert(JSON.stringfiy(res));
-                                },
-                                trigger: function(res) {
-                                    //alert(JSON.stringfiy(res));
-                                }
-                            });
-                        }else{
-                            Common.alertBox.add(data.msg);
-                        }
-
-                    });
+                    if(data.status==1){
+                        var cardListJSON = data.msg;
+                        var i=1;
+                        wx.addCard({
+                            cardList: [{
+                                cardId: cardListJSON[i-1].cardId,
+                                cardExt: '{"timestamp":"'+cardListJSON[i-1].cardExt.timestamp+'","signature":"'+cardListJSON[i-1].cardExt.signature+'","openid":"'+cardListJSON[i-1].cardExt.openid+'","code":"'+cardListJSON[i-1].cardExt.code+'"}'
+                            }],
+                            success: function(res) {
+                                var cardList = res.cardList;
+                                //alert(JSON.stringfiy(res));
+                            },
+                            fail: function(res) {
+                                //alert(JSON.stringfiy(res));
+                            },
+                            complete: function(res) {
+                                //alert(JSON.stringfiy(res));
+                            },
+                            cancel: function(res) {
+                                //alert(JSON.stringfiy(res));
+                            },
+                            trigger: function(res) {
+                                //alert(JSON.stringfiy(res));
+                            }
+                        });
+                    }else{
+                        Common.alertBox.add(data.msg);
+                    }
 
                 });
                 return;
