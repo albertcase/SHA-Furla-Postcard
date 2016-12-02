@@ -150,8 +150,11 @@
         },2000);
 
         var isprize = false;
+        var curCardId = Common.getParameterByName('cardid');
         $('.btn-postcard').on('touchstart',function(){
-            Api.giftLottery(function(data){
+            Api.giftLottery({
+              id:curCardId
+            },function(data){
                 if(data.status==1){
                     isprize = true;
                     self.prize(isprize);
