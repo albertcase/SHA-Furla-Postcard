@@ -486,15 +486,11 @@ var products = [
             pid:129,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0028_FURLA_AMAZZONE-CROSSBODY-851831-M1.png'
         },
-        {
-            name:'FURLA AMAZZONE',
-            pid:130,
-            imgsrc:'/dist/images/products/FURLA-product_0000s_0029_FURLA_AMAZZONE-CROSSBODY--851831-S1.png'
-        },
+    
         {
             name:'FURLA AMAZZONE',
             pid:131,
-            imgsrc:'/dist/images/products/FURLA-product_0000s_0030_FURLA_AMAZZONE-CROSSBODY--851827-S1.png'
+            imgsrc:'/dist/images/products/FURLA_AMAZZONE-CROSSBODY.png'
         },
 ];
 ;(function(){
