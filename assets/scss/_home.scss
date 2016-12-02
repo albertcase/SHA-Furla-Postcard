@@ -534,7 +534,7 @@ End gift page
     background: url("../images/input-bg.png") no-repeat;
     background-size: 100% 100%;
     border: none;
-    padding: 0.5rem 0.5rem;
+    padding: 0.3rem 0.5rem 0.5rem;
     box-sizing: border-box;
     font-size: 0.24rem;
   }
@@ -549,6 +549,9 @@ End gift page
   .input-box-mobile{
     input[type='text']{
       width: 25%;
+      &:disabled{
+        opacity: 1;
+      }
     }
     input[type='tel']{
       width: 73%;
