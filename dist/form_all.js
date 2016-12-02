@@ -296,7 +296,6 @@ $(document).ready(function(){
 
                 },
                 cancel: function () {
-                    callback();
                 }
             });
             wx.onMenuShareTimeline({
@@ -304,7 +303,7 @@ $(document).ready(function(){
                 link: obj.link,
                 imgUrl: obj.img,
                 success: function () {
-                    console.log('share success to timeline');
+                    callback();
                 },
                 cancel: function () {
 

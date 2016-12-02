@@ -909,7 +909,6 @@ $(document).ready(function(){
 
                 },
                 cancel: function () {
-                    callback();
                 }
             });
             wx.onMenuShareTimeline({
@@ -917,6 +916,7 @@ $(document).ready(function(){
                 link: obj.link,
                 imgUrl: obj.img,
                 success: function () {
+                    callback();
                     console.log('share success to timeline');
                 },
                 cancel: function () {
