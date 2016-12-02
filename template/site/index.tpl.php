@@ -131,7 +131,6 @@
             </div>
             <!-- 盒盖子-->
             <div class="box-top animate delay1"></div>
-            <div class="bg-layer-2"></div>
         </section>
         <!-- 分享之后-->
         <section class="pin pin-4">

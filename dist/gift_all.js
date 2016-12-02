@@ -1210,6 +1210,10 @@ Api = {
             clearTimeout(aaa);
         },1000);
 
+        var bbb = setTimeout(function(){
+            $('.section-letter').addClass('change');
+            clearTimeout(bbb);
+        },2000);
 
         var isprize = false;
         $('.btn-postcard').on('touchstart',function(){

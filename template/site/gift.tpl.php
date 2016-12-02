@@ -57,9 +57,9 @@
                 </div>
             </div>
         </section>
-        <section class="pin pin-gift-2">
+        <section class="pin pin-gift-2 animate">
             <!-- 信件-->
-            <div class="section-letter animate delay1 fade hide">
+            <div class="section-letter">
                 <div class="logo">
                     <img src="/dist/images/logo.png" alt=""/>
                 </div>

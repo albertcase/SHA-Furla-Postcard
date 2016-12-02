@@ -63,19 +63,20 @@ html,body{
   margin: 0 auto;
   min-width: 2.2rem;
   max-width: 4rem;
-  border: #18131b 1px solid;
-  border-radius: 6px;
-  padding: 1px 1px 7px;
+  border: #5e5755 1px solid;
+  border-radius: 0px 3px 3px 3px;
+  padding: 0px 2px 2px 0px;
   span{
-    margin-top: -5px;
+    margin-top: -1px;
+    margin-left: -1px;
     display: block;
-    padding: 0.15rem 0rem;
+    padding: 0.2rem 0rem;
     color: #fff;
     background: #000;
     text-align: center;
     font-size: 0.3rem;
     letter-spacing: 1px;
-    box-shadow: #333 1px 3px 2px;
+    box-shadow: #999 1px 1px 3px;
   }
   a{
     display: block;
@@ -164,7 +165,7 @@ html,body{
 #swiper-products{
   position: relative;
   width: 90vw;
-  margin: 0 auto 0.4rem;
+  margin: 0 auto 0.3rem;
   .swiper-container{
     padding-bottom: 0.5rem;
   }
@@ -241,6 +242,8 @@ html,body{
 
 .btn-writecard{
   margin-top: 0.4rem;
+  position: relative;
+  z-index: 101;
 }
 
 //for box-top
@@ -253,6 +256,12 @@ html,body{
   background: url("../images/box-top.png") no-repeat;
   background-size: 100%;
   @include transform(rotate(-30deg));
+  @include transition(all 1s 1s);
+}
+.movetocenter{
+  top: 4.84rem;
+  left: 50%;
+  @include transform(rotate(0deg) translateX(-50%));
 }
 
 //for section-letter
@@ -281,6 +290,11 @@ html,body{
   .btn-postcard{
     margin-top: 1rem;
   }
+}
+.shrinktocorner{
+  @include transform(scale(0.1));
+  bottom: -90vh;
+  right: -90vw;
 }
 
 .letter-wrap{
@@ -490,6 +504,16 @@ html,body{
   }
 }
 
+.pin-gift-2{
+  .section-letter{
+    right: -100%;
+    @include transition(all 1s);
+    &.change{
+      right: 0;
+    }
+  }
+}
+
 .pin-gift-3{
   .logo{
     padding-top: 1.6rem;
@@ -531,7 +555,7 @@ End gift page
     background: url("../images/input-bg.png") no-repeat;
     background-size: 100% 100%;
     border: none;
-    padding: 0.5rem 0.5rem;
+    padding: 0.3rem 0.5rem 0.5rem;
     box-sizing: border-box;
     font-size: 0.24rem;
   }
@@ -546,6 +570,9 @@ End gift page
   .input-box-mobile{
     input[type='text']{
       width: 25%;
+      &:disabled{
+        opacity: 1;
+      }
     }
     input[type='tel']{
       width: 73%;

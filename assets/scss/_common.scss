@@ -529,34 +529,37 @@ img{
   }
 }
 
-.shrinktocorner{
-  animation-name: shrinktocorner;
-  -webkit-animation-name: shrinktocorner;
-}
-@include keyframes(shrinktocorner){
-  0%   {
-    bottom: 0vh;
-    right: 0vw;
-    @include transform(scale(1));
-  }
-  100% {
-    @include transform(scale(0.1));
-    bottom: -90vh;
-    right: -90vw;
-  }
-}
+//.shrinktocorner{
+//  animation-name: shrinktocorner;
+//  -webkit-animation-name: shrinktocorner;
+//}
+//@include keyframes(shrinktocorner){
+//  0%   {
+//    bottom: 0vh;
+//    right: 0vw;
+//    @include transform(scale(1));
+//  }
+//  100% {
+//    @include transform(scale(0.1));
+//    bottom: -90vh;
+//    right: -90vw;
+//  }
+//}
 
 .movetocenter{
-  animation-name: movetocenter;
-  -webkit-animation-name: movetocenter;
+  //animation-name: movetocenter;
+  //-webkit-animation-name: movetocenter;
+  top: 4.84rem;
+      left: 50%;
+      @include transform(rotate(0deg) translateX(-50%));
 }
-@include keyframes(movetocenter){
-  0%   {
-    @include transform(rotate(-30deg));
-  }
-  100% {
-    top: 4.84rem;
-    left: 50%;
-    @include transform(rotate(0deg) translateX(-50%));
-  }
-}
+//@include keyframes(movetocenter){
+//  0%   {
+//    @include transform(rotate(-30deg));
+//  }
+//  100% {
+//    top: 4.84rem;
+//    left: 50%;
+//    @include transform(rotate(0deg) translateX(-50%));
+//  }
+//}
