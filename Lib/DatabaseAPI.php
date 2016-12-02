@@ -169,10 +169,10 @@ class DatabaseAPI extends Base {
 		return $this->savelottery($uid, $status, 2);
 	}
 
-	public function info($uid, $firstname, $secondname, $mobile, $address, $email, $issend) {
-		$sql = "UPDATE `furla_info` SET firstname = ?, secondname = ?, mobile = ?, address = ?, email = ?, issend = ? where id = ?";
+	public function info($uid, $firstname, $secondname, $areanumber, $mobile, $address, $email, $issend) {
+		$sql = "UPDATE `furla_info` SET firstname = ?, secondname = ?, areanumber = ?, mobile = ?, address = ?, email = ?, issend = ? where id = ?";
 		$res = $this->db->prepare($sql); 
-		$res->bind_param("sssssss", $firstname, $secondname, $mobile, $address, $email, $issend, $uid);
+		$res->bind_param("sssssss", $firstname, $secondname, $areanumber, $mobile, $address, $email, $issend, $uid);
 		if ($res->execute()) {
 			return TRUE;
 		} else {

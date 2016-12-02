@@ -137,6 +137,7 @@ class ApiController extends Controller {
 		$fields = array(
 			'firstname' => array('notnull', '3'),
 			'secondname' => array('notnull', '3'),
+			'areanumber' => array('notnull', '3'),
 			'mobile' => array('mobile', '3'),
 			'address' => array('notnull', '3'),
 			'email' => array('notnull', '3'),
@@ -145,12 +146,13 @@ class ApiController extends Controller {
 		$request->validation($fields);
 		$firstname = $request->request->get('firstname');
 		$secondname = $request->request->get('secondname');
+		$areanumber = $request->request->get('areanumber');
 		$mobile = $request->request->get('mobile');
 		$address = $request->request->get('address');
 		$email = $request->request->get('email');
 		$issend = $request->request->get('issend');
 		$databaseapi = new \Lib\DatabaseAPI();
-		$databaseapi->info($user->id, $firstname, $secondname, $mobile, $address, $email, $issend);
+		$databaseapi->info($user->id, $firstname, $secondname, $areanumber, $mobile, $address, $email, $issend);
 		return $this->statusPrint(1, '提交成功');
 	}
 
