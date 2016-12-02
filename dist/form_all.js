@@ -543,6 +543,7 @@ Api = {
                         inputLastNameVal = document.getElementById('input-lastname').value,
                         inputMailVal = document.getElementById('input-mail').value,
                         inputAddressVal = document.getElementById('input-address').value,
+                        reginCode = document.getElementById('input-regioncode').value?document.getElementById('input-regioncode').value:'+86',
                         issend = $('#input-receive').is(':checked');
                     Api.submitInfo({
                         firstname:inputLastNameVal,
@@ -550,14 +551,15 @@ Api = {
                         mobile:inputMobileVal,
                         address:inputAddressVal,
                         email:inputMailVal,
-                        issend:issend
+                        issend:issend,
+                        areanumber:reginCode
                     },function(data){
                         if(data.status==1){
                             console.log('提交成功');
                             $('#form-contact').remove();
                             $('.success-block').removeClass('hide');
                         }else{
-                            alert(data.msg);
+                            Common.alertBox.add(data.msg);
                         }
                     });
 
