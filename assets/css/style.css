@@ -1065,20 +1065,21 @@ html, body {
   margin: 0 auto;
   min-width: 2.2rem;
   max-width: 4rem;
-  border: #18131b 1px solid;
-  border-radius: 6px;
-  padding: 1px 1px 7px;
+  border: #5e5755 1px solid;
+  border-radius: 0px 3px 3px 3px;
+  padding: 0px 2px 2px 0px;
 }
 .btn span {
-  margin-top: -5px;
+  margin-top: -1px;
+  margin-left: -1px;
   display: block;
-  padding: 0.15rem 0rem;
+  padding: 0.2rem 0rem;
   color: #fff;
   background: #000;
   text-align: center;
   font-size: 0.3rem;
   letter-spacing: 1px;
-  box-shadow: #333 1px 3px 2px;
+  box-shadow: #999 1px 1px 3px;
 }
 .btn a {
   display: block;
