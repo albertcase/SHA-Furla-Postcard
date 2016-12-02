@@ -396,42 +396,25 @@
 
         });
         function doAniForLetter(){
-
-            loadAni();
-
             $('.box-bottom').addClass('fade');
             $('.section-letter').addClass('shrinktocorner');
             $('.box-top').addClass('movetocenter');
+            loadAni();
         };
         //here
         function loadAni(){
             var i = 1;
-            var sequence = true;
-            var reqAnimateNow = new reqAnimate($('.bg-layer-3')[0],{
+            var reqAnimateNow = new reqAnimate($('.bg-layer-3 img')[0],{
                 fps: 6,
                 //totalFrames: 50,
                 time: Infinity,
                 processAnimation: function(){
                     var bgSrc = '/dist/images/rc/rc-'+i+'.png';
-                    //console.log(i);
                     $('.bg-layer-3 img').attr('src',bgSrc);
                     i++;
                     if(i>9){
                         i=1;
                     }
-                    //if(sequence){
-                    //    i++;
-                    //    if(i>9){
-                    //        sequence = false;
-                    //    }
-                    //}else{
-                    //    i--;
-                    //    if(i<2){
-                    //        sequence = true;
-                    //    }
-                    //}
-
-
 
                 },
                 doneAnimation: function(){
@@ -440,7 +423,6 @@
             });
             reqAnimateNow.start();
         };
-        loadAni();
         //test
         //$('.p3-t1').on('touchstart',function(){
         //    self.shareCallback();
