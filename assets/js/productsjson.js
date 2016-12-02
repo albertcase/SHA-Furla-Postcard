@@ -147,7 +147,7 @@ var products = [
         },
         {
             name:'FURLA AMAZZONE',
-            pid:131,
+            pid:130,
             imgsrc:'/dist/images/products/FURLA_AMAZZONE-CROSSBODY.png'
         },
 ];

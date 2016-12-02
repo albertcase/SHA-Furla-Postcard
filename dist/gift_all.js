@@ -640,10 +640,9 @@ var products = [
             pid:129,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0028_FURLA_AMAZZONE-CROSSBODY-851831-M1.png'
         },
-    
         {
             name:'FURLA AMAZZONE',
-            pid:131,
+            pid:130,
             imgsrc:'/dist/images/products/FURLA_AMAZZONE-CROSSBODY.png'
         },
 ];
