@@ -1124,7 +1124,7 @@ Api = {
 
         //shake
         var giftShake = new Shake({
-            threshold: 15, //default velocity threshold for shake to register
+            threshold: 10, //default velocity threshold for shake to register
             timeout: 1000
         });
         giftShake.start();
