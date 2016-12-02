@@ -2,9 +2,9 @@
 
     var weixinshare = function(obj,callback){
         //open debug
-        wx.config({
-            debug:true
-        })
+        //wx.config({
+        //    debug:true
+        //});
         wx.ready(function(){
             wx.onMenuShareAppMessage({
                 title: obj.title1,
