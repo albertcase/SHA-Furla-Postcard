@@ -119,8 +119,14 @@ class ApiController extends Controller {
 		if (!$user) {
 			return $this->statusPrint(0, '未登录');
 		}
+		$request = $this->Request();
+		$fields = array(
+			'id' => array('notnull', '3')
+		);
+		$request->validation($fields);
+		$id = $request->request->get('id');
 		$databaseapi = new \Lib\DatabaseAPI();
-		$rs = $databaseapi->giftlottery($user->id);
+		$rs = $databaseapi->giftlottery($id, $user->id);
 		if ($rs) {
 			return $this->statusPrint(1, '中奖');
 		}

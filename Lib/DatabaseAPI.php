@@ -150,14 +150,14 @@ class DatabaseAPI extends Base {
 		}
 	}
 
-	public function giftlottery($uid) {
-		$sql = "SELECT `id` FROM `furla_lottery` WHERE `uid` = ? and status=1 and type = 2"; 
+	public function giftlottery($pid, $uid) {
+		$sql = "SELECT `id` FROM `furla_lottery` WHERE `uid` = ? and pid=?"; 
 		$res = $this->db->prepare($sql);
-		$res->bind_param("s", $uid);
+		$res->bind_param("s", $uid, $pid);
 		$res->execute();
 		$res->bind_result($rs);
 		if ($res->fetch()) {
-			$status = 0;
+			return false;
 		} else {
 			//设置概率
 			$status = 0;
@@ -166,7 +166,19 @@ class DatabaseAPI extends Base {
 				$status = 1;
 			}
 		}
-		return $this->savelottery($uid, $status, 2);
+		return $this->savegift($pid, $uid, $status);
+	}
+
+	private function savegift($pid, $uid, $status) {
+		$this->inidb();
+		$sql = "INSERT INTO `furla_gift` SET `pid` = ?, `uid` = ?, status = ?";
+		$res = $this->db->prepare($sql); 
+		$res->bind_param("sss", $pid, $uid, $status);
+		if ($res->execute()) {
+			return $status;
+		} else {
+			return FALSE;
+		}
 	}
 
 	public function info($uid, $firstname, $secondname, $areanumber, $mobile, $address, $email, $issend) {
