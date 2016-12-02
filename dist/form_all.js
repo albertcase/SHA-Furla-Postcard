@@ -41,13 +41,13 @@ var Zepto=function(){function L(t){return null==t?String(t):j[S.call(t)]||"objec
 			$('.container .pin').eq(num).addClass('current');
 		},
 		goHomePage:function(){
-			window.location.href = '/template/index.html';
+			window.location.href = '/index';
 		},
 		goGiftPage:function(){
-			window.location.href = '/template/gift.html';
+			window.location.href = '/gift';
 		},
 		goFormPage:function(){
-			window.location.href = '/template/form.html';
+			window.location.href = '/form';
 		},
 		getParameterByName:function(name){
 			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -284,9 +284,9 @@ $(document).ready(function(){
 
     var weixinshare = function(obj,callback){
         //open debug
-        wx.config({
-            debug:true
-        })
+        //wx.config({
+        //    debug:true
+        //});
         wx.ready(function(){
             wx.onMenuShareAppMessage({
                 title: obj.title1,
@@ -332,14 +332,14 @@ $(document).ready(function(){
 }).call(this);
 
 $(document).ready(function(){
-    weixinshare({
-        title1: 'FURLA 为您准备了一份圣诞惊喜！请点击查收。',
-        des: '即刻参加圣诞活动，赢取惊喜好礼',
-        link: window.location.origin,
-        img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
-    },function(){
-        console.log('nothing')
-    });
+    //weixinshare({
+    //    title1: 'FURLA 为您准备了一份圣诞惊喜！请点击查收。',
+    //    des: '即刻参加圣诞活动，赢取惊喜好礼',
+    //    link: window.location.origin,
+    //    img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
+    //},function(){
+    //    console.log('nothing')
+    //});
 });
 
 /*All the api collection*/
