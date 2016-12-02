@@ -82,7 +82,7 @@
 
                 </div>
             </div>
-            <div class="btn btn-writecard hide"><span>写下你的祝福</span></div>
+            <div class="btn btn-writecard hide"><span>写下您的祝福</span></div>
             <!-- 盒盖子-->
             <div class="box-top"></div>
         </section>
