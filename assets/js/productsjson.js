@@ -10,22 +10,22 @@ var products = [
             imgsrc:'/dist/images/products/FURLA-product_0000s_0001_FURLA_TRIBE-BANGLE-46MM_856001.png'
         },
         {
-            name:'FURLA LADY BLOGGER KEYRING',
+            name:'FURLA KEYRING',
             pid:103,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0002_FURLA_LADY-BLOGGER-KEYRING-BIG-TAG_852289.png'
         },
         {
-            name:'FURLA ELISA KEYRING STELLA C FRANGE',
+            name:'FURLA KEYRING',
             pid:104,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0003_FURLA_ELISA-KEYRING-STELLA-C-FRANGE_852064.png'
         },
         {
-            name:'FURLA ELISA KEYRING CUORE',
+            name:'FURLA KEYRING',
             pid:105,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0004_FURLA_ELISA-KEYRING-CUORE-C-FRANGE_852056.png'
         },
     {
-            name:'FURLA ASTREA OCCH',
+            name:'FURLA ASTREA',
             pid:106,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0005_FURLA_ASTREA-OCCH-DONNA-COL-0579_849237.png'
         },
@@ -35,17 +35,17 @@ var products = [
             imgsrc:'/dist/images/products/FURLA-product_0000s_0006_FURLA_ARMONIA-OCCH-DONNA-COL-0700_849230.png'
         },
         {
-            name:'FURLA ARMONIA OCCH',
+            name:'FURLA ARMONIA',
             pid:108,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0007_FURLA_ARMONIA-OCCH-DONNA-COL-0GB4_849711.png'
         },
         {
-            name:'FURLA ALTEA OCCH',
+            name:'FURLA ALTEA',
             pid:109,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0008_FURLA_ALTEA-OCCH-DONNA-COL-0300_01_849236.png'
         },
         {
-            name:'FURLA AMAZZONE MINI',
+            name:'FURLA AMAZZONE',
             pid:110,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0009_FURLA_AMAZZONE-MINI-CROSSBODY_851858.png'
         },
@@ -55,7 +55,7 @@ var products = [
             imgsrc:'/dist/images/products/FURLA-product_0000s_0010_FURLA_AMAZZONE-MINI-CROSSBODY_02_851838.png'
         },
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA_METROPOLIS',
             pid:112,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0011_FURLA_AMAZZONE-MINI-CROSSBODY_01_851837.png'
         },
