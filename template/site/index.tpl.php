@@ -11,15 +11,6 @@
     <link rel="stylesheet" type="text/css" href="/dist/css/swiper.min.css" />
     <link rel="stylesheet" type="text/css" href="/dist/css/style.css" />
     <script type="text/javascript" src="http://wechatjs.curio.im/api/v1/js/b205e622-e695-4157-b5d2-eae508c0454a/wechat.js"></script>
-    <!--<script type="text/javascript" src="/assets/js/lib/zepto.min.js"></script>-->
-    <!--<script type="text/javascript" src="/assets/js/lib/pre-loader.js"></script>-->
-    <!--<script type="text/javascript" src="/assets/js/lib/swiper.min.js"></script>-->
-    <!--<script type="text/javascript" src="/assets/js/rem.js"></script>-->
-    <!--<script type="text/javascript" src="/assets/js/productsjson.js"></script>-->
-    <!--<script type="text/javascript" src="/assets/js/common.js"></script>-->
-    <!--<script type="text/javascript" src="/assets/js/wxshare.js"></script>-->
-    <!--<script type="text/javascript" src="/assets/js/api.js"></script>-->
-    <!--<script type="text/javascript" src="/assets/js/home.js"></script>-->
     <script type="text/javascript" src="/dist/js/home_all.min.js"></script>
 </head>
 <body class="page-home">
