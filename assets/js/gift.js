@@ -52,9 +52,9 @@
         var self = this;
         Common.gotoPin(0);
         //imulate shake function test
-        $('.pg1-t1').on('touchstart',function(){
-            openBox();
-        });
+        //$('.pg1-t1').on('touchstart',function(){
+        //    openBox();
+        //});
 
         //shake
         var giftShake = new Shake({
@@ -126,7 +126,7 @@
                         reqAnimateNow.cancel();
                         //show box and letter
                         $('.box-animate').addClass('fadeout').remove(1000);
-                        $('.box-bottom').addClass('fade');
+                        $('.box-bottom').removeClass('hide').addClass('fade');
                         $('.pg1-t2').removeClass('hide');
                         $('.pg1-t1').addClass('pg1-tt');
                         $('.pg1-t1 img').attr('src','/dist/images/text-2.png');

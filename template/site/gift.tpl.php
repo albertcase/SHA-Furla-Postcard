@@ -35,7 +35,7 @@
                     <img src="/dist/images/t-open.png" alt=""/>
                 </div>
             </div>
-            <div class="box-bottom animate">
+            <div class="box-bottom animate hide">
                 <div class="dest-block-wrap">
                     <div class="dest-block">
                         <!--<div class="item item-dest item-1">-->
