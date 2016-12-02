@@ -950,14 +950,14 @@ $(document).ready(function(){
 }).call(this);
 
 $(document).ready(function(){
-    //weixinshare({
-    //    title1: 'FURLA 为您准备了一份圣诞惊喜！请点击查收。',
-    //    des: '即刻参加圣诞活动，赢取惊喜好礼',
-    //    link: window.location.origin,
-    //    img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
-    //},function(){
-    //    console.log('nothing')
-    //});
+    weixinshare({
+        title1: 'FURLA 为您准备了一份圣诞惊喜！请点击查收。',
+        des: '即刻参加圣诞活动，赢取惊喜好礼',
+        link: window.location.origin,
+        img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
+    },function(){
+        console.log('nothing')
+    });
 });
 
 /*All the api collection*/
@@ -1146,15 +1146,21 @@ Api = {
             var dbEle = $('.dest-block');
             var dateEle = $('.letter-date');
             var curCardId = Common.getParameterByName('cardid');
-            Api.getLetter({data:curCardId},function(data){
+            Api.getLetter({id:curCardId},function(data){
                 if(data.status==1){
                     var newdata = data.msg;
                     var dbHtml='';
-                    var j=0;
                     for(var i=0;i<products.length;i++){
-                      if((products[i].pid == newdata.choose1)||(products[i].pid == newdata.choose2)||(products[i].pid == newdata.choose3)){
-                          dbHtml = dbHtml+'<div class="item item-dest item-'+j+'"><img src="'+products[i].imgsrc+'" alt=""/></div>';
-                      }
+                        if(products[i].pid == newdata.choose1){
+                            dbHtml = dbHtml+'<div class="item item-dest item-1"><img src="'+products[i].imgsrc+'" alt=""/></div>';
+                        };
+                        if(products[i].pid == newdata.choose2){
+                            dbHtml = dbHtml+'<div class="item item-dest item-2"><img src="'+products[i].imgsrc+'" alt=""/></div>';
+                        };
+                        if(products[i].pid == newdata.choose3){
+                            dbHtml = dbHtml+'<div class="item item-dest item-3"><img src="'+products[i].imgsrc+'" alt=""/></div>';
+                        };
+
                     };
                     dbEle.html(dbHtml);
                     inputName.val(newdata.touser).attr('disabled','true');
