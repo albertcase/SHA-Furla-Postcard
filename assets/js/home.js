@@ -26,6 +26,16 @@
             baseurl + 'text-prize-2.png',
             baseurl + 'text-prize-4.png',
             baseurl + 'lottery-t1.png',
+            baseurl + 'rc/rc-1.png',
+            baseurl + 'rc/rc-2.png',
+            baseurl + 'rc/rc-3.png',
+            baseurl + 'rc/rc-4.png',
+            baseurl + 'rc/rc-5.png',
+            baseurl + 'rc/rc-6.png',
+            baseurl + 'rc/rc-7.png',
+            baseurl + 'rc/rc-8.png',
+            baseurl + 'rc/rc-9.png',
+            baseurl + 'rc/rc-10.png',
         ];
         var i = 0;
         new preLoader(imagesArray, {
@@ -362,8 +372,8 @@
                         //    start to activate
                         var cardId = data.msg;
                         weixinshare({
-                            title1: '即刻参加圣诞活动，赢取惊喜好礼',
-                            des: '闪耀而温馨的圣诞节即将来临，查收节日惊喜，送出你最真挚的祝福。 ',
+                            title1: 'FURLA 为您准备了一份圣诞惊喜！请点击查收。',
+                            des: '闪耀而温馨的圣诞节即将来临，查收节日惊喜，送出您最真挚的祝福。 ',
                             link: window.location.origin+'/gift?cardid='+cardId,
                             img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
                         },function(){
@@ -386,11 +396,51 @@
 
         });
         function doAniForLetter(){
+
+            loadAni();
+
             $('.box-bottom').addClass('fade');
             $('.section-letter').addClass('shrinktocorner');
             $('.box-top').addClass('movetocenter');
         };
+        //here
+        function loadAni(){
+            var i = 1;
+            var sequence = true;
+            var reqAnimateNow = new reqAnimate($('.bg-layer-3')[0],{
+                fps: 6,
+                //totalFrames: 50,
+                time: Infinity,
+                processAnimation: function(){
+                    var bgSrc = '/dist/images/rc/rc-'+i+'.png';
+                    //console.log(i);
+                    $('.bg-layer-3 img').attr('src',bgSrc);
+                    i++;
+                    if(i>9){
+                        i=1;
+                    }
+                    //if(sequence){
+                    //    i++;
+                    //    if(i>9){
+                    //        sequence = false;
+                    //    }
+                    //}else{
+                    //    i--;
+                    //    if(i<2){
+                    //        sequence = true;
+                    //    }
+                    //}
 
+
+
+                },
+                doneAnimation: function(){
+
+                }
+            });
+            reqAnimateNow.start();
+        };
+        loadAni();
         //test
         //$('.p3-t1').on('touchstart',function(){
         //    self.shareCallback();

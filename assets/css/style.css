@@ -938,6 +938,13 @@ html, body {
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
 }
+.bg .bg-layer-3 {
+  position: absolute;
+  right: -0px;
+  top: -0px;
+  width: 7.5rem;
+  height: 2.2rem;
+}
 
 .pin {
   display: none;

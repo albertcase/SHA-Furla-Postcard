@@ -30,7 +30,17 @@ html,body{
       left: auto;
       right: -0.2rem;
       @include transform(rotate(90deg));
+
     }
+  }
+  .bg-layer-3{
+    position: absolute;
+    right: -0px;
+    top: -0px;
+    @include size(7.5rem,2.2rem);
+    //background-image: url("../images/rc/rc-1.png");
+    //background-repeat: no-repeat;
+    //background-size: 100% 100%;
   }
 }
 

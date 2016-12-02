@@ -13,11 +13,11 @@ var rename = require('gulp-rename'),
 
 //Define the app path
 var path = {
-    all:['./template/*.html','./assets/css/*.css','./assets/js/*.js'    ,'./assets/js/lib/*.js'],
+    all:['./template/*.html','./assets/css/*.css','./assets/js/*.js','./assets/js/lib/*.js'],
     template:['./template/*.html'],
     css:['./assets/css/*.css'],
     js:['./assets/js/lib/zepto.min.js','./assets/js/lib/pre-loader.js','./assets/js/rem.js','./assets/js/common.js','./assets/js/wxshare.js','./assets/js/api.js','./assets/js/home.js'],
-    homejs:['./assets/js/lib/zepto.min.js','./assets/js/lib/pre-loader.js','./assets/js/lib/swiper.min.js','./assets/js/lib/shake.js','./assets/js/rem.js','./assets/js/productsjson.js','./assets/js/common.js','./assets/js/wxshare.js','./assets/js/api.js','./assets/js/home.js'],
+    homejs:['./assets/js/lib/zepto.min.js','./assets/js/lib/pre-loader.js','./assets/js/lib/reqAnimate.js','./assets/js/lib/swiper.min.js','./assets/js/rem.js','./assets/js/productsjson.js','./assets/js/common.js','./assets/js/wxshare.js','./assets/js/api.js','./assets/js/home.js'],
     giftjs:['./assets/js/lib/zepto.min.js','./assets/js/lib/pre-loader.js','./assets/js/lib/reqAnimate.js','./assets/js/lib/shake.js','./assets/js/rem.js','./assets/js/productsjson.js','./assets/js/common.js','./assets/js/wxshare.js','./assets/js/api.js','./assets/js/gift.js'],
     formjs:['./assets/js/lib/zepto.min.js','./assets/js/rem.js','./assets/js/common.js','./assets/js/wxshare.js','./assets/js/api.js','./assets/js/form.js'],
     images:['./assets/images/*'],

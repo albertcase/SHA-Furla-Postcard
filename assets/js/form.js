@@ -103,7 +103,7 @@
                         mobile:inputMobileVal,
                         address:inputAddressVal,
                         email:inputMailVal,
-                        issend:issend,
+                        issend:issend?1:0,
                         areanumber:reginCode
                     },function(data){
                         if(data.status==1){
