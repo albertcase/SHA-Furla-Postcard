@@ -981,6 +981,7 @@ Api = {
     },
     //查询贺卡
     //参数  id
+
     getLetter:function(obj,callback){
         $.ajax({
             url:'/api/loadcard',
@@ -989,6 +990,9 @@ Api = {
             data:obj,
             success:function(data){
                 return callback(data);
+                //data:gift
+                //gift=1抽过
+                //gift = 0,没抽过
                 //返回  code=1    msg =  {choose1 choose2 choose3 wish date}
             }
         });
@@ -1027,7 +1031,6 @@ Api = {
     //id
     giftLottery:function(obj,callback){
         Common.msgBox('loading...');
-        
         $.ajax({
             url:'/api/giftlottery',
             type:'POST',
@@ -1070,7 +1073,7 @@ Api = {
 ;(function(){
 
     var gift = function(){
-
+        this.enableGift = true;
     };
     //init
     gift.prototype.init = function(){
@@ -1151,6 +1154,13 @@ Api = {
             Api.getLetter({id:curCardId},function(data){
                 if(data.status==1){
                     var newdata = data.msg;
+                    if(newdata.gift==1){
+                    //    已经抽奖
+                        self.enableGift = false;
+                    }else if(newdata.gift==0){
+                    //    未抽奖
+                        self.enableGift = true;
+                    }
                     var dbHtml='';
                     for(var i=0;i<products.length;i++){
                         if(products[i].pid == newdata.choose1){
@@ -1211,16 +1221,20 @@ Api = {
         var aaa = setTimeout(function(){
             Common.gotoPin(1);
             clearTimeout(aaa);
-        },1000);
+        },500);
 
         var bbb = setTimeout(function(){
             $('.section-letter').addClass('change');
             clearTimeout(bbb);
-        },2000);
+        },1000);
 
         var isprize = false;
         var curCardId = Common.getParameterByName('cardid');
         $('.btn-postcard').on('touchstart',function(){
+            if(!self.enableGift){
+                Common.alertBox.add('该好友送给你的抽奖机会已使用');
+                return;
+            };
             Api.giftLottery({
               id:curCardId
             },function(data){
