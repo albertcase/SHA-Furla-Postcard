@@ -901,10 +901,6 @@ $(document).ready(function(){
 ;(function(){
 
     var weixinshare = function(obj,callback){
-        //open debug
-        //wx.config({
-        //    debug:true
-        //});
         wx.ready(function(){
             wx.onMenuShareAppMessage({
                 title: obj.title1,
@@ -1023,6 +1019,9 @@ Api = {
                 //code=2    msg = 未中奖
             }
         });
+        //return callback({
+        //    status:1
+        //});
     },
     //礼物抽奖
     giftLottery:function(callback){
@@ -1146,15 +1145,21 @@ Api = {
             var dbEle = $('.dest-block');
             var dateEle = $('.letter-date');
             var curCardId = Common.getParameterByName('cardid');
-            Api.getLetter({data:curCardId},function(data){
+            Api.getLetter({id:curCardId},function(data){
                 if(data.status==1){
                     var newdata = data.msg;
                     var dbHtml='';
-                    var j=0;
                     for(var i=0;i<products.length;i++){
-                      if((products[i].pid == newdata.choose1)||(products[i].pid == newdata.choose2)||(products[i].pid == newdata.choose3)){
-                          dbHtml = dbHtml+'<div class="item item-dest item-'+j+'"><img src="'+products[i].imgsrc+'" alt=""/></div>';
-                      }
+                        if(products[i].pid == newdata.choose1){
+                            dbHtml = dbHtml+'<div class="item item-dest item-1"><img src="'+products[i].imgsrc+'" alt=""/></div>';
+                        };
+                        if(products[i].pid == newdata.choose2){
+                            dbHtml = dbHtml+'<div class="item item-dest item-2"><img src="'+products[i].imgsrc+'" alt=""/></div>';
+                        };
+                        if(products[i].pid == newdata.choose3){
+                            dbHtml = dbHtml+'<div class="item item-dest item-3"><img src="'+products[i].imgsrc+'" alt=""/></div>';
+                        };
+
                     };
                     dbEle.html(dbHtml);
                     inputName.val(newdata.touser).attr('disabled','true');

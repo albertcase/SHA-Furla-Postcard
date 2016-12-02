@@ -747,10 +747,6 @@ $(document).ready(function(){
 ;(function(){
 
     var weixinshare = function(obj,callback){
-        //open debug
-        //wx.config({
-        //    debug:true
-        //});
         wx.ready(function(){
             wx.onMenuShareAppMessage({
                 title: obj.title1,
@@ -869,6 +865,9 @@ Api = {
                 //code=2    msg = 未中奖
             }
         });
+        //return callback({
+        //    status:1
+        //});
     },
     //礼物抽奖
     giftLottery:function(callback){
@@ -951,8 +950,6 @@ Api = {
                 //
                 $('.container').addClass('fade');
                 self.welcomePage();
-
-
                 //self.writeCard();
                 //self.shareCallback();
                 $('.preload').remove();
@@ -1014,26 +1011,6 @@ Api = {
          * The function is to drag slide products to destionation area
          *
          * */
-        function getElementLeft(element){
-            var actualLeft = element.offsetLeft;
-            var current = element.offsetParent;
-            while (current !== null){
-                actualLeft += current.offsetLeft;
-                current = current.offsetParent;
-            }
-            return actualLeft;
-        }
-
-        function getElementTop(element){
-            var actualTop = element.offsetTop;
-            var current = element.offsetParent;
-
-            while (current !== null){
-                actualTop += current.offsetTop;
-                current = current.offsetParent;
-            }
-            return actualTop;
-        }
 
 //    drag-block
         var point, x, y,dx,dy;
@@ -1216,6 +1193,8 @@ Api = {
             if(isFull){
                 //接口1
                 self.writeCard(selectedProducts);
+                var pHtml = $('.drag-panel .dest-block').html();
+                $('.box-bottom .dest-block').html(pHtml);
             }else{
                 //console.log('请选择三个产品');
             }
@@ -1319,6 +1298,7 @@ Api = {
 
         });
         function doAniForLetter(){
+            $('.box-bottom').addClass('fade');
             $('.section-letter').addClass('shrinktocorner');
             $('.box-top').addClass('movetocenter');
         };
@@ -1387,7 +1367,35 @@ Api = {
             if(isGetCoupon){
                 //领取卡券
                 Api.getCoupon(function(data){
-                    //console.log(data);
+
+                    if(data.status==1){
+                        var cardListJSON = data.msg;
+                        var i=1;
+                        wx.addCard({
+                            cardList: [{
+                                cardId: cardListJSON[i-1].cardId,
+                                cardExt: '{"timestamp":"'+cardListJSON[i-1].cardExt.timestamp+'","signature":"'+cardListJSON[i-1].cardExt.signature+'","openid":"'+cardListJSON[i-1].cardExt.openid+'","code":"'+cardListJSON[i-1].cardExt.code+'"}'
+                            }],
+                            success: function(res) {
+                                var cardList = res.cardList;
+                                //alert(JSON.stringfiy(res));
+                            },
+                            fail: function(res) {
+                                //alert(JSON.stringfiy(res));
+                            },
+                            complete: function(res) {
+                                //alert(JSON.stringfiy(res));
+                            },
+                            cancel: function(res) {
+                                //alert(JSON.stringfiy(res));
+                            },
+                            trigger: function(res) {
+                                //alert(JSON.stringfiy(res));
+                            }
+                        });
+                    }else{
+                        Common.alertBox.add(data.msg);
+                    }
 
                 });
                 return;

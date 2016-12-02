@@ -365,6 +365,35 @@ html,body{
 }
 
 //for pin3
+.pin-3{
+  .box-bottom{
+    position: relative;
+    opacity: 0;
+    .dest-block-wrap{
+      width: 6.75rem;
+      height: 4.04rem;
+      margin: 0 auto;
+      background: url('../images/box-bottom.jpg') no-repeat;
+      background-size: 100%;
+    }
+    .dest-block{
+      position: relative;
+      z-index: 2;
+      background: none;
+    }
+    .card{
+      position: absolute;
+      z-index: 1;
+      @include size(1.97rem,2.19rem);
+      left: 50%;
+      top: 46%;
+      @include transform(translate(-50%,-50%));
+      &.goright{
+        left: 200vw;
+      }
+    }
+  }
+}
 .pin-3-content{
   .logo{
     padding-top: 1.6rem;

@@ -61,6 +61,9 @@ Api = {
                 //code=2    msg = 未中奖
             }
         });
+        //return callback({
+        //    status:1
+        //});
     },
     //礼物抽奖
     giftLottery:function(callback){

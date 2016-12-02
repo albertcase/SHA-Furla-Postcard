@@ -109,7 +109,6 @@
                         <!--用绽放的星芒，-->
                         <!--为您装点一个绚烂的惊喜。-->
                         <textarea name="l-content" id="l-content"  cols="30" rows="3" wrap="hard" maxlength="60"></textarea>
-                        <!--<div contenteditable="true" class="test" style="font-size: 0.26rem;line-height: 2">敬爱的</div>-->
                     </div>
                     <div class="letter-bottom">
                         <label>敬爱的</label>
@@ -118,6 +117,17 @@
                     <div class="letter-date">2016年11月24日</div>
                 </div>
                 <div class="btn btn-postcard"><span>发送祝福，即刻抽奖</span></div>
+            </div>
+            <div class="box-bottom animate">
+                <div class="dest-block-wrap">
+                    <div class="dest-block"></div>
+                    <div class="card animate">
+                        <img src="/dist/images/card.png" alt=""/>
+                    </div>
+                </div>
+                <div class="pg1-t2 hide">
+                    <img src="/dist/images/text-3.png" alt=""/>
+                </div>
             </div>
             <!-- 盒盖子-->
             <div class="box-top animate delay1"></div>

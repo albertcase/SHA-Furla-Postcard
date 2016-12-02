@@ -1368,6 +1368,39 @@ html, body {
   margin-top: 0.2rem;
 }
 
+.pin-3 .box-bottom {
+  position: relative;
+  opacity: 0;
+}
+.pin-3 .box-bottom .dest-block-wrap {
+  width: 6.75rem;
+  height: 4.04rem;
+  margin: 0 auto;
+  background: url("../images/box-bottom.jpg") no-repeat;
+  background-size: 100%;
+}
+.pin-3 .box-bottom .dest-block {
+  position: relative;
+  z-index: 2;
+  background: none;
+}
+.pin-3 .box-bottom .card {
+  position: absolute;
+  z-index: 1;
+  width: 1.97rem;
+  height: 2.19rem;
+  left: 50%;
+  top: 46%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.pin-3 .box-bottom .card.goright {
+  left: 200vw;
+}
+
 .pin-3-content .logo {
   padding-top: 1.6rem;
 }

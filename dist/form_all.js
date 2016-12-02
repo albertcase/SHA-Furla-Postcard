@@ -283,10 +283,6 @@ $(document).ready(function(){
 ;(function(){
 
     var weixinshare = function(obj,callback){
-        //open debug
-        //wx.config({
-        //    debug:true
-        //});
         wx.ready(function(){
             wx.onMenuShareAppMessage({
                 title: obj.title1,
@@ -405,6 +401,9 @@ Api = {
                 //code=2    msg = 未中奖
             }
         });
+        //return callback({
+        //    status:1
+        //});
     },
     //礼物抽奖
     giftLottery:function(callback){
