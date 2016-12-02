@@ -6,13 +6,13 @@
 			$('.container .pin').eq(num).addClass('current');
 		},
 		goHomePage:function(){
-			window.location.href = '/template/index.html';
+			window.location.href = '/index';
 		},
 		goGiftPage:function(){
-			window.location.href = '/template/gift.html';
+			window.location.href = '/gift';
 		},
 		goFormPage:function(){
-			window.location.href = '/template/form.html';
+			window.location.href = '/form';
 		},
 		getParameterByName:function(name){
 			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
