@@ -52,9 +52,9 @@
         var self = this;
         Common.gotoPin(0);
         //imulate shake function
-        $('.pg1-t1').on('touchstart',function(){
-            openBox();
-        });
+        //$('.pg1-t1').on('touchstart',function(){
+        //    openBox();
+        //});
 
         //shake
         var giftShake = new Shake({

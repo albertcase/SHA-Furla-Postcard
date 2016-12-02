@@ -392,10 +392,10 @@
         };
 
         //test
-        $('.p3-t1').on('touchstart',function(){
-            self.shareCallback();
-
-        });
+        //$('.p3-t1').on('touchstart',function(){
+        //    self.shareCallback();
+        //
+        //});
 
 
     };

@@ -341,12 +341,12 @@ b.params.hashnav&&b.hashnav&&b.hashnav.init(),b.params.a11y&&b.a11y&&b.a11y.init
 })(document, window);
 var products = [
         {
-            name:'FURLA TRIBE BANGLE',
+            name:'FURLA TRIBE',
             pid:101,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0000_FURLA_TRIBE-BANGLE-18MM-ZIG-ZAG_02_856027.png'
         },
         {
-            name:'FURLA TRIBE BANGLE',
+            name:'FURLA TRIBE',
             pid:102,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0001_FURLA_TRIBE-BANGLE-46MM_856001.png'
         },
@@ -1305,10 +1305,10 @@ Api = {
         };
 
         //test
-        $('.p3-t1').on('touchstart',function(){
-            self.shareCallback();
-
-        });
+        //$('.p3-t1').on('touchstart',function(){
+        //    self.shareCallback();
+        //
+        //});
 
 
     };

@@ -495,12 +495,12 @@ var Zepto=function(){function L(t){return null==t?String(t):j[S.call(t)]||"objec
 })(document, window);
 var products = [
         {
-            name:'FURLA TRIBE BANGLE',
+            name:'FURLA TRIBE',
             pid:101,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0000_FURLA_TRIBE-BANGLE-18MM-ZIG-ZAG_02_856027.png'
         },
         {
-            name:'FURLA TRIBE BANGLE',
+            name:'FURLA TRIBE',
             pid:102,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0001_FURLA_TRIBE-BANGLE-46MM_856001.png'
         },
@@ -1119,9 +1119,9 @@ Api = {
         var self = this;
         Common.gotoPin(0);
         //imulate shake function
-        $('.pg1-t1').on('touchstart',function(){
-            openBox();
-        });
+        //$('.pg1-t1').on('touchstart',function(){
+        //    openBox();
+        //});
 
         //shake
         var giftShake = new Shake({
