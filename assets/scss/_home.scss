@@ -165,7 +165,7 @@ html,body{
 #swiper-products{
   position: relative;
   width: 90vw;
-  margin: 0 auto 0.4rem;
+  margin: 0 auto 0.3rem;
   .swiper-container{
     padding-bottom: 0.5rem;
   }
@@ -242,6 +242,8 @@ html,body{
 
 .btn-writecard{
   margin-top: 0.4rem;
+  position: relative;
+  z-index: 101;
 }
 
 //for box-top
