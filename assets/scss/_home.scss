@@ -504,6 +504,16 @@ html,body{
   }
 }
 
+.pin-gift-2{
+  .section-letter{
+    right: -100%;
+    @include transition(all 1s);
+    &.change{
+      right: 0;
+    }
+  }
+}
+
 .pin-gift-3{
   .logo{
     padding-top: 1.6rem;

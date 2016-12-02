@@ -1441,6 +1441,17 @@ html, body {
   margin: 0.5rem auto 0;
 }
 
+.pin-gift-2 .section-letter {
+  right: -100%;
+  -moz-transition: all 1s;
+  -o-transition: all 1s;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+.pin-gift-2 .section-letter.change {
+  right: 0;
+}
+
 .pin-gift-3 .logo {
   padding-top: 1.6rem;
 }
