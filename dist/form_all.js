@@ -296,7 +296,6 @@ $(document).ready(function(){
 
                 },
                 cancel: function () {
-                    callback();
                 }
             });
             wx.onMenuShareTimeline({
@@ -304,7 +303,7 @@ $(document).ready(function(){
                 link: obj.link,
                 imgUrl: obj.img,
                 success: function () {
-                    console.log('share success to timeline');
+                    callback();
                 },
                 cancel: function () {
 
@@ -363,6 +362,7 @@ Api = {
     },
     //查询贺卡
     //参数  id
+
     getLetter:function(obj,callback){
         $.ajax({
             url:'/api/loadcard',
@@ -371,6 +371,9 @@ Api = {
             data:obj,
             success:function(data){
                 return callback(data);
+                //data:gift
+                //gift=1抽过
+                //gift = 0,没抽过
                 //返回  code=1    msg =  {choose1 choose2 choose3 wish date}
             }
         });

@@ -341,32 +341,32 @@ b.params.hashnav&&b.hashnav&&b.hashnav.init(),b.params.a11y&&b.a11y&&b.a11y.init
 })(document, window);
 var products = [
         {
-            name:'FURLA TRIBE BANGLE',
+            name:'FURLA TRIBE',
             pid:101,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0000_FURLA_TRIBE-BANGLE-18MM-ZIG-ZAG_02_856027.png'
         },
         {
-            name:'FURLA TRIBE BANGLE',
+            name:'FURLA TRIBE',
             pid:102,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0001_FURLA_TRIBE-BANGLE-46MM_856001.png'
         },
         {
-            name:'FURLA LADY BLOGGER KEYRING',
+            name:'FURLA KEYRING',
             pid:103,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0002_FURLA_LADY-BLOGGER-KEYRING-BIG-TAG_852289.png'
         },
         {
-            name:'FURLA ELISA KEYRING STELLA C FRANGE',
+            name:'FURLA KEYRING',
             pid:104,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0003_FURLA_ELISA-KEYRING-STELLA-C-FRANGE_852064.png'
         },
         {
-            name:'FURLA ELISA KEYRING CUORE',
+            name:'FURLA KEYRING',
             pid:105,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0004_FURLA_ELISA-KEYRING-CUORE-C-FRANGE_852056.png'
         },
     {
-            name:'FURLA ASTREA OCCH',
+            name:'FURLA ASTREA',
             pid:106,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0005_FURLA_ASTREA-OCCH-DONNA-COL-0579_849237.png'
         },
@@ -376,17 +376,17 @@ var products = [
             imgsrc:'/dist/images/products/FURLA-product_0000s_0006_FURLA_ARMONIA-OCCH-DONNA-COL-0700_849230.png'
         },
         {
-            name:'FURLA ARMONIA OCCH',
+            name:'FURLA ARMONIA',
             pid:108,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0007_FURLA_ARMONIA-OCCH-DONNA-COL-0GB4_849711.png'
         },
         {
-            name:'FURLA ALTEA OCCH',
+            name:'FURLA ALTEA',
             pid:109,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0008_FURLA_ALTEA-OCCH-DONNA-COL-0300_01_849236.png'
         },
         {
-            name:'FURLA AMAZZONE MINI',
+            name:'FURLA AMAZZONE',
             pid:110,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0009_FURLA_AMAZZONE-MINI-CROSSBODY_851858.png'
         },
@@ -396,7 +396,7 @@ var products = [
             imgsrc:'/dist/images/products/FURLA-product_0000s_0010_FURLA_AMAZZONE-MINI-CROSSBODY_02_851838.png'
         },
         {
-            name:'FURLA_METROPOLIS MINI CROSSBODY',
+            name:'FURLA_METROPOLIS',
             pid:112,
             imgsrc:'/dist/images/products/FURLA-product_0000s_0011_FURLA_AMAZZONE-MINI-CROSSBODY_01_851837.png'
         },
@@ -489,12 +489,7 @@ var products = [
         {
             name:'FURLA AMAZZONE',
             pid:130,
-            imgsrc:'/dist/images/products/FURLA-product_0000s_0029_FURLA_AMAZZONE-CROSSBODY--851831-S1.png'
-        },
-        {
-            name:'FURLA AMAZZONE',
-            pid:131,
-            imgsrc:'/dist/images/products/FURLA-product_0000s_0030_FURLA_AMAZZONE-CROSSBODY--851827-S1.png'
+            imgsrc:'/dist/images/products/FURLA_AMAZZONE-CROSSBODY.png'
         },
 ];
 ;(function(){
@@ -760,7 +755,6 @@ $(document).ready(function(){
 
                 },
                 cancel: function () {
-                    callback();
                 }
             });
             wx.onMenuShareTimeline({
@@ -768,6 +762,7 @@ $(document).ready(function(){
                 link: obj.link,
                 imgUrl: obj.img,
                 success: function () {
+                    callback();
                     console.log('share success to timeline');
                 },
                 cancel: function () {
@@ -827,6 +822,7 @@ Api = {
     },
     //查询贺卡
     //参数  id
+
     getLetter:function(obj,callback){
         $.ajax({
             url:'/api/loadcard',
@@ -835,6 +831,9 @@ Api = {
             data:obj,
             success:function(data){
                 return callback(data);
+                //data:gift
+                //gift=1抽过
+                //gift = 0,没抽过
                 //返回  code=1    msg =  {choose1 choose2 choose3 wish date}
             }
         });
@@ -873,7 +872,6 @@ Api = {
     //id
     giftLottery:function(obj,callback){
         Common.msgBox('loading...');
-        
         $.ajax({
             url:'/api/giftlottery',
             type:'POST',
@@ -1277,8 +1275,8 @@ Api = {
                         //    start to activate
                         var cardId = data.msg;
                         weixinshare({
-                            title1: '闪耀而温馨的圣诞节即将来临，查收节日惊喜，送出你最真挚的祝福。 ',
-                            des: '即刻参加圣诞活动，赢取惊喜好礼',
+                            title1: '即刻参加圣诞活动，赢取惊喜好礼',
+                            des: '闪耀而温馨的圣诞节即将来临，查收节日惊喜，送出你最真挚的祝福。 ',
                             link: window.location.origin+'/gift?cardid='+cardId,
                             img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
                         },function(){
@@ -1307,10 +1305,10 @@ Api = {
         };
 
         //test
-        $('.p3-t1').on('touchstart',function(){
-            self.shareCallback();
-
-        });
+        //$('.p3-t1').on('touchstart',function(){
+        //    self.shareCallback();
+        //
+        //});
 
 
     };
