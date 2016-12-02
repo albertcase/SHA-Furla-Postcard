@@ -870,11 +870,14 @@ Api = {
         //});
     },
     //礼物抽奖
-    giftLottery:function(callback){
+    //id
+    giftLottery:function(obj,callback){
         Common.msgBox('loading...');
+        
         $.ajax({
             url:'/api/giftlottery',
             type:'POST',
+            data:obj,
             dataType:'json',
             success:function(data){
                 $('.msgbox').remove();

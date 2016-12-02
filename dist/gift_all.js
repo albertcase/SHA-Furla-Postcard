@@ -1024,11 +1024,14 @@ Api = {
         //});
     },
     //礼物抽奖
-    giftLottery:function(callback){
+    //id
+    giftLottery:function(obj,callback){
         Common.msgBox('loading...');
+        
         $.ajax({
             url:'/api/giftlottery',
             type:'POST',
+            data:obj,
             dataType:'json',
             success:function(data){
                 $('.msgbox').remove();
@@ -1216,8 +1219,11 @@ Api = {
         },2000);
 
         var isprize = false;
+        var curCardId = Common.getParameterByName('cardid');
         $('.btn-postcard').on('touchstart',function(){
-            Api.giftLottery(function(data){
+            Api.giftLottery({
+              id:curCardId
+            },function(data){
                 if(data.status==1){
                     isprize = true;
                     self.prize(isprize);
