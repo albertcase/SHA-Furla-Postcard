@@ -30,7 +30,7 @@
                     <input type="text" id="input-firstname" placeholder="名..."/>
                 </div>
                 <div class="input-box input-box-mobile">
-                    <input type="text" disabled id="input-regioncode" placeholder="+86"/>
+                    <input type="text" id="input-regioncode" placeholder="+86"/>
                     <input type="tel" maxlength="11" id="input-mobile" placeholder="手机..."/>
                 </div>
                 <div class="input-box input-box-address">
