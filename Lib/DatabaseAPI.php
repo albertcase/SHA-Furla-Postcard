@@ -112,7 +112,7 @@ class DatabaseAPI extends Base {
 			$obj->wish = $wish;
 			$obj->fromuser = $fromuser;
 			$obj->date = $date;
-			$obj->gift = $this->loadgift($id)
+			$obj->gift = $this->loadgift($id);
 			return $obj;
 		}
 		return NULL;
