@@ -18,7 +18,7 @@
     <div class="bg">
         <div class="bg-layer-1"></div>
         <div class="bg-layer-2"></div>
-        <div class="bg-layer-3">
+        <div class="bg-layer-3 hide">
             <img src='/dist/images/rc/rc-1.png'>
         </div>
     </div>

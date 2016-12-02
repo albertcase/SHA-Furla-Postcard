@@ -1334,7 +1334,6 @@ Api = {
                         },function(){
                         //    success
                             self.shareCallback();
-
                         });
                     }
 
@@ -1351,11 +1350,10 @@ Api = {
 
         });
         function doAniForLetter(){
-
-
             $('.box-bottom').addClass('fade');
             $('.section-letter').addClass('shrinktocorner');
             $('.box-top').addClass('movetocenter');
+            $('.bg-layer-3').removeClass('hide');
             loadAni();
         };
         //here
@@ -1392,6 +1390,7 @@ Api = {
     //share callback
     furla.prototype.shareCallback = function(){
         var self = this;
+        $('.bg-layer-3').addClass('hide');
     //  go pin-4
         Common.gotoPin(3);
     //    lucky draw success

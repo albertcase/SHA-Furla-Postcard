@@ -379,7 +379,6 @@
                         },function(){
                         //    success
                             self.shareCallback();
-
                         });
                     }
 
@@ -399,6 +398,7 @@
             $('.box-bottom').addClass('fade');
             $('.section-letter').addClass('shrinktocorner');
             $('.box-top').addClass('movetocenter');
+            $('.bg-layer-3').removeClass('hide');
             loadAni();
         };
         //here
@@ -435,6 +435,7 @@
     //share callback
     furla.prototype.shareCallback = function(){
         var self = this;
+        $('.bg-layer-3').addClass('hide');
     //  go pin-4
         Common.gotoPin(3);
     //    lucky draw success
