@@ -470,6 +470,9 @@ html,body{
   .pg1-t1{
     @include size(2.98rem,0.76rem);
     margin: 0.45rem auto;
+    &.pg1-tt{
+      @include size(4.69rem,0.75rem);
+    }
   }
   .box-bottom{
     position: relative;

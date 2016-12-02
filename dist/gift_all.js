@@ -917,7 +917,6 @@ $(document).ready(function(){
                 imgUrl: obj.img,
                 success: function () {
                     callback();
-                    console.log('share success to timeline');
                 },
                 cancel: function () {
 
@@ -1118,10 +1117,10 @@ Api = {
     gift.prototype.openGift = function(){
         var self = this;
         Common.gotoPin(0);
-        //imulate shake function
-        //$('.pg1-t1').on('touchstart',function(){
-        //    openBox();
-        //});
+        //imulate shake function test
+        $('.pg1-t1').on('touchstart',function(){
+            openBox();
+        });
 
         //shake
         var giftShake = new Shake({
@@ -1194,6 +1193,9 @@ Api = {
                         //show box and letter
                         $('.box-animate').addClass('fadeout').remove(1000);
                         $('.box-bottom').addClass('fade');
+                        $('.pg1-t2').removeClass('hide');
+                        $('.pg1-t1').addClass('pg1-tt');
+                        $('.pg1-t1 img').attr('src','/dist/images/text-2.png');
                     }
                 },
                 doneAnimation: function(){
