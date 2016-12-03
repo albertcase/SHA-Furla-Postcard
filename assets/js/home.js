@@ -169,7 +169,7 @@
                     selectedProducts[i] = curPid;
                     $('.dest-block .item').eq(i).html(addHtml);
                     resetDragElePos(dragEle);
-                    if(i==2){
+                    if(selectedProducts[0] && selectedProducts[1] && selectedProducts[2]){
                         isFull = true;
                         changeStatus(true);
                     }
