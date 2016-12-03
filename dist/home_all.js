@@ -829,14 +829,15 @@ $(document).ready(function(){
 }).call(this);
 
 $(document).ready(function(){
-    //weixinshare({
-    //    title1: 'FURLA 为您准备了一份圣诞惊喜！请点击查收。',
-    //    des: '即刻参加圣诞活动，赢取惊喜好礼',
-    //    link: window.location.origin,
-    //    img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
-    //},function(){
-    //    console.log('nothing')
-    //});
+    weixinshare({
+        title1: 'FURLA 为您准备了一份圣诞惊喜！请点击查收。',
+        des: '闪耀而温馨的圣诞节即将来临，查收节日惊喜，送出您最真挚的祝福。 ',
+        link: 'http://furlasparklesofjoy.samesamechina.com',
+        img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
+    },function(){
+        //    success
+        _hmt.push(['_trackEvent', 'wxshare', 'share', 'share']);
+    });
 });
 
 /*All the api collection*/
