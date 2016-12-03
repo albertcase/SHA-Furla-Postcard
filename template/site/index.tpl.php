@@ -119,7 +119,7 @@
                     </div>
                     <div class="letter-date">2016年11月24日</div>
                 </div>
-                <div class="btn btn-postcard"><span>发送祝福，即刻抽奖</span></div>
+                <div class="btn btn-postcard"><span>发送祝福，立即抽奖</span></div>
             </div>
             <div class="box-bottom animate">
                 <div class="dest-block-wrap">
