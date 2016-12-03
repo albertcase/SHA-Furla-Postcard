@@ -10,6 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <link rel="stylesheet" type="text/css" href="/dist/css/swiper.min.css" />
     <link rel="stylesheet" type="text/css" href="/dist/css/style.css" />
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?24e9334415882e5c327fd20a16f444f6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
     <script type="text/javascript" src="http://wechatjs.curio.im/api/v1/js/b205e622-e695-4157-b5d2-eae508c0454a/wechat.js"></script>
     <script type="text/javascript" src="/dist/js/home_all.min.js"></script>
 </head>
