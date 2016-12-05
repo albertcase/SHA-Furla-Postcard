@@ -52,9 +52,12 @@
         var self = this;
         Common.gotoPin(0);
         //imulate shake function test
-        //$('.pg1-t1').on('touchstart',function(){
-        //    openBox();
-        //});
+        var enableShake = true;
+        $('.pin-gift-1').on('touchstart',function(){
+            if(!enableShake) return;
+            enableShake = false;
+            openBox();
+        });
 
         //shake
         var giftShake = new Shake({
@@ -66,7 +69,6 @@
         function openBox(){
         //    api
             loadAni();
-            giftShake.stop();
             var inputName = $('#input-name-1');
             var textConEle = $('#l-content');
             var inputName2 = $('#input-name-2');
@@ -108,26 +110,23 @@
 
         function loadAni(){
             var j = 44;
-            var reqAnimateNow = new reqAnimate($('.box-animate img')[0],{
+            var reqAnimateNow = new reqAnimate($('.box-animate img'),{
                 fps: 30,
-                //totalFrames: 50,
-                time: Infinity,
+                totalFrames: 30,
+                time: 1,
                 processAnimation: function(){
                     var imgName ="/dist/images/animate/L_000"+j+".jpg";
                     j++;
                     $('.box-animate img').attr('src',imgName);
-                    if(j>93){
-                        reqAnimateNow.cancel();
-                        //show box and letter
-                        $('.box-animate').addClass('fadeout').remove(1000);
-                        $('.box-bottom').removeClass('hide').addClass('fade');
-                        $('.pg1-t2').removeClass('hide');
-                        $('.pg1-t1').addClass('pg1-tt');
-                        $('.pg1-t1 img').attr('src','/dist/images/text-2.png');
-                    }
                 },
                 doneAnimation: function(){
-
+                    //show box and letter
+                    $('.box-animate').addClass('fadeout').remove(1000);
+                    $('.box-bottom').removeClass('hide').addClass('fade');
+                    $('.pg1-t2').removeClass('hide');
+                    $('.pg1-t1').addClass('pg1-tt');
+                    $('.pg1-t1 img').attr('src','/dist/images/text-2.png');
+                    giftShake.stop();
                 }
             });
             reqAnimateNow.start();
