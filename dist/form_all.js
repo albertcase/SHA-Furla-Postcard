@@ -293,7 +293,7 @@ $(document).ready(function(){
                 dataUrl: '',
                 success: function () {
                     //    success
-                    _hmt.push(['_trackEvent', 'wxshare', 'share', 'share']);
+                    _hmt.push(['_trackEvent', 'btn-weixin', 'share', 'success']);
                     callback();
 
                 },
@@ -305,6 +305,7 @@ $(document).ready(function(){
                 link: obj.link,
                 imgUrl: obj.img,
                 success: function () {
+                    _hmt.push(['_trackEvent', 'btn-weixin', 'share', 'success']);
                     callback();
                 },
                 cancel: function () {
@@ -476,7 +477,8 @@ Api = {
                 inputFirstName = document.getElementById('input-firstname'),
                 inputLastName = document.getElementById('input-lastname'),
                 inputMail = document.getElementById('input-mail'),
-                inputAddress = document.getElementById('input-address');
+                inputAddress = document.getElementById('input-address'),
+                inputCheck = $('#input-receive');
             if(!inputFirstName.value){
                 Common.errorMsg.add(inputFirstName.parentElement,'名不能为空');
                 validate = false;
@@ -511,18 +513,13 @@ Api = {
                 }
             }
 
-            if(!inputMail.value){
-                Common.errorMsg.add(inputMail.parentElement,'邮箱不能为空');
+            if(!inputCheck.is(':checked')){
                 validate = false;
+                Common.errorMsg.add(inputCheck[0].parentElement,'请同意接受有关FURLA产品、服务、推广等消息');
             }else{
-                var reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                if(!(reg.test(inputMail.value))){
-                    validate = false;
-                    Common.errorMsg.add(inputMail.parentElement,'邮箱格式错误，请重新输入');
-                }else{
-                    Common.errorMsg.remove(inputMail.parentElement);
-                }
+                Common.errorMsg.remove(inputCheck[0].parentElement);
             }
+
 
             if(validate){
                 return true;

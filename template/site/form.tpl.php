@@ -46,10 +46,10 @@
                     <input type="text" id="input-address" placeholder="地址..."/>
                 </div>
                 <div class="input-box input-box-mail">
-                    <input type="text" id="input-mail" placeholder="邮箱..."/>
+                    <input type="text" id="input-mail" placeholder="邮箱(选填)..."/>
                 </div>
                 <div class="input-box input-checkbox">
-                    <input type="checkbox" name="receive" id="input-receive"/>
+                    <input type="checkbox" name="receive" id="input-receive" checked='true'/>
                     <label for="input-receive">我愿意收到有关FURLA产品、服务、推广等最新消息。</label>
                 </div>
             </div>
