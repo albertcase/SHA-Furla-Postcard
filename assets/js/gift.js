@@ -20,6 +20,7 @@
             baseurl + 'p2-t4.png',
             baseurl + 't-open.png',
             baseurl + 'text-3.png',
+            baseurl + 'text-prize-4.png',
         ];
         var animateImgArr = [];
         for(var k=0;k<50;k++){
