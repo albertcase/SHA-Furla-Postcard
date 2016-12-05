@@ -1356,6 +1356,10 @@ Api = {
             $('.section-letter').addClass('shrinktocorner');
             $('.box-top').addClass('movetocenter');
             $('.bg-layer-3').removeClass('hide');
+            var bbb = setTimeout(function(){
+                $('.section-letter').remove();
+                clearTimeout(bbb);
+            },1000);
             loadAni();
         };
         //here

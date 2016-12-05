@@ -514,7 +514,7 @@ Api = {
 
             if(!inputCheck.is(':checked')){
                 validate = false;
-                Common.errorMsg.add(inputCheck[0].parentElement,'请接收推广消息，否则表单无法提交');
+                Common.errorMsg.add(inputCheck[0].parentElement,'请同意接受有关FURLA产品、服务、推广等消息');
             }else{
                 Common.errorMsg.remove(inputCheck[0].parentElement);
             }
