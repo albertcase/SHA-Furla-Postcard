@@ -476,7 +476,8 @@ Api = {
                 inputFirstName = document.getElementById('input-firstname'),
                 inputLastName = document.getElementById('input-lastname'),
                 inputMail = document.getElementById('input-mail'),
-                inputAddress = document.getElementById('input-address');
+                inputAddress = document.getElementById('input-address'),
+                inputCheck = $('#input-receive');
             if(!inputFirstName.value){
                 Common.errorMsg.add(inputFirstName.parentElement,'名不能为空');
                 validate = false;
@@ -511,18 +512,13 @@ Api = {
                 }
             }
 
-            if(!inputMail.value){
-                Common.errorMsg.add(inputMail.parentElement,'邮箱不能为空');
+            if(!inputCheck.is(':checked')){
                 validate = false;
+                Common.errorMsg.add(inputCheck[0].parentElement,'请接收推广消息，否则表单无法提交');
             }else{
-                var reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                if(!(reg.test(inputMail.value))){
-                    validate = false;
-                    Common.errorMsg.add(inputMail.parentElement,'邮箱格式错误，请重新输入');
-                }else{
-                    Common.errorMsg.remove(inputMail.parentElement);
-                }
+                Common.errorMsg.remove(inputCheck[0].parentElement);
             }
+
 
             if(validate){
                 return true;
