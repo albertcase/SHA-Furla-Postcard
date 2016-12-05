@@ -49,7 +49,7 @@ class ApiController extends Controller {
 	}
 
 	public function cardAction() {
-		$card = 'pwk3ljkAL7H5kZJfshvMnLjijbJc';
+		$card = 'pwk3ljgUYhaPdQy-vrCX3GpmVFpc';
 		$wechatapi = new \Lib\WechatAPI();
 		$list = $wechatapi->cardList($card);
 		return $this->statusPrint(1, $list);
