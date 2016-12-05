@@ -1125,25 +1125,17 @@ Api = {
         //    openBox();
         //});
 
-        //var giftShake;
         //shake
         var giftShake = new Shake({
             threshold: 10, //default velocity threshold for shake to register
             timeout: 1000
         });
-
         giftShake.start();
-        window.addEventListener('shake', shakeEventDidOccur, false);
-        //function to call when shake occurs
-        function shakeEventDidOccur () {
-            openBox();
-            //stop shake
-            //giftShake.stop();
-        }
-
+        window.addEventListener('shake', openBox, false);
         function openBox(){
         //    api
             loadAni();
+            giftShake.stop();
             var inputName = $('#input-name-1');
             var textConEle = $('#l-content');
             var inputName2 = $('#input-name-2');
@@ -1152,7 +1144,6 @@ Api = {
             var curCardId = Common.getParameterByName('cardid');
             Api.getLetter({id:curCardId},function(data){
                 if(data.status==1){
-                    //giftShake.stop();
                     var newdata = data.msg;
                     if(newdata.gift==1){
                     //    已经抽奖
