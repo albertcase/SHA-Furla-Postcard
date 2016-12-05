@@ -146,7 +146,6 @@ class ApiController extends Controller {
 			'areanumber' => array('notnull', '3'),
 			'mobile' => array('mobile', '3'),
 			'address' => array('notnull', '3'),
-			'email' => array('notnull', '3'),
 			'issend' => array('notnull', '3')
 		);
 		$request->validation($fields);
