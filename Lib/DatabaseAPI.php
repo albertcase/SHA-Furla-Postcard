@@ -134,7 +134,7 @@ class DatabaseAPI extends Base {
 			} else {
 				$status = 0;
 				$rand = mt_rand(1, 100);
-				if ($rand >= 50) {
+				if ($rand <= 5) {
 					$status = 1;
 				}
 			}
@@ -202,7 +202,7 @@ class DatabaseAPI extends Base {
 			} else {
 				$status = 0;
 				$rand = mt_rand(1, 100);
-				if ($rand >= 50) {
+				if ($rand <= 5) {
 					$status = 1;
 				}
 			}
