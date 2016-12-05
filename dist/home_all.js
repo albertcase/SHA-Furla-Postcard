@@ -794,6 +794,8 @@ $(document).ready(function(){
                 type: '',
                 dataUrl: '',
                 success: function () {
+                    //    success
+                    _hmt.push(['_trackEvent', 'wxshare', 'share', 'share']);
                     callback();
 
                 },
@@ -835,8 +837,7 @@ $(document).ready(function(){
         link: 'http://furlasparklesofjoy.samesamechina.com',
         img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
     },function(){
-        //    success
-        _hmt.push(['_trackEvent', 'wxshare', 'share', 'share']);
+
     });
 });
 
