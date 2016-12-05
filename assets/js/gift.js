@@ -166,14 +166,17 @@
             $('.section-letter').addClass('change');
             clearTimeout(bbb);
         },1000);
+        var isGoNext = false; /*go unprize page if close the pop*/
 
         var isprize = false;
         var curCardId = Common.getParameterByName('cardid');
         $('.btn-postcard').on('touchstart',function(){
             if(!self.enableGift){
                 Common.alertBox.add('该好友送给你的抽奖机会已使用');
+                isGoNext = true;
                 return;
             };
+
             Api.giftLottery({
               id:curCardId
             },function(data){
@@ -188,6 +191,14 @@
                 }
             });
         });
+
+        //if close the pop tips,go  unprize page
+        $('body.page-home').on('touchstart','.btn-alert-ok',function(){
+            if(isGoNext){
+                self.prize(false);
+            }
+        });
+
     };
     //prize page
     gift.prototype.prize = function(isprize){
