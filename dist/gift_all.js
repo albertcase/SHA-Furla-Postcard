@@ -944,8 +944,8 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     weixinshare({
-        title1: '闪耀圣诞，FURLA邀您一起分享喜悦',
-        des: '当圣诞心情已浸入每一个细胞，这份欢乐而喜悦的情绪需要与你一同分享！这个圣诞，让我们寄情于礼，分享FURLA所带来的温馨闪耀吧。',
+        title1: '闪耀圣诞，FURLA邀您一起分享喜悦。',
+        des: '这个圣诞，让我们寄情于礼，分享FURLA所带来的温馨闪耀吧。',
         link: 'http://furlasparklesofjoy.samesamechina.com',
         img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
     },function(){
@@ -1125,18 +1125,12 @@ Api = {
         //    openBox();
         //});
 
+        //var giftShake;
         //shake
-        if(navigator.userAgent.indexOf('iPhone')>-1){
-            var giftShake = new Shake({
-                threshold: 12, //default velocity threshold for shake to register
-                timeout: 100
-            });
-        }else{
-            var giftShake = new Shake({
-                threshold: 2, //default velocity threshold for shake to register
-                timeout: 100
-            });
-        }
+        var giftShake = new Shake({
+            threshold: 10, //default velocity threshold for shake to register
+            timeout: 1000
+        });
 
         giftShake.start();
         window.addEventListener('shake', shakeEventDidOccur, false);
@@ -1144,7 +1138,7 @@ Api = {
         function shakeEventDidOccur () {
             openBox();
             //stop shake
-            giftShake.stop();
+            //giftShake.stop();
         }
 
         function openBox(){
@@ -1158,6 +1152,7 @@ Api = {
             var curCardId = Common.getParameterByName('cardid');
             Api.getLetter({id:curCardId},function(data){
                 if(data.status==1){
+                    //giftShake.stop();
                     var newdata = data.msg;
                     if(newdata.gift==1){
                     //    已经抽奖

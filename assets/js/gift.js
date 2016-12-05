@@ -56,18 +56,12 @@
         //    openBox();
         //});
 
+        //var giftShake;
         //shake
-        if(navigator.userAgent.indexOf('iPhone')>-1){
-            var giftShake = new Shake({
-                threshold: 12, //default velocity threshold for shake to register
-                timeout: 100
-            });
-        }else{
-            var giftShake = new Shake({
-                threshold: 2, //default velocity threshold for shake to register
-                timeout: 100
-            });
-        }
+        var giftShake = new Shake({
+            threshold: 10, //default velocity threshold for shake to register
+            timeout: 1000
+        });
 
         giftShake.start();
         window.addEventListener('shake', shakeEventDidOccur, false);
@@ -75,7 +69,7 @@
         function shakeEventDidOccur () {
             openBox();
             //stop shake
-            giftShake.stop();
+            //giftShake.stop();
         }
 
         function openBox(){
@@ -89,6 +83,7 @@
             var curCardId = Common.getParameterByName('cardid');
             Api.getLetter({id:curCardId},function(data){
                 if(data.status==1){
+                    //giftShake.stop();
                     var newdata = data.msg;
                     if(newdata.gift==1){
                     //    已经抽奖
