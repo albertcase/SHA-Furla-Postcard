@@ -833,8 +833,8 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     weixinshare({
-        title1: 'FURLA 为您准备了一份圣诞惊喜！请点击查收。',
-        des: '闪耀而温馨的圣诞节即将来临，查收节日惊喜，送出您最真挚的祝福。 ',
+        title1: '闪耀圣诞，FURLA邀您一起分享喜悦。',
+        des: '这个圣诞，让我们寄情于礼，分享FURLA所带来的温馨闪耀吧。',
         link: 'http://furlasparklesofjoy.samesamechina.com',
         img: 'http://furlasparklesofjoy.samesamechina.com/dist/images/share.jpg'
     },function(){

@@ -52,32 +52,20 @@
         var self = this;
         Common.gotoPin(0);
         //imulate shake function test
-        //$('.pg1-t1').on('touchstart',function(){
-        //    openBox();
-        //});
+        var enableShake = true;
+        $('.pin-gift-1').on('touchstart',function(){
+            if(!enableShake) return;
+            enableShake = false;
+            openBox();
+        });
 
         //shake
-        if(navigator.userAgent.indexOf('iPhone')>-1){
-            var giftShake = new Shake({
-                threshold: 12, //default velocity threshold for shake to register
-                timeout: 100
-            });
-        }else{
-            var giftShake = new Shake({
-                threshold: 2, //default velocity threshold for shake to register
-                timeout: 100
-            });
-        }
-
+        var giftShake = new Shake({
+            threshold: 10, //default velocity threshold for shake to register
+            timeout: 1000
+        });
         giftShake.start();
-        window.addEventListener('shake', shakeEventDidOccur, false);
-        //function to call when shake occurs
-        function shakeEventDidOccur () {
-            openBox();
-            //stop shake
-            giftShake.stop();
-        }
-
+        window.addEventListener('shake', openBox, false);
         function openBox(){
         //    api
             loadAni();
@@ -122,26 +110,23 @@
 
         function loadAni(){
             var j = 44;
-            var reqAnimateNow = new reqAnimate($('.box-animate img')[0],{
+            var reqAnimateNow = new reqAnimate($('.box-animate img'),{
                 fps: 30,
-                //totalFrames: 50,
-                time: Infinity,
+                totalFrames: 30,
+                time: 1,
                 processAnimation: function(){
                     var imgName ="/dist/images/animate/L_000"+j+".jpg";
                     j++;
                     $('.box-animate img').attr('src',imgName);
-                    if(j>93){
-                        reqAnimateNow.cancel();
-                        //show box and letter
-                        $('.box-animate').addClass('fadeout').remove(1000);
-                        $('.box-bottom').removeClass('hide').addClass('fade');
-                        $('.pg1-t2').removeClass('hide');
-                        $('.pg1-t1').addClass('pg1-tt');
-                        $('.pg1-t1 img').attr('src','/dist/images/text-2.png');
-                    }
                 },
                 doneAnimation: function(){
-
+                    //show box and letter
+                    $('.box-animate').addClass('fadeout').remove(1000);
+                    $('.box-bottom').removeClass('hide').addClass('fade');
+                    $('.pg1-t2').removeClass('hide');
+                    $('.pg1-t1').addClass('pg1-tt');
+                    $('.pg1-t1 img').attr('src','/dist/images/text-2.png');
+                    giftShake.stop();
                 }
             });
             reqAnimateNow.start();
@@ -166,14 +151,17 @@
             $('.section-letter').addClass('change');
             clearTimeout(bbb);
         },1000);
+        var isGoNext = false; /*go unprize page if close the pop*/
 
         var isprize = false;
         var curCardId = Common.getParameterByName('cardid');
         $('.btn-postcard').on('touchstart',function(){
             if(!self.enableGift){
                 Common.alertBox.add('该好友送给你的抽奖机会已使用');
+                isGoNext = true;
                 return;
             };
+
             Api.giftLottery({
               id:curCardId
             },function(data){
@@ -188,6 +176,14 @@
                 }
             });
         });
+
+        //if close the pop tips,go  unprize page
+        $('body.page-home').on('touchstart','.btn-alert-ok',function(){
+            if(isGoNext){
+                self.prize(false);
+            }
+        });
+
     };
     //prize page
     gift.prototype.prize = function(isprize){
