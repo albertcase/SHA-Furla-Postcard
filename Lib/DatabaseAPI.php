@@ -128,12 +128,15 @@ class DatabaseAPI extends Base {
 			$status = 0;
 		} else {
 			//设置概率
-			
-			$rand = mt_rand(1, 100);
-			if ($rand >= 50) {
-				$status = 1;
+			$cardnum = $this->cardnum();
+			if ($cardnum>=100) {
+				$status = 0;
 			} else {
 				$status = 0;
+				$rand = mt_rand(1, 100);
+				if ($rand >= 50) {
+					$status = 1;
+				}
 			}
 		}
 		return $this->savelottery($uid, $status, 1);
@@ -148,6 +151,19 @@ class DatabaseAPI extends Base {
 			return $status;
 		} else {
 			return FALSE;
+		}
+	}
+
+	private function cardnum() {
+		$this->inidb();
+		$sql = "select count(*) from `furla_lottery` where status=1";
+		$res = $this->db->prepare($sql); 
+		$res->execute();
+		$res->bind_result($rs);
+		if ($res->fetch()) {
+			return $rs;
+		} else {
+			return 0;
 		}
 	}
 
@@ -180,11 +196,17 @@ class DatabaseAPI extends Base {
 			return 0;
 		} else {
 			//设置概率
-			$status = 0;
-			$rand = mt_rand(1, 100);
-			if ($rand >= 50) {
-				$status = 1;
+			$giftnum = $this->giftnum();
+			if ($giftnum>=100) {
+				$status = 0;
+			} else {
+				$status = 0;
+				$rand = mt_rand(1, 100);
+				if ($rand >= 50) {
+					$status = 1;
+				}
 			}
+			
 		}
 		return $this->savegift($pid, $uid, $status);
 	}
@@ -198,6 +220,19 @@ class DatabaseAPI extends Base {
 			return $status;
 		} else {
 			return FALSE;
+		}
+	}
+
+	private function giftnum() {
+		$this->inidb();
+		$sql = "select count(*) from `furla_gift` where status=1";
+		$res = $this->db->prepare($sql); 
+		$res->execute();
+		$res->bind_result($rs);
+		if ($res->fetch()) {
+			return $rs;
+		} else {
+			return 0;
 		}
 	}
 
