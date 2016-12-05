@@ -57,10 +57,18 @@
         //});
 
         //shake
-        var giftShake = new Shake({
-            threshold: 10, //default velocity threshold for shake to register
-            timeout: 1000
-        });
+        if(navigator.userAgent.indexOf('iPhone')>-1){
+            var giftShake = new Shake({
+                threshold: 12, //default velocity threshold for shake to register
+                timeout: 100
+            });
+        }else{
+            var giftShake = new Shake({
+                threshold: 2, //default velocity threshold for shake to register
+                timeout: 100
+            });
+        }
+
         giftShake.start();
         window.addEventListener('shake', shakeEventDidOccur, false);
         //function to call when shake occurs
