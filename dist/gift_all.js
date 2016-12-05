@@ -1089,6 +1089,7 @@ Api = {
             baseurl + 'p2-t4.png',
             baseurl + 't-open.png',
             baseurl + 'text-3.png',
+            baseurl + 'text-key-1.png',
             baseurl + 'text-prize-4.png',
         ];
         var animateImgArr = [];
