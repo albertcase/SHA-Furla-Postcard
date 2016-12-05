@@ -317,6 +317,11 @@ html,body{
       outline: none;
     }
   }
+  textarea{
+    &:disabled{
+      background: transparent;
+    }
+  }
   label{
     display: inline-block;
     text-indent: -999em;
