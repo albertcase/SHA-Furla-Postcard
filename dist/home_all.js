@@ -795,7 +795,7 @@ $(document).ready(function(){
                 dataUrl: '',
                 success: function () {
                     //    success
-                    _hmt.push(['_trackEvent', 'wxshare', 'share', 'share']);
+                    _hmt.push(['_trackEvent', 'btn-weixin', 'share', 'success']);
                     callback();
 
                 },
@@ -807,6 +807,7 @@ $(document).ready(function(){
                 link: obj.link,
                 imgUrl: obj.img,
                 success: function () {
+                    _hmt.push(['_trackEvent', 'btn-weixin', 'share', 'success']);
                     callback();
                 },
                 cancel: function () {
