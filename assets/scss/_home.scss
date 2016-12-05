@@ -456,6 +456,7 @@ html,body{
   top: 0;
   z-index: 0;
   @include size(100%,100%);
+  overflow: hidden;
   //background-image: url("../images/animate/L_00044.jpg");
   //background-repeat:  no-repeat;
   //background-size: cover;
