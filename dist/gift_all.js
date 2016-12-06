@@ -1089,6 +1089,8 @@ Api = {
             baseurl + 'p2-t4.png',
             baseurl + 't-open.png',
             baseurl + 'text-3.png',
+            baseurl + 'text-key-1.png',
+            baseurl + 'text-prize-4.png',
         ];
         var animateImgArr = [];
         for(var k=0;k<50;k++){
@@ -1120,13 +1122,6 @@ Api = {
     gift.prototype.openGift = function(){
         var self = this;
         Common.gotoPin(0);
-        //imulate shake function test
-        var enableShake = true;
-        $('.pin-gift-1').on('touchstart',function(){
-            if(!enableShake) return;
-            enableShake = false;
-            openBox();
-        });
 
         //shake
         var giftShake = new Shake({
@@ -1181,7 +1176,7 @@ Api = {
             var j = 44;
             var reqAnimateNow = new reqAnimate($('.box-animate img'),{
                 fps: 30,
-                totalFrames: 30,
+                totalFrames: 50,
                 time: 1,
                 processAnimation: function(){
                     var imgName ="/dist/images/animate/L_000"+j+".jpg";
@@ -1200,6 +1195,15 @@ Api = {
             });
             reqAnimateNow.start();
         };
+
+        //imulate shake function test
+        var enableShake = true;
+        $('.pin-gift-1').on('touchstart',function(){
+            if(navigator.userAgent.indexOf('Android')>-1 && $('.box-animate').length){
+                openBox();
+                //enableShake = false;
+            }
+        });
 
         //find the letter card ,and then show
         $('.dest-block').on('touchstart',function(){
