@@ -129,7 +129,7 @@ class DatabaseAPI extends Base {
 		} else {
 			//设置概率
 			$cardnum = $this->cardnum();
-			if ($cardnum>=100) {
+			if ($cardnum>=102) {
 				$status = 0;
 			} else {
 				$status = 0;
@@ -197,7 +197,7 @@ class DatabaseAPI extends Base {
 		} else {
 			//设置概率
 			$giftnum = $this->giftnum();
-			if ($giftnum>=100) {
+			if ($giftnum>=140) {
 				$status = 0;
 			} else {
 				$status = 0;
