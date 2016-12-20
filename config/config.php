@@ -21,5 +21,5 @@ define("CURIO_JS_ID", 'b205e622-e695-4157-b5d2-eae508c0454a');
 //Database config info
 define("DBHOST", '127.0.0.1');
 define("DBUSER", 'root');
-define("DBPASS", '');
+define("DBPASS", '1qazxsw2');
 define("DBNAME", 'furla_postcard');
